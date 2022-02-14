@@ -2,7 +2,6 @@
 #include <list>
 #include <vector>
 #include <map>
-#include <string>
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
@@ -13,7 +12,8 @@ class DispatcherUnit {
 	//std::list<int> allFloors;
 	//std::vector<int> requests;
 
-	std::map<std::string, int> floorStatus;
+	std::map<int, int> floorStatus;
+	int minFloor, maxFloor, Floors;
 
 
 
@@ -22,11 +22,19 @@ class DispatcherUnit {
 public:
 	//startElevatorSystem() -- jedyna publiczna metoda pozwalaj¹ca na wystartowanie programu
 	
-	DispatcherUnit(std::map<std::string,int> floorStatus_a);
+	DispatcherUnit();
 
 	void startElevatorSystem();
 private:
+	void getRangeOfFloors();
+
+
+
 	void createFloorMap();
+	void displayFloorMap();
+
+	void stopElevatorSystem();
+	
 
 	//stopSystem() -- odpowiada za wy³¹czenie programu
 

@@ -8,6 +8,7 @@ using namespace std;
 
 int main() {
 	
-	DispatcherUnit DispatcherUnit();
+	DispatcherUnit Display1;
+	Display1.startElevatorSystem();
 	return 0;
 }
