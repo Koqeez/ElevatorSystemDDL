@@ -6,7 +6,21 @@
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
 	//How to move the elevator car
+
+	//Kryteria
+	//
+	//Transported ilosc
+	//ElapsedTime sekundy
+	//Transported/s ilosc.00
+	//AvgWaitingTime sekundy.00
+	//MaxMovingTime sekundy.00
+	//Moves[vectors] ilosc
+ 
+	
 	//List<Elevator> allElevators -- w przypadku wiêkszej iloœci wind
+	//Pierwsza ma wy³¹cznie mo¿liwoœæ tworzenia zapytania w górê, d³ugoœæ-1 ma mo¿liwoœæ wykonania zapytania jedynie w dó³ 
+	//
+	// 
 	//List<Floors> allFloors -- struktura odpowiadaj¹ca za po³o¿enie piêter
 
 	//std::list<int> allFloors;
@@ -25,15 +39,22 @@ public:
 	DispatcherUnit();
 
 	void startElevatorSystem();
-private:
-	void getRangeOfFloors();
 
+
+	//w przypadku zastosowania systemu bez menu funkcje te powinny byæ private
+	void getRangeOfFloors();
 
 
 	void createFloorMap();
 	void displayFloorMap();
 
+
+	void eraseFloorMap();
+
+
 	void stopElevatorSystem();
+private:
+
 	
 
 	//stopSystem() -- odpowiada za wy³¹czenie programu

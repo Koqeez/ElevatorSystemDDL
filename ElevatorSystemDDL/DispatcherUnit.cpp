@@ -6,6 +6,7 @@
 
 DispatcherUnit::DispatcherUnit(){};
 
+//w przypadku uzywania systemu z menu, wydaje sie mniej potrzebna
 void DispatcherUnit::startElevatorSystem() {
 	while (true) {
 		getRangeOfFloors();
@@ -43,4 +44,7 @@ void DispatcherUnit::displayFloorMap() {
 void DispatcherUnit::stopElevatorSystem() {
 	std::cout << "Stoping elevator system.";
 	exit(0);
+}
+void DispatcherUnit::eraseFloorMap() {
+	floorStatus.clear();
 }
