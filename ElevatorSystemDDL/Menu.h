@@ -26,8 +26,12 @@ public:
 	void ExitMenu();
 
 	void DisplayMapOptions();
+
+	void DisplayMapChangeOptions();
+
 	void DisplayInformation();
 
 	void MenuDisplacer();
 	void MenuMapDisplacer();
+	void MenuMapChangeDisplacer();
 };

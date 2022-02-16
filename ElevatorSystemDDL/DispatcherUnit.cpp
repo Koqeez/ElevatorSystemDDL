@@ -69,3 +69,24 @@ void DispatcherUnit::eraseFloorMap() {
 	std::cout << "Mapa zostala usunieta. Nadus ENTER";
 	floorStatus.clear();
 }
+
+void DispatcherUnit::addFloorMapElement() {
+	int pietro = 0,poczatek = 0,koniec = 0,i = 0,status = 0;
+
+	//i = std::distance(floorStatus.begin(), floorStatus.end());
+	//poczatek = floorStatus.begin()->first;
+	//koniec = floorStatus.end()->first;
+	std::cout << "Obecnie budynek ma wartosci od: " << poczatek-1 << " , do:" << koniec+1 << ", w sumie: " << i << " elementow."<<std::endl;
+	std::cout << "Pietro musibyc dodane w zasiegu, n-1 do n+1\n Podaj numer pietra ktore chcesz dodac:";
+	std::cin >> pietro;
+	if (pietro != poczatek - 2 || pietro != koniec + 2) {
+		std::cout << "Podane pietro jest niezgodne.\n";
+		return;
+	}
+	std::cout << "Podane pietro jest zgodne.\n Podaj status pietra: ";
+	std::cin >> status;
+	//floorStatus.insert({ pietro,status });
+	std::cout << "Element zostal dodany. Nadus ENTER";
+
+	
+}

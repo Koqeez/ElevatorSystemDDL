@@ -46,10 +46,7 @@ Menu::Menu(string prompt_a, vector<string>& options_a) {
 };
 Menu::Menu(){}; //domysly konstruktor jako obiekt inicjunijacy metode tworzaca menu
 
-Menu::~Menu() {
-	 Options.clear();
-	 delete this;
-}
+Menu::~Menu() {};
 
 
 void Menu::DisplayOptions(){
@@ -114,6 +111,7 @@ void Menu::RunMainMenu() {
 
 	switch (selectedIndex) {
 	case 0:
+		Sleep(1000);
 		system("CLS");
 		DisplayMapOptions();
 		break;
@@ -142,6 +140,8 @@ void Menu::DisplayMapOptions() {
 		MenuMapDisplacer();
 		break;
 	case 1:
+		Sleep(2000);
+		DisplayMapChangeOptions();
 		break;
 	case 2:
 		system("cls");
@@ -159,6 +159,41 @@ void Menu::DisplayMapOptions() {
 		//MenuDisplacer();
 	}
 }
+
+void Menu::DisplayMapChangeOptions() {
+	string Prompt = "******************** MENU DOTYCZACE ZMIANY MAPY ********************";
+	vector<string>Options = { "********** DODAJ ELEMENT **********","********** USUN ELEMENT **********", "********** USUN GRUPE ELEMENTOW **********","********** POWROT **********" };
+	Menu MapChangeMenu(Prompt, Options);
+
+	int SelectedIndex = MapChangeMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		Sleep(2000);
+		system("cls");
+		DispatcherUnit1.addFloorMapElement();
+		MenuMapChangeDisplacer();
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		system("cls");
+		DisplayMapOptions();
+		break;
+	case 4:
+		system("cls");
+		DisplayMapOptions();
+		//MenuDisplacer();
+	}
+}
+
+
+
+
+
+
 void Menu::DisplayInformation() {
 	system("cls");
 	cout << "Informacje.";
@@ -174,6 +209,7 @@ void Menu::ExitMenu() {
 	exit(0);
 }
 
+//zmienic to na osobna, jedna metode z parametrami
 void Menu::MenuDisplacer() {
 	Sleep(1000);
 	bool flaga = true;
@@ -196,6 +232,19 @@ void Menu::MenuMapDisplacer() {
 		}
 	}
 }
+
+void Menu::MenuMapChangeDisplacer() {
+	Sleep(1000);
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplayMapChangeOptions();
+		}
+	}
+}
+
 
 
 /*
