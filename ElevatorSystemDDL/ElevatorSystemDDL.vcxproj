@@ -142,10 +142,12 @@
     <ClCompile Include="DispatcherUnit.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="ElevatorCar.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispatcherUnit.h" />
     <ClInclude Include="ElevatorCar.h" />
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
