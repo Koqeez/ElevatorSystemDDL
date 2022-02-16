@@ -62,6 +62,10 @@ void DispatcherUnit::stopElevatorSystem() {
 	exit(0);
 }
 void DispatcherUnit::eraseFloorMap() {
+	if (floorStatus.empty()) {
+		std::cout << "Mapa jest obecnie pusta. Nadus ENTER";
+			return;
+	}
 	std::cout << "Mapa zostala usunieta. Nadus ENTER";
 	floorStatus.clear();
 }
