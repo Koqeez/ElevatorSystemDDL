@@ -12,11 +12,8 @@ void DispatcherUnit::startElevatorSystem() {
 		getRangeOfFloors();
 		createFloorMap();
 		displayFloorMap();
-		if (true) {
-			stopElevatorSystem();
+		stopElevatorSystem();
 		}
-	}
-	
 }
 void DispatcherUnit::getRangeOfFloors() {
 	//bez piêter poni¿ej zera
