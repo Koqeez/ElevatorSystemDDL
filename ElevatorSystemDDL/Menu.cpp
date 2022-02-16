@@ -5,6 +5,7 @@
 #include <WinUser.h>
 #include <stdio.h>
 
+
 void ClearScreen()
 {
 	COORD cursorPosition;	
@@ -19,6 +20,8 @@ void CursorAppear(bool visible) {
 	info.bVisible = visible;
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 }
+
+
 
 using namespace std;
 
@@ -42,6 +45,13 @@ Menu::Menu(string prompt_a, vector<string>& options_a) {
 	SelectedIndex = 0;
 };
 Menu::Menu(){}; //domysly konstruktor jako obiekt inicjunijacy metode tworzaca menu
+
+Menu::~Menu() {
+	 Options.clear();
+	 delete this;
+}
+
+
 void Menu::DisplayOptions(){
 	WORD Attributes = 0;
 	//HANDLE Con;
@@ -98,9 +108,93 @@ int Menu::Run() {
 
 void Menu::RunMainMenu() {
 	string Prompt = "Menu";
-	vector<string>Options = { "<<Opcja 1 >>","<<Opcja 2 >>","<<Opcja 3 >>" };
+	vector<string>Options = { "<<Opcje dotyczace mapyPieter >>","<<Opcja 2 >>","<<Opcja 3 >>" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
+
+	switch (selectedIndex) {
+	case 0:
+		system("CLS");
+		DisplayMapOptions();
+		break;
+	case 1:
+		DisplayInformation();
+		break;
+	case 2:
+		ExitMenu();
+		break;
+	
+	}
+}
+
+void Menu::DisplayMapOptions() {
+	Sleep(2000);
+	string Prompt = "Opcje dotyczace mapyPieter";
+	vector<string>Options = {"Dodaj mape","Zmien mape", "Usun mape", "Wyswietl mape"};
+	Menu MapMenu(Prompt, Options);
+	
+	int SelectedIndex = MapMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		system("cls");
+		DispatcherUnit1.getRangeOfFloors();
+		DispatcherUnit1.createFloorMap();
+		Sleep(2000);
+		MenuMapDisplacer();
+		break;
+	case 1:
+		break;
+	case 2:
+		system("cls");
+		DispatcherUnit1.eraseFloorMap();
+		Sleep(2000);
+		MenuMapDisplacer();
+		break;
+	case 3:
+		system("cls");
+		DispatcherUnit1.displayFloorMap();
+		Sleep(2000);
+		MenuMapDisplacer();
+		break;
+	}
+}
+void Menu::DisplayInformation() {
+	system("cls");
+	cout << "Informacje.";
+	cout << "\nNadus enter by wrocic do menu glownego.";
+	MenuDisplacer();
+	
+}
+
+
+void Menu::ExitMenu() {
+	system("cls");
+	cout << "\nNadus enter by wyjsc...";
+	if (GetAsyncKeyState(VK_RETURN)){
+		exit(0);
+	}
+}
+
+void Menu::MenuDisplacer() {
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			RunMainMenu();
+		}
+	}
+}
+void Menu::MenuMapDisplacer() {
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplayMapOptions();
+		}
+	}
 }
 
 
