@@ -17,12 +17,12 @@ void DispatcherUnit::startElevatorSystem() {
 }
 void DispatcherUnit::getRangeOfFloors() {
 	//bez piêter poni¿ej zera
-	std::cout << "Type first floor: ";
+	std::cout << "Podaj pierwsze pietro:";
 	std::cin >> minFloor;
-	std::cout << "\nType last floor: ";
+	std::cout << "Podaj ostatnie pietro:";
 	std::cin >> maxFloor;
 	Floors = maxFloor - minFloor;
-	std::cout << "Building is " << Floors << " story tall.\n";
+	std::cout << "Budynek bedzie mial " << Floors << " pieter.\n";
 }
 void DispatcherUnit::createFloorMap() {
 	for (int i = 0; i < Floors; i++) {
@@ -33,8 +33,27 @@ void DispatcherUnit::createFloorMap() {
 	}
 }
 void DispatcherUnit::displayFloorMap() {
+	int i;
+	std::cout << "Budynek sklada sie z nastepujacych pieter. \n";
 	for (std::map<int, int>::iterator itr = floorStatus.begin(); itr != floorStatus.end(); ++itr) {
-		std::cout <<"(Floor " << (*itr).first << ") ma status: " << (*itr).second << "\n";
+
+		if (itr == floorStatus.end()) {
+			std::cout << "ERROR - BLAD ITERATORA\n";
+		}
+		i = std::distance(floorStatus.begin(), itr);
+		
+		if (i <= 9) {
+			std::cout << "(Floor     " << (*itr).first << ") ma status: " << (*itr).second << "\n";
+		}
+		else if (i <= 99) {
+			std::cout << "(Floor    " << (*itr).first << ") ma status: " << (*itr).second << "\n";
+		}
+		else if(i<=999){
+			std::cout << "(Floor   " << (*itr).first << ") ma status: " << (*itr).second << "\n";
+		}
+		else {
+			std::cout << "(Floor  " << (*itr).first << ") ma status: " << (*itr).second << "\n";
+		}
 	}
 }
 
@@ -43,5 +62,6 @@ void DispatcherUnit::stopElevatorSystem() {
 	exit(0);
 }
 void DispatcherUnit::eraseFloorMap() {
+	std::cout << "Mapa zostala usunieta. Nadus ENTER";
 	floorStatus.clear();
 }

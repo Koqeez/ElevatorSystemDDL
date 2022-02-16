@@ -107,8 +107,8 @@ int Menu::Run() {
 }
 
 void Menu::RunMainMenu() {
-	string Prompt = "Menu";
-	vector<string>Options = { "<<Opcje dotyczace mapyPieter >>","<<Opcja 2 >>","<<Opcja 3 >>" };
+	string Prompt = "******************** MENU SYSTEM WINDY ********************";
+	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter **********","<<Opcja 2 >>","********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -128,9 +128,8 @@ void Menu::RunMainMenu() {
 }
 
 void Menu::DisplayMapOptions() {
-	Sleep(2000);
-	string Prompt = "Opcje dotyczace mapyPieter";
-	vector<string>Options = {"Dodaj mape","Zmien mape", "Usun mape", "Wyswietl mape"};
+	string Prompt = "******************** MENU DOTYCZACE MAPY PIETER ********************";
+	vector<string>Options = {"********** Dodaj Mape **********","********** Zmien mape **********", "********** Usun mape **********", "********** Wyswietl mape **********","********** POWROT **********"};
 	Menu MapMenu(Prompt, Options);
 	
 	int SelectedIndex = MapMenu.Run();
@@ -140,7 +139,6 @@ void Menu::DisplayMapOptions() {
 		system("cls");
 		DispatcherUnit1.getRangeOfFloors();
 		DispatcherUnit1.createFloorMap();
-		Sleep(2000);
 		MenuMapDisplacer();
 		break;
 	case 1:
@@ -148,15 +146,17 @@ void Menu::DisplayMapOptions() {
 	case 2:
 		system("cls");
 		DispatcherUnit1.eraseFloorMap();
-		Sleep(2000);
 		MenuMapDisplacer();
 		break;
 	case 3:
 		system("cls");
 		DispatcherUnit1.displayFloorMap();
-		Sleep(2000);
 		MenuMapDisplacer();
 		break;
+	case 4:
+		system("cls");
+		RunMainMenu();
+		//MenuDisplacer();
 	}
 }
 void Menu::DisplayInformation() {
@@ -170,13 +170,12 @@ void Menu::DisplayInformation() {
 
 void Menu::ExitMenu() {
 	system("cls");
-	cout << "\nNadus enter by wyjsc...";
-	if (GetAsyncKeyState(VK_RETURN)){
-		exit(0);
-	}
+	cout << "WYJSCIE";
+	exit(0);
 }
 
 void Menu::MenuDisplacer() {
+	Sleep(1000);
 	bool flaga = true;
 	while (flaga) {
 		if (GetAsyncKeyState(VK_RETURN)) {
@@ -187,6 +186,7 @@ void Menu::MenuDisplacer() {
 	}
 }
 void Menu::MenuMapDisplacer() {
+	Sleep(1000);
 	bool flaga = true;
 	while (flaga) {
 		if (GetAsyncKeyState(VK_RETURN)) {
