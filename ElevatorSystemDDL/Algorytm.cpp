@@ -14,9 +14,6 @@ const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
 int PopulationSize = 0; // Obecna wielkoœæ populacji
 
 int GenerationCounter = 0; // Liczy iloœæ generacji
-
-
-const int SelectionExceptionQuantity = PopulationStartSize / 10; // Iloœæ najlepszych osobników która jest pomijana podczas selekcji tak aby na pewno j¹ przesz³y
 int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
 int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
