@@ -5,7 +5,7 @@
 #include <WinUser.h>
 #include <stdio.h>
 
-
+// cos
 void ClearScreen()
 {
 	COORD cursorPosition;	
