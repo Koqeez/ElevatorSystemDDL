@@ -104,6 +104,8 @@ int Menu::Run() {
 }
 
 void Menu::RunMainMenu() {
+	Sleep(1000);
+	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
 	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter **********","<<Opcja 2 >>","********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
@@ -126,6 +128,8 @@ void Menu::RunMainMenu() {
 }
 
 void Menu::DisplayMapOptions() {
+	Sleep(1000);
+	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE MAPY PIETER ********************";
 	vector<string>Options = {"********** Dodaj Mape **********","********** Zmien mape **********", "********** Usun mape **********", "********** Wyswietl mape **********","********** POWROT **********"};
 	Menu MapMenu(Prompt, Options);
@@ -161,6 +165,8 @@ void Menu::DisplayMapOptions() {
 }
 
 void Menu::DisplayMapChangeOptions() {
+	Sleep(1000);
+	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ZMIANY MAPY ********************";
 	vector<string>Options = { "********** DODAJ ELEMENT **********","********** USUN ELEMENT **********", "********** USUN GRUPE ELEMENTOW **********","********** POWROT **********" };
 	Menu MapChangeMenu(Prompt, Options);
@@ -175,17 +181,26 @@ void Menu::DisplayMapChangeOptions() {
 		MenuMapChangeDisplacer();
 		break;
 	case 1:
+		Sleep(2000);
+		system("cls");
+		DispatcherUnit1.eraseFloorMapElement();
+		MenuMapChangeDisplacer();
 		break;
 	case 2:
+		Sleep(2000);
+		system("cls");
+		DispatcherUnit1.eraseGroupFloorMap();
+		MenuMapChangeDisplacer();
 		break;
 	case 3:
 		system("cls");
 		DisplayMapOptions();
 		break;
 	case 4:
-		system("cls");
-		DisplayMapOptions();
+		//system("cls");
+		//DisplayMapOptions();
 		//MenuDisplacer();
+		break;
 	}
 }
 

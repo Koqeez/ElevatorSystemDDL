@@ -52,6 +52,9 @@ public:
 	void eraseFloorMap();
 
 	void addFloorMapElement();
+	void eraseFloorMapElement();
+
+	void eraseGroupFloorMap();
 
 
 	void stopElevatorSystem();

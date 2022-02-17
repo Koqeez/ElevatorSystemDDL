@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+//W PRZYSZLOSCI -- FLUSH BUFFERA IO
+
 class Menu {
 	int SelectedIndex;
 	vector<string>Options;
