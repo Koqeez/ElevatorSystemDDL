@@ -107,7 +107,7 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter **********","<<Opcja 2 >>","********** Wyjscie **********" };
+	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace reszty **********","********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -118,12 +118,20 @@ void Menu::RunMainMenu() {
 		DisplayMapOptions();
 		break;
 	case 1:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DisplayElevatorOptions();
 		break;
 	case 2:
+		break;
+	case 3:
+		DisplayInformation();
+		break;
+	case 4:
 		ExitMenu();
 		break;
-	
+	case 5:
+		break;
 	}
 }
 
@@ -146,6 +154,47 @@ void Menu::DisplayMapOptions() {
 	case 1:
 		Sleep(2000);
 		DisplayMapChangeOptions();
+		break;
+	case 2:
+		system("cls");
+		DispatcherUnit1.eraseFloorMap();
+		MenuMapDisplacer();
+		break;
+	case 3:
+		system("cls");
+		DispatcherUnit1.displayFloorMap();
+		MenuMapDisplacer();
+		break;
+	case 4:
+		system("cls");
+		RunMainMenu();
+		//MenuDisplacer();
+	}
+}
+
+void Menu::DisplayElevatorOptions() {
+	Sleep(1000);
+	system("cls");
+	int number_a;
+	string Prompt = "******************** MENU DOTYCZACE WIND ********************";
+	vector<string>Options = { "********** Dodaj Winde **********","********** Wywsietl mape wind **********", "********** Usun mape **********","********** POWROT **********" };
+	Menu ElevatorMenu(Prompt, Options);
+
+	int SelectedIndex = ElevatorMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		system("cls");
+		std::cout << "Wpisz numer windy: " << std::endl;
+		std::cin >> number_a;
+		DispatcherUnit1.addElevatorToMap(number_a);
+		MenuElevatorDisplacer();
+		break;
+	case 1:
+		system("CLS");
+		Sleep(2000);
+		DispatcherUnit1.displayElevatorMap();
+		MenuElevatorDisplacer();
 		break;
 	case 2:
 		system("cls");
@@ -244,6 +293,18 @@ void Menu::MenuMapDisplacer() {
 			flaga = false;
 			system("cls");
 			DisplayMapOptions();
+		}
+	}
+}
+
+void Menu::MenuElevatorDisplacer() {
+	Sleep(1000);
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplayElevatorOptions();
 		}
 	}
 }

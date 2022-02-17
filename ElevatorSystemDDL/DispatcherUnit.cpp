@@ -57,6 +57,9 @@ void DispatcherUnit::displayFloorMap() {
 		}
 	}
 }
+void DispatcherUnit::displayElevatorMap() {
+	std::cout << allElevators.size();
+};
 
 void DispatcherUnit::stopElevatorSystem() {
 	std::cout << "Stoping elevator system.";
@@ -140,4 +143,9 @@ void DispatcherUnit::eraseGroupFloorMap() {
 			floorStatus.erase(i);
 		}
 	}
+}
+
+void DispatcherUnit::addElevatorToMap(int number_a) {
+	ElevatorCar temporary = ElevatorCar1.createElevator(number_a);
+	allElevators.insert({ number_a,temporary});
 }
