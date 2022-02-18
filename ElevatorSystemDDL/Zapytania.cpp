@@ -1,4 +1,5 @@
 #include "Zapytania.h"
+#include "Algorytm.h"
 
 using namespace std;
 //----------------------------------------------------------------------------------
@@ -6,6 +7,7 @@ int MinPietro = 0;
 int MaxPietro = 9;
 int IloscPieter = 10;
 int GlobalID = 0;
+extern const int DNALength;
 //----------------------------------------------------------------------------------
 Zapytanie::Zapytanie() {
 	int x, y;

@@ -16,11 +16,11 @@ DISPATCHER UNIT
 	USUWANIE GRUPY ELEMENTOW Z MAPY PIETER
 	//dodanie sprawdzen integralnosciowych - inny mechanizm
 
- // Algorytm
- // Dodaæ funkcjê zapisuj¹c¹ najlepsze rozwi¹zanie;
- // Dodaæ funkcjê wyœwietlaj¹c¹ najlepsze rozwi¹zania dla danego pokolenia (fitness);
 
-	usuwanie gdy winda bedzie na pietrze, funkcja symulacji
+	usuwanie gdy winda bedzie na pietrze, 
+	funkcja symulacji:
+		sledzenie polozenia rozwiazania
+	symulacja domyœlna
 	ruszanie na pietro
-	sledzenie polozenia rozwiazania
-	zmienna aktualne pietro osobnik
+	dostosowanie piêter do tworzenia zapytañ
+	

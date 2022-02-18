@@ -1,17 +1,16 @@
 #include "Algorytm.h"
+#include "Zapytania.h"
 
 extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
-
+extern int MaxPietro;
 
 const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
 int PopulationSize = 0; // Obecna wielkoœæ populacji
-
-int GenerationCounter = 0; // Liczy iloœæ generacji
 int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
 int EnquiryCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
-
+Osobnik BestOsobnik;
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < Fitness; i++) {
 		if (rand() % MutationRate == 0) {
@@ -39,12 +38,34 @@ void Osobnik::GenerateRandomDNA() {
 	for (int i = 0; i < DNALength; i++) {
 		DNA[i] = rand() % 2;
 	}
-};
-
-
-
+}
+std::vector<int> TranslateDNA(Osobnik x) {
+	std::vector<int> xx;
+	int y=0;  // Poprawiæ na CurrentFloor w przysz³oœci
+	for (int i = 0; i < DNALength; i++) {
+		if (x.DNA[i]) {
+			if (y == MaxPietro) {
+				xx.push_back(y);
+			}
+			else {
+				y++;
+				xx.push_back(y);
+			}
+		}
+		else {
+			if (y == 0) {  // Poprawiæ na MinPietro
+				xx.push_back(y);
+			}
+			else {
+				y--;
+				xx.push_back(y);
+			}
+		}
+	}
+	return xx;
+}
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
-void Selection(std::vector<Osobnik>& arr) { // Do naprawy
+void Selection(std::vector<Osobnik>& arr) {
 	std::vector<Osobnik> newVector;
 	PopulationSize = arr.size();
 	while (PopulationSize) {
@@ -144,20 +165,34 @@ void SortFitness(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcj
 			return lhs.Fitness < rhs.Fitness;
 		});
 }
-
+void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
+	if (arr[0].Fitness < BestOsobnik.Fitness) {
+		BestOsobnik = arr[0];
+	}
+}
 void CrossoverView() {
+	int NumberOfGenerations;
 	srand(time(NULL));
 	std::vector<Osobnik> o(PopulationStartSize);
 	for (int i = 0; i < PopulationStartSize; i++) {
 		o[i].GenerateRandomDNA();
 	}
-	Crossover(o);
-	for (int i = 0; i < o.size(); i++) {
-		o[i].Fitness = rand() % 200;
-	}
-	SortFitness(o);
-	Selection(o);
-	SortFitness(o);
+
+	/*std::cout << "Podaj liczbê generacji";
+	std::cin >> NumberOfGenerations;
+	for (int i = 0; i < NumberOfGenerations; i++) {
+		if (i == 0) {
+			for (int j = 0; j < o.size(); j++) {
+				o[j].IsDone
+			}
+			SortFitness(o);
+			IsBest(o);
+		}
+		std::cout << "Najlepszy obecny Fitness : " << o[0].Fitness << std::endl;
+		std::cout << "Najlepszy Fitness ogólnie: " << BestOsobnik.Fitness << std::endl;
+		Crossover(o);
+		SortFitness(o);
+		Selection(o);*/
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
 
