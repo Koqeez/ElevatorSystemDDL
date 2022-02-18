@@ -66,6 +66,7 @@ public:
 
 	void addEnquiryToVector();
 	void displayEnquiries();
+	void addOneEnquiry();
 
 private:
 

@@ -23,7 +23,6 @@ Zapytanie::Zapytanie() {
 	GlobalID++;
 }
 Zapytanie::Zapytanie(int x, int y) {
-	//x0 y1
 	if (x == y) {
 		if (x == MaxPietro) {
 			y--;
@@ -65,7 +64,10 @@ void printVector(const std::vector<Zapytanie>& newEnquiryVector) {
 		cout << "Miejsce poczatkowe: " << newEnquiryVector[i].getMiejsceP() << " -> Miejsce koncowe: " << newEnquiryVector[i].getMiejsceD() << endl;
 	}
 }
-
+void addEnquiry(std::vector<Zapytanie>& newEnquiryVector) {
+	Zapytanie Enquiry;
+	newEnquiryVector.push_back(Enquiry);
+}
 /*
 vector<Zapytanie> gerenateEnquiry(int amount_a) {
 	vector<Zapytanie> Enquiries(amount_a);

@@ -144,3 +144,6 @@ void DispatcherUnit::addEnquiryToVector() {
 void DispatcherUnit::displayEnquiries() {
 	printVector(Enquiries);
 }
+void DispatcherUnit::addOneEnquiry() {
+	addEnquiry(Enquiries);
+}

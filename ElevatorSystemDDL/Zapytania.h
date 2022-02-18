@@ -34,4 +34,5 @@ public:
 
 void fillEnquiryVector(std::vector<Zapytanie>&);
 void printVector(const std::vector<Zapytanie>&);
+void addEnquiry(std::vector<Zapytanie>&);
 #endif // !ZAPYTANIA_H
