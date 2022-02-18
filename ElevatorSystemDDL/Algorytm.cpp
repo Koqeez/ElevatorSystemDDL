@@ -1,5 +1,16 @@
 #include "Algorytm.h"
 
+extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
+
+
+const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
+const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
+int PopulationSize = 0; // Obecna wielkoœæ populacji
+
+int GenerationCounter = 0; // Liczy iloœæ generacji
+int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
+int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
+int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
 
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < Fitness; i++) {
@@ -28,11 +39,13 @@ void Osobnik::GenerateRandomDNA() {
 	for (int i = 0; i < DNALength; i++) {
 		DNA[i] = rand() % 2;
 	}
-}
+};
+
+
 
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
-void Selection(vector<Osobnik>& arr) { // Do naprawy
-	vector<Osobnik> Young(100);
+void Selection(std::vector<Osobnik>& arr) { // Do naprawy
+	std::vector<Osobnik> Young(100);
 	do {
 		PopulationSize = arr.size();
 		if (PopulationSize == 0)break;
@@ -60,10 +73,10 @@ void Selection(vector<Osobnik>& arr) { // Do naprawy
 	} while (PopulationSize);
 	arr.clear();
 	arr = Young;
-	cout << Young.size();
+	std::cout << Young.size();
 	PopulationSize = arr.size();
-}
-void Crossover(vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca ona 2 razy wiêkszy wektor z 50% starej populacji i 50% nowej
+};
+void Crossover(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca ona 2 razy wiêkszy wektor z 50% starej populacji i 50% nowej
 	PopulationSize = arr.size();
 	for (int i = 0; i < PopulationSize; i += 2) {
 		Osobnik p1, p2;
@@ -95,7 +108,7 @@ void Crossover(vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca ona 2 
 		arr.push_back(p2);
 	}
 }
-void SortFitness(vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcja sortuje vector pod wzglêdem Fitnesu osobników i przygotowuje go do funkcji Crossover, zwraca vektor posortoway
+void SortFitness(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcja sortuje vector pod wzglêdem Fitnesu osobników i przygotowuje go do funkcji Crossover, zwraca vektor posortoway
 	sort(arr.begin(),
 		arr.end(),
 		[](const Osobnik& lhs, const Osobnik& rhs)
@@ -103,12 +116,10 @@ void SortFitness(vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcja sor
 			return lhs.Fitness < rhs.Fitness;
 		});
 }
-// Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
 
-int main()
-{
+void CrossoverView() {
 	srand(time(NULL));
-	vector<Osobnik> o(PopulationStartSize);
+	std::vector<Osobnik> o(PopulationStartSize);
 	for (int i = 0; i < PopulationStartSize; i++) {
 		o[i].GenerateRandomDNA();
 	}
@@ -118,9 +129,29 @@ int main()
 	}
 	SortFitness(o);
 	for (int i = 0; i < o.size(); i++) {
-		cout << o[i].Fitness << ",";
+		std::cout << o[i].Fitness << ",";
+	}
+	Selection(o);
+}
+// Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
+
+/*int main()
+{
+	srand(time(NULL));
+	std::vector<Osobnik> o(PopulationStartSize);
+	for (int i = 0; i < PopulationStartSize; i++) {
+		o[i].GenerateRandomDNA();
+	}
+	Crossover(o);
+	for (int i = 0; i < o.size(); i++) {
+		o[i].Fitness = rand() % 100;
+	}
+	SortFitness(o);
+	for (int i = 0; i < o.size(); i++) {
+		std::cout << o[i].Fitness << ",";
 	}
 	Selection(o);
 	return 0;
 }
+*/
 

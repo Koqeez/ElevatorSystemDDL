@@ -8,15 +8,17 @@
 
 // ZMIANA ZAMYS£U NA JEDN¥ D£UG¥ WEKTOR ZAMIAST 2 Wymiarowej mapy
 // ZMIENNE GLOBALNE
-const int DNALength = 200;  // Sta³a d³ugoœæ ³añcucha DNA
-const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
-const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
-int PopulationSize = 0; // Obecna wielkoœæ populacji
 
-int GenerationCounter = 0; // Liczy iloœæ generacji
-int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
-int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
-int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
+const int DNALength = 200;  // Sta³a d³ugoœæ ³añcucha DNA
+
+extern const int MutationRate; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
+extern const int PopulationStartSize; // Wielkoœæ pocz¹tkowa populacji
+extern int PopulationSize; // Obecna wielkoœæ populacji
+
+extern int GenerationCounter; // Liczy iloœæ generacji
+extern int FloorMoveTime;// Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
+extern int FloorWaitTime; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
+extern int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
 
 class Osobnik { // Zbiór wszystkich osobników zostanie zapisany jako vector
 public:
@@ -26,3 +28,5 @@ public:
 	void Mutate();
 	bool IsDone(int index);
 };
+
+void CrossoverView();

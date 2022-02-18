@@ -5,6 +5,12 @@
 #include <WinUser.h>
 #include <stdio.h>
 
+//----------------------------------------------------------------------------------
+#include "Algorytm.h"
+
+//-----------------------------------------------------------------------------------------
+
+
 // cos
 void ClearScreen()
 {
@@ -107,7 +113,7 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace reszty **********","********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
+	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -123,6 +129,9 @@ void Menu::RunMainMenu() {
 		DisplayElevatorOptions();
 		break;
 	case 2:
+		Sleep(1000);
+		system("CLS");
+		DisplayAlgorithmOptions();
 		break;
 	case 3:
 		DisplayInformation();
@@ -210,6 +219,28 @@ void Menu::DisplayElevatorOptions() {
 		system("cls");
 		RunMainMenu();
 		//MenuDisplacer();
+	}
+}
+
+void Menu::DisplayAlgorithmOptions() {
+	Sleep(1000);
+	system("cls");
+	string Prompt = "******************** MENU DOTYCZACE ALGORYTMU ********************";
+	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** POWROT **********" };
+	Menu AlgorithmMenu(Prompt, Options);
+
+	int SelectedIndex = AlgorithmMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		system("cls");
+		CrossoverView();
+		MenuAlgorithmDisplacer();
+		break;
+	case 1:
+		system("cls");
+		RunMainMenu();
+		break;
 	}
 }
 
@@ -308,6 +339,17 @@ void Menu::MenuElevatorDisplacer() {
 		}
 	}
 }
+void Menu::MenuAlgorithmDisplacer() {
+	Sleep(1000);
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplayAlgorithmOptions();
+		}
+	}
+}
 
 void Menu::MenuMapChangeDisplacer() {
 	Sleep(1000);
@@ -327,23 +369,12 @@ void Menu::MenuMapChangeDisplacer() {
 do {
 		cout << i;
 		i++;
-
 	} while(GetAsyncKeyState(VK_RETURN)!= 1);
-
-
-
-
-
-
-
-
 	int i = 0;
 	while (1) {
 		if(GetAsyncKeyState(VK_DOWN) & 1){
-
 				cout << i << "\n";
 				i++;
-
 		}
 	}
 	*/
