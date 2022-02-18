@@ -10,7 +10,7 @@ int PopulationSize = 0; // Obecna wielkoœæ populacji
 int GenerationCounter = 0; // Liczy iloœæ generacji
 int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
-int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
+int EnquiryCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
 
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < Fitness; i++) {
@@ -23,7 +23,7 @@ void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ 
 }
 bool Osobnik::IsDone(int index) {  // Funkcja która sprawdza czy wszystkie zapytania zosta³y zrealizowanie. Je¿eli nie ma ju¿ zapytañ zwraca true i przypisuje index do zmiennej, inaczej zwraca false
 		// Nale¿y przekazaæ aktualny index pêtli w której wykonoywana jest symulacja i usuwanie zapytañ.
-	if (!ZapytanieCounter) {
+	if (!EnquiryCounter) {
 		Fitness = index;
 		return true;
 	}
@@ -47,9 +47,29 @@ void Osobnik::GenerateRandomDNA() {
 void Selection(std::vector<Osobnik>& arr) { // Do naprawy
 	std::vector<Osobnik> newVector;
 	PopulationSize = arr.size();
-
-	
-	
+	while (PopulationSize) {
+		Osobnik p1, p2;
+		PopulationSize = arr.size();
+		int RNumber = rand() % PopulationSize;
+		p1 = arr[RNumber];
+		arr.erase(arr.begin() + RNumber);
+		PopulationSize = arr.size();
+		RNumber = rand() % PopulationSize;
+		p2 = arr[RNumber];
+		arr.erase(arr.begin() + RNumber);
+		if (p1.Fitness < p2.Fitness) {
+			newVector.push_back(p1);
+		}
+		else if (p1.Fitness > p2.Fitness) {
+			newVector.push_back(p2);
+		}
+		else if (p1.Fitness == p2.Fitness) {
+			if (rand() % 2)newVector.push_back(p1);
+			else newVector.push_back(p2);
+		}
+		PopulationSize = arr.size();
+	}
+	arr = newVector;
 	/*std::vector<Osobnik> Young;
 	do {
 		PopulationSize = arr.size();
@@ -80,7 +100,7 @@ void Selection(std::vector<Osobnik>& arr) { // Do naprawy
 	arr = Young;
 	PopulationSize = arr.size();
 	*/
-};
+}
 void Crossover(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca ona 2 razy wiêkszy wektor z 50% starej populacji i 50% nowej
 	PopulationSize = arr.size();
 	for (int i = 0; i < PopulationSize; i += 2) {
@@ -136,10 +156,8 @@ void CrossoverView() {
 		o[i].Fitness = rand() % 200;
 	}
 	SortFitness(o);
-	for (int i = 0; i < o.size(); i++) {
-		std::cout << o[i].Fitness << ",";
-	}
 	Selection(o);
+	SortFitness(o);
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
 

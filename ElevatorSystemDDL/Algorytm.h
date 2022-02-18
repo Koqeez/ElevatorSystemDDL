@@ -23,6 +23,7 @@ class Osobnik { // Zbiór wszystkich osobników zostanie zapisany jako vector
 public:
 	int DNA[DNALength];
 	int Fitness = 0;  // Im mniejszy fitness tym lepszy 
+	int CurrentFloor=0;
 	void GenerateRandomDNA();
 	void Mutate();
 	bool IsDone(int index);
