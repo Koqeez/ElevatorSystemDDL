@@ -35,10 +35,39 @@ Zapytanie::Zapytanie(int x, int y) {
 	ID = GlobalID;
 	GlobalID++;
 }
-vector<Zapytanie> GenerateZapytanie(int n) {
-	vector<Zapytanie> z(n);
-	for (int i = 0; i < n; i++) {
+int Zapytanie::getID() const{
+	return ID;
+}
+int Zapytanie::getMiejsceD() const {
+	return MiejsceD;
+}
+int Zapytanie::getMiejsceP() const {
+	return MiejsceP;
+}
+
+void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {
+	int temp;
+	cout << "Podaj ilosc zapytan: " << endl;
+	cin >> temp;
+	for (int i = 0; i < temp; i++) {
+		Zapytanie Enquiry(rand() % IloscPieter, rand() % IloscPieter);
+		newEnquiryVector.push_back(Enquiry);
+	}
+}
+void printVector(const std::vector<Zapytanie>& newEnquiryVector) {
+	unsigned int size = newEnquiryVector.size();
+	for (unsigned int i = 0; i < size; i++) {
+		cout << "Zapytanie nr:" << i << " , o ID: " << newEnquiryVector[i].getID() << endl;
+		cout << "Miejsce poczotkowe: " << newEnquiryVector[i].getMiejsceP() << endl;
+		cout << "Miejsce koncowe: " << newEnquiryVector[i].getMiejsceD() << endl;
+	}
+}
+
+/*
+vector<Zapytanie> gerenateEnquiry(int amount_a) {
+	vector<Zapytanie> Enquiries(amount_a);
+	for (int i = 0; i < amount_a; i++) {
 		Zapytanie(rand() % IloscPieter, rand() % IloscPieter);
 	}
-	return z;
-}
+	return Enquiries;
+}*/

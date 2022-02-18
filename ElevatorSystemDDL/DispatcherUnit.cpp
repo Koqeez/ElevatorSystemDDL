@@ -6,15 +6,7 @@
 
 DispatcherUnit::DispatcherUnit(){};
 
-//w przypadku uzywania systemu z menu, wydaje sie mniej potrzebna
-void DispatcherUnit::startElevatorSystem() {
-	while (true) {
-		getRangeOfFloors();
-		createFloorMap();
-		displayFloorMap();
-		stopElevatorSystem();
-		}
-}
+
 void DispatcherUnit::getRangeOfFloors() {
 	//bez piêter poni¿ej zera
 	std::cout << "Podaj pierwsze pietro:";
@@ -61,10 +53,6 @@ void DispatcherUnit::displayElevatorMap() {
 	std::cout << allElevators.size();
 };
 
-void DispatcherUnit::stopElevatorSystem() {
-	std::cout << "Stoping elevator system.";
-	exit(0);
-}
 void DispatcherUnit::eraseFloorMap() {
 	if (floorStatus.empty()) {
 		std::cout << "Mapa jest obecnie pusta. Nadus ENTER";
@@ -148,4 +136,11 @@ void DispatcherUnit::eraseGroupFloorMap() {
 void DispatcherUnit::addElevatorToMap(int number_a) {
 	ElevatorCar temporary = ElevatorCar1.createElevator(number_a);
 	allElevators.insert({ number_a,temporary});
+}
+
+void DispatcherUnit::addEnquiryToVector() {
+	fillEnquiryVector(Enquiries);
+}
+void DispatcherUnit::displayEnquiries() {
+	printVector(Enquiries);
 }

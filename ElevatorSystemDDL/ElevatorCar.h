@@ -2,12 +2,13 @@
 #include <string>
 
 class ElevatorCar {
-	bool isMoving;
-	bool isMovingUp;
+	
+	//bool isMoving;
+	//bool isMovingUp;
 
 
-	int capacity ,destination ,currentFloor ,currentLoad ,number;
-
+	int capacity,currentFloor ,currentLoad ,number;
+	//int destination
 	enum ElevatorCarDirection {
 		UP,DOWN,IDLE
 	};

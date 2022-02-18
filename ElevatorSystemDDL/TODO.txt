@@ -1,0 +1,16 @@
+DO ZROBIENIA
+
+- OGARNIÊCIE ZAPYTAÑ - UTWORZENIE STRUKTURY W DISPATCHERUNIT 
+	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan
+- WYSWIETLANIE OBIEKTU WINDY - SPRAWDZANIE DZIA£ANIA(wiem jak zrobic)
+
+
+W PRZYSZLOSCI
+// W przysz³oœci mo¿e byæ podzielone na segmenty
+//zmienic MENUDISPLACER, jedna metode z parametrami
+
+DISPATCHER UNIT 
+//PIETRA PONIE¯EJ 0
+//stworzenie metody umozliwiajacej wysylanie informacji o mapie
+	USUWANIE GRUPY ELEMENTOW Z MAPY PIETER
+	//dodanie sprawdzen integralnosciowych - inny mechanizm

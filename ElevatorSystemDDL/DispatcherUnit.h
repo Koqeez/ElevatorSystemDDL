@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 #include "ElevatorCar.h"
+#include "Zapytania.h"
+
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
@@ -17,21 +19,13 @@ class DispatcherUnit {
 	//MaxMovingTime sekundy.00
 	//Moves[vectors] ilosc
  
-	
-	//List<Elevator> allElevators -- w przypadku wiêkszej iloœci wind
-	
+		
 
 	//Pierwsza ma wy³¹cznie mo¿liwoœæ tworzenia zapytania w górê, d³ugoœæ-1 ma mo¿liwoœæ wykonania zapytania jedynie w dó³ 
-	//
-	// 
-	//List<Floors> allFloors -- struktura odpowiadaj¹ca za po³o¿enie piêter
 
-	//std::list<int> allFloors;
-	// 
-	// 
 	//std::vector<int> requests;
 	
-
+	std::vector<Zapytanie>Enquiries;
 	std::map<int, int> floorStatus; //mapa pieter
 	std::map<int, ElevatorCar> allElevators; //mapa wind
 
@@ -49,7 +43,6 @@ public:
 	
 	DispatcherUnit();
 
-	void startElevatorSystem();
 
 
 	//w przypadku zastosowania systemu bez menu funkcje te powinny byæ private
@@ -71,7 +64,9 @@ public:
 
 	void addElevatorToMap(int number_a);
 
-	void stopElevatorSystem();
+	void addEnquiryToVector();
+	void displayEnquiries();
+
 private:
 
 	

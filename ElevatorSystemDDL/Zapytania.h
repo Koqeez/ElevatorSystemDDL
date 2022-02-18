@@ -1,3 +1,6 @@
+#ifndef ZAPYTANIA_H
+#define ZAPYTANIA_H
+
 #include <iostream>
 #include <vector>
 #include <stdio.h>      /* printf, scanf, puts, NULL */
@@ -23,4 +26,12 @@ public:
 
 	Zapytanie();  // Konstruktor to rêcznego tworzenia zapytañ w menu. Przeka¿ jakiœ obojêtny argument.
 	Zapytanie(int x , int y);
+
+	int getMiejsceP() const;
+	int getMiejsceD() const;
+	int getID() const;
 };
+
+void fillEnquiryVector(std::vector<Zapytanie>&);
+void printVector(const std::vector<Zapytanie>&);
+#endif // !ZAPYTANIA_H

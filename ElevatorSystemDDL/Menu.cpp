@@ -61,7 +61,7 @@ void Menu::DisplayOptions(){
 	//Con = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	cout << Prompt;
-	for (int i = 0; i < Options.size(); i++) {
+	for (auto i = 0; i < Options.size(); i++) {
 		string currentOption = Options[i];
 		string prefix;
 
@@ -113,7 +113,7 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
+	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Opcje dotyczace - Zapytan **********" ,"********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -134,12 +134,15 @@ void Menu::RunMainMenu() {
 		DisplayAlgorithmOptions();
 		break;
 	case 3:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DisplayEnquiryOptions();
 		break;
 	case 4:
-		ExitMenu();
+		DisplayInformation();
 		break;
 	case 5:
+		ExitMenu();
 		break;
 	}
 }
@@ -244,6 +247,35 @@ void Menu::DisplayAlgorithmOptions() {
 	}
 }
 
+void Menu::DisplayEnquiryOptions() {
+	Sleep(1000);
+	system("cls");
+	string Prompt = "******************** MENU DOTYCZACE ZAPYTAÑ ********************";
+	vector<string>Options = { "********** STWORZ ZAPYTANIA **********","********** WYSWIETLANIE ZAPYTANIA **********","********** POWROT **********" };
+	Menu EnquiryMenu(Prompt, Options);
+
+	int SelectedIndex = EnquiryMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.addEnquiryToVector();
+		MenuEnquiryDisplacer();
+		break;
+	case 1:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.displayEnquiries();
+		MenuEnquiryDisplacer();
+		break;
+	case 2:
+		system("cls");
+		RunMainMenu();
+		break;
+	}
+}
+
 void Menu::DisplayMapChangeOptions() {
 	Sleep(1000);
 	system("cls");
@@ -316,6 +348,7 @@ void Menu::MenuDisplacer() {
 		}
 	}
 }
+
 void Menu::MenuMapDisplacer() {
 	Sleep(1000);
 	bool flaga = true;
@@ -339,6 +372,7 @@ void Menu::MenuElevatorDisplacer() {
 		}
 	}
 }
+
 void Menu::MenuAlgorithmDisplacer() {
 	Sleep(1000);
 	bool flaga = true;
@@ -347,6 +381,18 @@ void Menu::MenuAlgorithmDisplacer() {
 			flaga = false;
 			system("cls");
 			DisplayAlgorithmOptions();
+		}
+	}
+}
+
+void Menu::MenuEnquiryDisplacer() {
+	Sleep(1000);
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplayEnquiryOptions();
 		}
 	}
 }

@@ -30,6 +30,7 @@ public:
 	void DisplayMapOptions();
 	void DisplayElevatorOptions();
 	void DisplayAlgorithmOptions();
+	void DisplayEnquiryOptions();
 
 	void DisplayMapChangeOptions();
 
@@ -39,5 +40,6 @@ public:
 	void MenuMapDisplacer();
 	void MenuElevatorDisplacer();
 	void MenuAlgorithmDisplacer();
+	void MenuEnquiryDisplacer();
 	void MenuMapChangeDisplacer();
 };
