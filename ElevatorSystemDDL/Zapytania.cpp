@@ -1,10 +1,13 @@
 #include "Zapytania.h"
+
 using namespace std;
+//----------------------------------------------------------------------------------
 int MinPietro = 0;
 int MaxPietro = 9;
 int IloscPieter = 10;
 int GlobalID = 0;
-Zapytanie::Zapytanie(bool m) {
+//----------------------------------------------------------------------------------
+Zapytanie::Zapytanie() {
 	int x, y;
 	cout << "Wpisz miejsce poczatkowe: " << endl;
 	cin >> x;
@@ -19,7 +22,8 @@ Zapytanie::Zapytanie(bool m) {
 	ID = GlobalID;
 	GlobalID++;
 }
-Zapytanie::Zapytanie(int x = 0, int y = 1) {
+Zapytanie::Zapytanie(int x, int y) {
+	//x0 y1
 	if (x == y) {
 		if (x == MaxPietro) {
 			y--;
