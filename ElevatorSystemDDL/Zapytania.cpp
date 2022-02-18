@@ -47,8 +47,8 @@ int Zapytanie::getMiejsceP() const {
 
 void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {
 	int temp;
-	cout << "Podaj ilosc zapytan: " << endl;
-	cin >> temp;
+	cout << "Podaj ilosc zapytan: ";
+	cin >> temp;	
 	for (int i = 0; i < temp; i++) {
 		Zapytanie Enquiry(rand() % IloscPieter, rand() % IloscPieter);
 		newEnquiryVector.push_back(Enquiry);
@@ -56,10 +56,13 @@ void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {
 }
 void printVector(const std::vector<Zapytanie>& newEnquiryVector) {
 	unsigned int size = newEnquiryVector.size();
+	if (size == 0) {
+		cout << "Brak zapytan" << endl;
+		return;
+	}
 	for (unsigned int i = 0; i < size; i++) {
-		cout << "Zapytanie nr:" << i << " , o ID: " << newEnquiryVector[i].getID() << endl;
-		cout << "Miejsce poczotkowe: " << newEnquiryVector[i].getMiejsceP() << endl;
-		cout << "Miejsce koncowe: " << newEnquiryVector[i].getMiejsceD() << endl;
+		cout << "Zapytanie nr: " << i << ", o ID: " << newEnquiryVector[i].getID() << endl;
+		cout << "Miejsce poczatkowe: " << newEnquiryVector[i].getMiejsceP() << " -> Miejsce koncowe: " << newEnquiryVector[i].getMiejsceD() << endl;
 	}
 }
 
