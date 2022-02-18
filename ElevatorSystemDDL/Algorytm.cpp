@@ -1,55 +1,35 @@
-#include <iostream>
-#include <vector>
-#include <stdio.h>      /* printf, scanf, puts, NULL */
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-#include "Zapytania.h"
-#include <algorithm>
-using namespace std;
-// ZMIANA ZAMYS£U NA JEDN¥ D£UG¥ WEKTOR ZAMIAST 2 Wymiarowej mapy
-// ZMIENNE GLOBALNE
-const int DNALength = 200;  // Sta³a d³ugoœæ ³añcucha DNA
-const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
-const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
-int PopulationSize = 0; // Obecna wielkoœæ populacji
+#include "Algorytm.h"
 
-int GenerationCounter = 0; // Liczy iloœæ generacji
-int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
-int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
-int ZapytanieCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
 
-class Osobnik { // Zbiór wszystkich osobników zostanie zapisany jako vector
-public:
-	int DNA[DNALength];
-	int Fitness = 0;  // Im mniejszy fitness tym lepszy 
-	void GenerateRandomDNA() {
-		for (int i = 0; i < DNALength; i++) {
-			DNA[i] = rand() % 2;
+void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
+	for (int i = 0; i < Fitness; i++) {
+		if (rand() % MutationRate == 0) {
+			if (DNA[i] == 0)DNA[i] = 1;
+			else if (DNA[i] == 1)DNA[i] = 0;
+			else DNA[i] = rand() % 2;
 		}
 	}
-	void Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
-		for (int i = 0; i < Fitness; i++) {
-			if (rand() % MutationRate == 0) {
-				if (DNA[i] == 0)DNA[i] = 1;
-				else if (DNA[i] == 1)DNA[i] = 0;
-				else DNA[i] = rand() % 2;
-			}
-		}
-	}
-	bool IsDone(int index) {  // Funkcja która sprawdza czy wszystkie zapytania zosta³y zrealizowanie. Je¿eli nie ma ju¿ zapytañ zwraca true i przypisuje index do zmiennej, inaczej zwraca false
+}
+bool Osobnik::IsDone(int index) {  // Funkcja która sprawdza czy wszystkie zapytania zosta³y zrealizowanie. Je¿eli nie ma ju¿ zapytañ zwraca true i przypisuje index do zmiennej, inaczej zwraca false
 		// Nale¿y przekazaæ aktualny index pêtli w której wykonoywana jest symulacja i usuwanie zapytañ.
-		if (!ZapytanieCounter) {
-			Fitness = index;
-			return true;
-		}
-		else if (index == DNALength) {
-			Fitness = index;
-			return true;
-		}
-		else return false;
-		// W pêtli symulacyjnej uwzglêdniæ ¿e je¿eli po jakimœ indexie isDone zwróci³o true
+	if (!ZapytanieCounter) {
+		Fitness = index;
+		return true;
 	}
-};
+	else if (index == DNALength) {
+		Fitness = index;
+		return true;
+	}
+	else return false;
+	// W pêtli symulacyjnej uwzglêdniæ ¿e je¿eli po jakimœ indexie isDone zwróci³o true
+}
+
+void Osobnik::GenerateRandomDNA() {
+	for (int i = 0; i < DNALength; i++) {
+		DNA[i] = rand() % 2;
+	}
+}
+
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
 void Selection(vector<Osobnik>& arr) { // Do naprawy
 	vector<Osobnik> Young(100);
@@ -124,6 +104,7 @@ void SortFitness(vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcja sor
 		});
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
+
 int main()
 {
 	srand(time(NULL));

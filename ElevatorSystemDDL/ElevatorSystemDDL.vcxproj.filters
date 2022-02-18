@@ -47,5 +47,8 @@
     <ClInclude Include="Zapytania.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Algorytm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,12 +19,16 @@ class DispatcherUnit {
  
 	
 	//List<Elevator> allElevators -- w przypadku wiêkszej iloœci wind
+	
+
 	//Pierwsza ma wy³¹cznie mo¿liwoœæ tworzenia zapytania w górê, d³ugoœæ-1 ma mo¿liwoœæ wykonania zapytania jedynie w dó³ 
 	//
 	// 
 	//List<Floors> allFloors -- struktura odpowiadaj¹ca za po³o¿enie piêter
 
 	//std::list<int> allFloors;
+	// 
+	// 
 	//std::vector<int> requests;
 	
 
