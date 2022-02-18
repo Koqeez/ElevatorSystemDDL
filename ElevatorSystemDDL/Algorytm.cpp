@@ -45,7 +45,12 @@ void Osobnik::GenerateRandomDNA() {
 
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
 void Selection(std::vector<Osobnik>& arr) { // Do naprawy
-	std::vector<Osobnik> Young(100);
+	std::vector<Osobnik> newVector;
+	PopulationSize = arr.size();
+
+	
+	
+	/*std::vector<Osobnik> Young;
 	do {
 		PopulationSize = arr.size();
 		if (PopulationSize == 0)break;
@@ -73,8 +78,8 @@ void Selection(std::vector<Osobnik>& arr) { // Do naprawy
 	} while (PopulationSize);
 	arr.clear();
 	arr = Young;
-	std::cout << Young.size();
 	PopulationSize = arr.size();
+	*/
 };
 void Crossover(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca ona 2 razy wiêkszy wektor z 50% starej populacji i 50% nowej
 	PopulationSize = arr.size();
@@ -107,6 +112,9 @@ void Crossover(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, zwraca o
 		arr.push_back(p1);
 		arr.push_back(p2);
 	}
+	if (arr.size() % 2 != 0) {
+		arr.pop_back();
+	}
 }
 void SortFitness(std::vector<Osobnik>& arr) { // Nale¿y przekazaæ vektor, Funkcja sortuje vector pod wzglêdem Fitnesu osobników i przygotowuje go do funkcji Crossover, zwraca vektor posortoway
 	sort(arr.begin(),
@@ -125,7 +133,7 @@ void CrossoverView() {
 	}
 	Crossover(o);
 	for (int i = 0; i < o.size(); i++) {
-		o[i].Fitness = rand() % 100;
+		o[i].Fitness = rand() % 200;
 	}
 	SortFitness(o);
 	for (int i = 0; i < o.size(); i++) {

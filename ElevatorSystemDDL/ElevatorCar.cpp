@@ -17,6 +17,18 @@ ElevatorCar ElevatorCar::createElevator(int number_a) {
 	ElevatorCar Elevator(number_a, 5, 0);
 	return Elevator;
 }
-void ElevatorCar::moveToFloor(int floor_a) {
+int ElevatorCar::getCapacity(){
+	return capacity;
+}
+int ElevatorCar::getCurrentFloor(){
+	return currentFloor;
+}
+int ElevatorCar::getNumber(){
+	return number;
+}
+ElevatorCar::ElevatorCarDirection ElevatorCar::getDirection(){
+	return direction;
+}
 
+void ElevatorCar::moveToFloor(int floor_a) {
 }

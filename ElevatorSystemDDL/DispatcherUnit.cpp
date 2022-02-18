@@ -50,7 +50,18 @@ void DispatcherUnit::displayFloorMap() {
 	}
 }
 void DispatcherUnit::displayElevatorMap() {
-	std::cout << allElevators.size();
+	unsigned int size = allElevators.size();
+	if (size == 0) {
+		std::cout << "Brak wind." << std::endl;
+		return;
+	}
+	std::cout << "Mapa posiada obecnie:" << size << " , wind." << std::endl;
+	for (unsigned int i = 0; i < size; i++) {
+		std::cout << "Winda nr: " << allElevators[i].getNumber();
+		std::cout << "\nKtora obecnie jest na: "<<allElevators[i].getCurrentFloor()<<" pietrze.";
+		std::cout << "\nMa pojemnosc: " << allElevators[i].getCapacity();
+		std::cout << "\nJest w stanie: " << allElevators[i].getDirection();
+	}
 };
 
 void DispatcherUnit::eraseFloorMap() {

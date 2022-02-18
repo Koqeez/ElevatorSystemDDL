@@ -8,7 +8,6 @@
 
 // ZMIANA ZAMYS£U NA JEDN¥ D£UG¥ WEKTOR ZAMIAST 2 Wymiarowej mapy
 // ZMIENNE GLOBALNE
-
 const int DNALength = 200;  // Sta³a d³ugoœæ ³añcucha DNA
 
 extern const int MutationRate; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje

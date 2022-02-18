@@ -1,4 +1,6 @@
 #pragma once
+#ifndef ELEVATOR_H
+#define ELEVATOR_H
 #include <string>
 
 class ElevatorCar {
@@ -27,8 +29,11 @@ public:
 	ElevatorCar createElevator(int number_a);
 	void moveToFloor(int floor_a);
 
-
-
+	int getCapacity();
+	int getCurrentFloor();
+	int getNumber();
+	ElevatorCarDirection getDirection();
 
 
 };
+#endif

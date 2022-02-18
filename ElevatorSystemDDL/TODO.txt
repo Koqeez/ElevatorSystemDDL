@@ -2,6 +2,7 @@ DO ZROBIENIA
 
 - OGARNIÊCIE ZAPYTAÑ - UTWORZENIE STRUKTURY W DISPATCHERUNIT 
 	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan
+- TWORZENIE OBIEKTU WINDY W PAMIÊCI
 - WYSWIETLANIE OBIEKTU WINDY - SPRAWDZANIE DZIA£ANIA(wiem jak zrobic)
 
 
@@ -14,3 +15,7 @@ DISPATCHER UNIT
 //stworzenie metody umozliwiajacej wysylanie informacji o mapie
 	USUWANIE GRUPY ELEMENTOW Z MAPY PIETER
 	//dodanie sprawdzen integralnosciowych - inny mechanizm
+
+ // Algorytm
+ // Dodaæ funkcjê zapisuj¹c¹ najlepsze rozwi¹zanie;
+ // Dodaæ funkcjê wyœwietlaj¹c¹ najlepsze rozwi¹zania dla danego pokolenia (fitness);
