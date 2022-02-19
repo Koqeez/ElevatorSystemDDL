@@ -6,8 +6,20 @@
 
 //definicja klasy DU
 
-DispatcherUnit::DispatcherUnit(){};
+DispatcherUnit::DispatcherUnit() {};
 
+
+//POMOCNICZE
+template <typename T>
+bool contains(std::vector<T> vec, const T& elem)
+{
+	bool result = false;
+	if (find(vec.begin(), vec.end(), elem) != vec.end())
+	{
+		result = true;
+	}
+	return result;
+}
 
 //PIETRA
 void DispatcherUnit::createFloorVector() {
@@ -22,7 +34,7 @@ void DispatcherUnit::sortFloorVector() {
 void DispatcherUnit::eraseFloorVector() {
 	if (floorStatus.empty()) {
 		std::cout << "Wektor jest obecnie pusty. Nadus ENTER";
-			return;
+		return;
 	}
 	std::cout << "Wektor zostala usuniety. Nadus ENTER";
 	floorStatus.clear();
@@ -41,7 +53,7 @@ void DispatcherUnit::eraseGroupFloorVector() {
 //WINDA
 void DispatcherUnit::addElevatorToVector() {
 
-	
+
 	//std::cin.clear();
 	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -62,7 +74,7 @@ void DispatcherUnit::addElevatorToVector() {
 	}
 	std::cout << "Wpisz ilosc miejsca: ";
 	std::cin >> capacity_a;
-	ElevatorCar temporary = ElevatorCar1.createElevator(number_a,capacity_a);
+	ElevatorCar temporary = ElevatorCar1.createElevator(number_a, capacity_a);
 	allElevators.push_back(temporary);
 }
 void DispatcherUnit::displayElevatorVector() {
@@ -121,7 +133,7 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 	displayEnquiries();
 	std::cout << "Podaj index ktory chce usunac: " << std::endl;
 	std::cin >> index;
-	eraseEnquiryByIndex(Enquiries,index);
+	eraseEnquiryByIndex(Enquiries, index);
 }
 
 //SYMULACJA
@@ -148,4 +160,17 @@ void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
 
 }
-//Algorytm
+void DispatcherUnit::moveElevatorCarTo() {
+	int number, floor;
+	std::cout << "Wybierz winde ktora ma wykonac ruch: " << std::endl;
+	std::cin >> number;
+	for (int i = 0; i < allElevators.size(); i++) {
+		if (std::find(allElevators.begin(), allElevators.end(), allElevators[i].getNumber() == number) != allElevators.end()) {
+			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
+			std::cin >> floor;
+			allElevators[i].moveToFloor(floor);
+			return;
+		}
+	}
+	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+}

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef DISPATCHERUNIT_H
+#define DISPATCHERUNIT_H
 #include <list>
 #include <vector>
 #include <map>
@@ -19,13 +21,13 @@ class DispatcherUnit {
 	//AvgWaitingTime sekundy.00
 	//MaxMovingTime sekundy.00
 	//Moves[vectors] ilosc
- 
-		
+
+
 
 	//Pierwsza ma wy³¹cznie mo¿liwoœæ tworzenia zapytania w górê, d³ugoœæ-1 ma mo¿liwoœæ wykonania zapytania jedynie w dó³ 
 
 	//std::vector<int> requests;
-	
+
 	std::vector<Zapytanie>Enquiries;
 	std::vector<Floor>floorStatus; //mapa pieter
 	std::vector<ElevatorCar> allElevators; //mapa wind
@@ -35,11 +37,11 @@ class DispatcherUnit {
 	ElevatorCar ElevatorCar1;
 
 
-	
+
 
 public:
 	//startElevatorSystem() -- jedyna publiczna metoda pozwalaj¹ca na wystartowanie programu
-	
+
 	DispatcherUnit();
 
 
@@ -68,11 +70,12 @@ public:
 
 	//SYMULACJA
 	void createDefaultRequirements();
+	void moveElevatorCarTo();
 
-	//Algorytm
+
 private:
 
-	
+
 
 	//stopSystem() -- odpowiada za wy³¹czenie programu
 
@@ -80,3 +83,4 @@ private:
 
 
 };
+#endif
