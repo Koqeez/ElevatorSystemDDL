@@ -116,6 +116,13 @@ void DispatcherUnit::displayEnquiries() {
 void DispatcherUnit::addOneEnquiry() {
 	addEnquiry(Enquiries);
 }
+void DispatcherUnit::eraseOneEnquiryDisplay() {
+	int index;
+	displayEnquiries();
+	std::cout << "Podaj index ktory chce usunac: " << std::endl;
+	std::cin >> index;
+	eraseEnquiryByIndex(Enquiries,index);
+}
 
 //SYMULACJA
 void DispatcherUnit::createDefaultRequirements() {

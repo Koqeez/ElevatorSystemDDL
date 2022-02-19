@@ -35,4 +35,6 @@ public:
 void fillEnquiryVector(std::vector<Zapytanie>&);
 void printVector(const std::vector<Zapytanie>&);
 void addEnquiry(std::vector<Zapytanie>&);
+void eraseEnquiryByIndex(std::vector<Zapytanie>&, int);
+
 #endif // !ZAPYTANIA_H

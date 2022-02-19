@@ -64,6 +64,7 @@ public:
 	void addEnquiryToVector();
 	void displayEnquiries();
 	void addOneEnquiry();
+	void eraseOneEnquiryDisplay();
 
 	//SYMULACJA
 	void createDefaultRequirements();

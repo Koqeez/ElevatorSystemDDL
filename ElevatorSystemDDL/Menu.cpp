@@ -253,7 +253,7 @@ void Menu::DisplayEnquiryOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ZAPYTAÑ ********************";
-	vector<string>Options = { "********** STWORZ ZAPYTANIA **********","********** WYSWIETLANIE ZAPYTANIA **********","********** DODAJ ZAPYTANIE **********" ,"********** POWROT **********" };
+	vector<string>Options = { "********** STWORZ ZAPYTANIA **********","********** WYSWIETLANIE ZAPYTANIA **********","********** DODAJ ZAPYTANIE **********","********** USUN ZAPYTANIE - WYSWIETL **********" ,"********** POWROT **********" };
 	Menu EnquiryMenu(Prompt, Options);
 
 	int SelectedIndex = EnquiryMenu.Run();
@@ -278,6 +278,12 @@ void Menu::DisplayEnquiryOptions() {
 		MenuEnquiryDisplacer();
 		break;
 	case 3:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.eraseOneEnquiryDisplay();
+		MenuEnquiryDisplacer();
+		break;
+	case 4:
 		system("cls");
 		RunMainMenu();
 		break;

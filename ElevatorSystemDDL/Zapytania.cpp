@@ -70,6 +70,13 @@ void addEnquiry(std::vector<Zapytanie>& newEnquiryVector) {
 	Zapytanie Enquiry;
 	newEnquiryVector.push_back(Enquiry);
 }
+void eraseEnquiryByIndex(std::vector<Zapytanie>& newEnquiryVector, int enquiryIndex_a) {
+	if (enquiryIndex_a < newEnquiryVector.size() && enquiryIndex_a >= 0) {
+		newEnquiryVector.erase(newEnquiryVector.begin() + enquiryIndex_a);
+		std::cout << "Zapytanie zostalo usuniete" << std::endl;
+	}
+	std::cout << "Zly index. Zapytanie nie zostalo usuniete" << std::endl;
+}
 /*
 vector<Zapytanie> gerenateEnquiry(int amount_a) {
 	vector<Zapytanie> Enquiries(amount_a);
