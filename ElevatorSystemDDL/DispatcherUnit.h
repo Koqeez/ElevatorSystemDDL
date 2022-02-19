@@ -4,6 +4,7 @@
 #include <map>
 #include "ElevatorCar.h"
 #include "Zapytania.h"
+#include "Floor.h"
 
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
@@ -26,12 +27,10 @@ class DispatcherUnit {
 	//std::vector<int> requests;
 	
 	std::vector<Zapytanie>Enquiries;
-	std::map<int, int> floorStatus; //mapa pieter
+	std::vector<Floor>floorStatus; //mapa pieter
 	std::vector<ElevatorCar> allElevators; //mapa wind
 
 
-
-	int minFloor, maxFloor, Floors;
 
 	ElevatorCar ElevatorCar1;
 
@@ -45,20 +44,17 @@ public:
 
 
 
-	//w przypadku zastosowania systemu bez menu funkcje te powinny byæ private
-	void getRangeOfFloors();
 
 	//tworzenie i wyswietlanie mapy
-	void createFloorMap();
-	void displayFloorMap();
-
+	void createFloorVector();
+	void displayFloorVector();
+	void sortFloorVector();
 	//usuwanie mapy
-	void eraseFloorMap();
-
+	void eraseFloorVector();
 	//zmiana mapy
-	void addFloorMapElement();
-	void eraseFloorMapElement();
-	void eraseGroupFloorMap();
+	void addFloorVectorElement();
+	void eraseFloorVectorElement();
+	void eraseGroupFloorVector();
 
 
 	void addElevatorToMap();

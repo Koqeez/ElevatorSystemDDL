@@ -113,7 +113,7 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** Opcje dotyczace - Mapy Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Opcje dotyczace - Zapytan **********" ,"********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
+	vector<string>Options = { "********** Opcje dotyczace - Wektora Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Opcje dotyczace - Zapytan **********" ,"********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -151,7 +151,7 @@ void Menu::DisplayMapOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE MAPY PIETER ********************";
-	vector<string>Options = {"********** Dodaj Mape **********","********** Zmien mape **********", "********** Usun mape **********", "********** Wyswietl mape **********","********** POWROT **********"};
+	vector<string>Options = {"********** DODAJ MAPE **********","********** ZMIEN MAPE **********", "********** USUN MAPE **********", "********** WYSWIETL MAPE**********","********** POSORTUJ MAPE **********","********** POWROT **********"};
 	Menu MapMenu(Prompt, Options);
 	
 	int SelectedIndex = MapMenu.Run();
@@ -159,8 +159,7 @@ void Menu::DisplayMapOptions() {
 	switch (SelectedIndex) {
 	case 0:
 		system("cls");
-		DispatcherUnit1.getRangeOfFloors();
-		DispatcherUnit1.createFloorMap();
+		DispatcherUnit1.createFloorVector();
 		MenuMapDisplacer();
 		break;
 	case 1:
@@ -169,15 +168,20 @@ void Menu::DisplayMapOptions() {
 		break;
 	case 2:
 		system("cls");
-		DispatcherUnit1.eraseFloorMap();
+		DispatcherUnit1.eraseFloorVector();
 		MenuMapDisplacer();
 		break;
 	case 3:
 		system("cls");
-		DispatcherUnit1.displayFloorMap();
+		DispatcherUnit1.displayFloorVector();
 		MenuMapDisplacer();
 		break;
 	case 4:
+		system("cls");
+		DispatcherUnit1.sortFloorVector();
+		MenuMapDisplacer();
+		break;
+	case 5:
 		system("cls");
 		RunMainMenu();
 		//MenuDisplacer();
@@ -285,21 +289,21 @@ void Menu::DisplayMapChangeOptions() {
 
 	switch (SelectedIndex) {
 	case 0:
-		Sleep(2000);
+		Sleep(1000);
 		system("cls");
-		DispatcherUnit1.addFloorMapElement();
+		DispatcherUnit1.addFloorVectorElement();
 		MenuMapChangeDisplacer();
 		break;
 	case 1:
-		Sleep(2000);
+		Sleep(1000);
 		system("cls");
-		DispatcherUnit1.eraseFloorMapElement();
+		DispatcherUnit1.eraseFloorVectorElement();
 		MenuMapChangeDisplacer();
 		break;
 	case 2:
-		Sleep(2000);
+		Sleep(1000);
 		system("cls");
-		DispatcherUnit1.eraseGroupFloorMap();
+		DispatcherUnit1.eraseGroupFloorVector();
 		MenuMapChangeDisplacer();
 		break;
 	case 3:
