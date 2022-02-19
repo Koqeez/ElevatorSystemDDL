@@ -27,7 +27,7 @@ public:
 	ElevatorCar(int number_a ,int capacity_a, int currentFloor_a , ElevatorCarDirection ElevatorCarDirection_a);
 	~ElevatorCar();
 	ElevatorCar createElevator(int number_a, int capacity_a);
-	void moveToFloor(int floor_a);
+	void moveToFloor(int);
 
 	int getCapacity();
 	int getCurrentFloor();

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef DISPATCHERUNIT_H
+#define DISPATCHERUNIT_H
 #include <list>
 #include <vector>
 #include <map>
@@ -68,6 +70,7 @@ public:
 
 	//SYMULACJA
 	void createDefaultRequirements();
+	void moveElevatorCarTo();
 
 
 private:
@@ -80,3 +83,4 @@ private:
 
 
 };
+#endif

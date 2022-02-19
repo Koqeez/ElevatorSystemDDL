@@ -9,6 +9,18 @@
 DispatcherUnit::DispatcherUnit(){};
 
 
+//POMOCNICZE
+template <typename T>
+bool contains(std::vector<T> vec, const T& elem)
+{
+	bool result = false;
+	if (find(vec.begin(), vec.end(), elem) != vec.end())
+	{
+		result = true;
+	}
+	return result;
+}
+
 //PIETRA
 void DispatcherUnit::createFloorVector() {
 	fillFloorVector(floorStatus);
@@ -147,4 +159,18 @@ void DispatcherUnit::createDefaultRequirements() {
 	}
 	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
 
+}
+void DispatcherUnit::moveElevatorCarTo() {
+	int number,floor;
+	std::cout << "Wybierz winde ktora ma wykonac ruch: " << std::endl;
+	std::cin >> number;
+	for (int i = 0; i < allElevators.size(); i++) {
+		if (std::find(allElevators.begin(), allElevators.end(), allElevators[i].getNumber() == number) != allElevators.end()) {
+			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
+			std::cin >> floor;
+			allElevators[i].moveToFloor(floor);
+			return;
+		}
+	}
+	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
 }
