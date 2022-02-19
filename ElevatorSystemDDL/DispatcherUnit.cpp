@@ -161,7 +161,7 @@ void DispatcherUnit::createDefaultRequirements() {
 
 }
 void DispatcherUnit::moveElevatorCarTo() {
-	int number, floor;
+	/*int number, floor;
 	std::cout << "Wybierz winde ktora ma wykonac ruch: " << std::endl;
 	std::cin >> number;
 	for (int i = 0; i < allElevators.size(); i++) {
@@ -173,4 +173,5 @@ void DispatcherUnit::moveElevatorCarTo() {
 		}
 	}
 	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+	*/
 }

@@ -1,6 +1,5 @@
 #include "Algorytm.h"
 #include "Zapytania.h"
-#include "DispatcherUnit.h"
 
 extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
 extern int MaxPietro;
@@ -22,18 +21,9 @@ void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ 
 		}
 	}
 }
-bool Osobnik::IsDone(int index) {  // Funkcja która sprawdza czy wszystkie zapytania zosta³y zrealizowanie. Je¿eli nie ma ju¿ zapytañ zwraca true i przypisuje index do zmiennej, inaczej zwraca false
+void Osobnik::IsDone(int index) {	//Funckja przypisuje Fitness
 		// Nale¿y przekazaæ aktualny index pêtli w której wykonoywana jest symulacja i usuwanie zapytañ.
-	if (!EnquiryCounter) {
-		Fitness = index;
-		return true;
-	}
-	else if (index == DNALength) {
-		Fitness = index;
-		return true;
-	}
-	else return false;
-	// W pêtli symulacyjnej uwzglêdniæ ¿e je¿eli po jakimœ indexie isDone zwróci³o true
+	Fitness = index;
 }
 
 void Osobnik::GenerateRandomDNA() {
@@ -66,8 +56,39 @@ std::vector<int> TranslateDNA(Osobnik x) {
 	}
 	return xx;
 }
-void FitnessSymulation(std::vector<Osobnik> arr, std::vector<Zapytanie> newEnquiryVector) {
-
+void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnquiryVector) {
+	if (newEnquiryVector.size() == 0) {
+		std::cout << "Brak zapytan, nie mozna uruchomic algorytmu";
+	}
+	else {
+		for (int i = 0; i < arr.size(); i++) {
+			std::vector<int> CurrentF = TranslateDNA(arr[i]);
+			for (int j = 0; j < CurrentF.size(); j++) {
+				std::vector<Zapytanie> Queue;
+				int EnquirySize = newEnquiryVector.size();
+				for (int k = 0; k < EnquirySize; k++) {
+					if (newEnquiryVector[k].MiejsceP == CurrentF[j]) {
+						Queue.push_back(newEnquiryVector[k]);
+						newEnquiryVector.erase(newEnquiryVector.begin() + k);
+						k--;
+						EnquirySize--;
+					}
+				}
+				int QueueSize = Queue.size();
+				for (int k = 0; k < QueueSize; k++) {
+					if (Queue[k].MiejsceD == CurrentF[j]) {
+						Queue.erase(Queue.begin() + k);
+						k--;
+						QueueSize--;
+					}
+				}
+				if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
+					arr[i].IsDone(j);
+					break;
+				}
+			}
+		}
+	}
 }
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
 void Selection(std::vector<Osobnik>& arr) {
@@ -176,31 +197,16 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 	}
 }
 void CrossoverView() {
-	
-	else {
+		// Przywróæ tê funkcjê do menu
 		int NumberOfGenerations;
 		srand(time(NULL));
 		std::vector<Osobnik> o(PopulationStartSize);
 		for (int i = 0; i < PopulationStartSize; i++) {
 			o[i].GenerateRandomDNA();
 		}
-	}
-
-	/*std::cout << "Podaj liczbê generacji";
-	std::cin >> NumberOfGenerations;
-	for (int i = 0; i < NumberOfGenerations; i++) {
-		if (i == 0) {
-			for (int j = 0; j < o.size(); j++) {
-				o[j].IsDone
-			}
-			SortFitness(o);
-			IsBest(o);
-		}
-		std::cout << "Najlepszy obecny Fitness : " << o[0].Fitness << std::endl;
-		std::cout << "Najlepszy Fitness ogólnie: " << BestOsobnik.Fitness << std::endl;
-		Crossover(o);
-		SortFitness(o);
-		Selection(o);*/
+}
+void Testowa() {
+	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
 
@@ -224,3 +230,19 @@ void CrossoverView() {
 }
 */
 
+
+/*std::cout << "Podaj liczbê generacji";
+std::cin >> NumberOfGenerations;
+for (int i = 0; i < NumberOfGenerations; i++) {
+	if (i == 0) {
+		for (int j = 0; j < o.size(); j++) {
+			o[j].IsDone
+		}
+		SortFitness(o);
+		IsBest(o);
+	}
+	std::cout << "Najlepszy obecny Fitness : " << o[0].Fitness << std::endl;
+	std::cout << "Najlepszy Fitness ogólnie: " << BestOsobnik.Fitness << std::endl;
+	Crossover(o);
+	SortFitness(o);
+	Selection(o);*/

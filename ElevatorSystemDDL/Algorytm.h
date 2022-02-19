@@ -24,8 +24,9 @@ public:
 	int CurrentFloor=0;
 	void GenerateRandomDNA();
 	void Mutate();
-	bool IsDone(int index);
+	void IsDone(int index);
 };
 extern Osobnik BestOsobnik;
-void CrossoverView(std::vector<Zapytanie>);
+void CrossoverView();
+void Testowa();
 std::vector<int> TranslateDNA(Osobnik);

@@ -32,4 +32,5 @@ DISPATCHER UNIT
 		- dostosowanie piêter do tworzenia zapytañ
 		
 	
-	
+	// Dodaj do menu te dwie ostatnie funkcje w algorytm cpp, W komentarzu masz napisane które, tylko ¿eby mo¿na by³o ich u¿ywaæ do testowania
+	// Jak przekazaæ vektor z zapytaniami tez z DispacherUnit do funkcji w Algorytm.cpp i wywo³aæ j¹ w main
