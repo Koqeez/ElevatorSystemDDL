@@ -207,15 +207,10 @@ void Menu::DisplayElevatorOptions() {
 		break;
 	case 2:
 		system("cls");
-		DispatcherUnit1.eraseFloorMap();
-		MenuMapDisplacer();
+		DispatcherUnit1.clearElevatorMap();
+		MenuElevatorDisplacer();
 		break;
 	case 3:
-		system("cls");
-		DispatcherUnit1.displayFloorMap();
-		MenuMapDisplacer();
-		break;
-	case 4:
 		system("cls");
 		RunMainMenu();
 		//MenuDisplacer();

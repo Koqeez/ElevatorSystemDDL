@@ -27,7 +27,7 @@ class DispatcherUnit {
 	
 	std::vector<Zapytanie>Enquiries;
 	std::map<int, int> floorStatus; //mapa pieter
-	std::map<int, ElevatorCar> allElevators; //mapa wind
+	std::vector<ElevatorCar> allElevators; //mapa wind
 
 
 
@@ -51,7 +51,6 @@ public:
 	//tworzenie i wyswietlanie mapy
 	void createFloorMap();
 	void displayFloorMap();
-	void displayElevatorMap();
 
 	//usuwanie mapy
 	void eraseFloorMap();
@@ -63,6 +62,8 @@ public:
 
 
 	void addElevatorToMap();
+	void displayElevatorMap();
+	void clearElevatorMap();
 
 	void addEnquiryToVector();
 	void displayEnquiries();
