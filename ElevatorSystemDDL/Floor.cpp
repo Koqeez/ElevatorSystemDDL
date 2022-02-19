@@ -124,10 +124,10 @@ void eraseFloor(std::vector<Floor>& newFloorVector) {
 	koniec = newFloorVector.size();
 
 	std::cout << "Obecnie budynek ma wartosci od: " << poczatek << " , do:" << koniec << ", w sumie: " << koniec << " elementow." << std::endl;
-	std::cout << "Pietro musibyc dodane w zasiegu, n(0) do n(n)" << std::endl;
-	std::cout << "Podaj numer pietra ktore chcesz dodac : " << std::endl;
+	std::cout << "Pietro musibyc usuniete w zasiegu, n(0) lub n(n)" << std::endl;
+	std::cout << "Podaj numer pietra ktore chcesz usunac : " << std::endl;
 	std::cin >> pietro;
-	if (pietro == poczatek || pietro == koniec) {
+	if (pietro == poczatek || pietro == koniec-1) {
 
 		std::cout << "Podane pietro jest zgodne.\n";
 		newFloorVector.erase(newFloorVector.begin() + pietro);
@@ -153,6 +153,7 @@ void eraseGroupFloor(std::vector<Floor>& newFloorVector) {
 	std::cin >> pietro1;
 	std::cout << "Podaj numer pietra do ktorego chcesz usunac : " << std::endl;
 	std::cin >> pietro2;
+	//sprawdzanie integralnosciowe - ostatnie pietro czy jest w zakresie i nie jest takie jak 1, masa bugow
 	newFloorVector.erase(newFloorVector.begin() + pietro1 - 1, newFloorVector.begin() + pietro2 - 1);
 	std::cout<<" Elementy zostaly usunienete. ";	
 	return;

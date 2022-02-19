@@ -9,7 +9,7 @@
 DispatcherUnit::DispatcherUnit(){};
 
 
-
+//PIETRA
 void DispatcherUnit::createFloorVector() {
 	fillFloorVector(floorStatus);
 }
@@ -38,8 +38,8 @@ void DispatcherUnit::eraseGroupFloorVector() {
 }
 
 
-
-void DispatcherUnit::addElevatorToMap() {
+//WINDA
+void DispatcherUnit::addElevatorToVector() {
 
 	
 	//std::cin.clear();
@@ -65,8 +65,7 @@ void DispatcherUnit::addElevatorToMap() {
 	ElevatorCar temporary = ElevatorCar1.createElevator(number_a,capacity_a);
 	allElevators.push_back(temporary);
 }
-
-void DispatcherUnit::displayElevatorMap() {
+void DispatcherUnit::displayElevatorVector() {
 	unsigned int size = allElevators.size();
 	if (size == 0) {
 		std::cout << "Brak wind." << std::endl;
@@ -97,8 +96,7 @@ void DispatcherUnit::displayElevatorMap() {
 		std::cout << "Ma pojemnosc: " << allElevators[i].getCapacity() << " Jest w stanie: " << allElevators[i].getDirection() << std::endl;
 	}
 };
-
-void DispatcherUnit::clearElevatorMap() {
+void DispatcherUnit::clearElevatorVector() {
 	if (allElevators.empty()) {
 		std::cout << "Wektor wind jest obecnie pusty. Nadus ENTER";
 		return;
@@ -107,6 +105,8 @@ void DispatcherUnit::clearElevatorMap() {
 	allElevators.clear();
 }
 
+
+//ZAPYTANIA
 void DispatcherUnit::addEnquiryToVector() {
 	fillEnquiryVector(Enquiries);
 }
@@ -115,4 +115,29 @@ void DispatcherUnit::displayEnquiries() {
 }
 void DispatcherUnit::addOneEnquiry() {
 	addEnquiry(Enquiries);
+}
+
+//SYMULACJA
+void DispatcherUnit::createDefaultRequirements() {
+	std::cout << "---- TWORZENIE MAPY PIETER ----" << std::endl;
+	createFloorVector();
+	if (floorStatus.size() == 0) {
+		std::cout << "--- BLAD W TWORZENIU MAPY PIETER ---" << std::endl;
+	}
+	std::cout << "---- MAPA PIETER STWORZONA ----" << std::endl;
+
+	std::cout << "---- TWORZENIE WINDY ----" << std::endl;
+	addElevatorToVector();
+	if (allElevators.size() == 0) {
+		std::cout << "--- BLAD W TWORZENIU WINDY ---" << std::endl;
+	}
+	std::cout << "---- WINDA STWORZONA ----" << std::endl;
+
+	std::cout << "---- TWORZENIE ZAPYTAN ----" << std::endl;
+	addEnquiryToVector();
+	if (Enquiries.size() == 0) {
+		std::cout << "--- BLAD W TWORZENIU ZAPYTAN ---" << std::endl;
+	}
+	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
+
 }

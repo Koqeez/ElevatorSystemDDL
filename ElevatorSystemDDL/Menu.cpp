@@ -113,7 +113,7 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** Opcje dotyczace - Wektora Pieter(Kontroler) **********","********** Opcje dotyczace - Wind **********","********** Opcje dotyczace - Algorytmu **********","********** Opcje dotyczace - Zapytan **********" ,"********** Wywsietl informacje **********" ,"********** Wyjscie **********" };
+	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********","********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA **********","********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -139,9 +139,14 @@ void Menu::RunMainMenu() {
 		DisplayEnquiryOptions();
 		break;
 	case 4:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.createDefaultRequirements();
 		break;
 	case 5:
+		DisplayInformation();
+		break;
+	case 6:
 		ExitMenu();
 		break;
 	}
@@ -163,7 +168,7 @@ void Menu::DisplayMapOptions() {
 		MenuMapDisplacer();
 		break;
 	case 1:
-		Sleep(2000);
+		system("cls");
 		DisplayMapChangeOptions();
 		break;
 	case 2:
@@ -200,18 +205,18 @@ void Menu::DisplayElevatorOptions() {
 	switch (SelectedIndex) {
 	case 0:
 		system("cls");
-		DispatcherUnit1.addElevatorToMap();
+		DispatcherUnit1.addElevatorToVector();
 		MenuElevatorDisplacer();
 		break;
 	case 1:
 		system("CLS");
 		Sleep(2000);
-		DispatcherUnit1.displayElevatorMap();
+		DispatcherUnit1.displayElevatorVector();
 		MenuElevatorDisplacer();
 		break;
 	case 2:
 		system("cls");
-		DispatcherUnit1.clearElevatorMap();
+		DispatcherUnit1.clearElevatorVector();
 		MenuElevatorDisplacer();
 		break;
 	case 3:

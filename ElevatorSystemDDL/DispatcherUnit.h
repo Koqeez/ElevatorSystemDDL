@@ -57,13 +57,17 @@ public:
 	void eraseGroupFloorVector();
 
 
-	void addElevatorToMap();
-	void displayElevatorMap();
-	void clearElevatorMap();
+	void addElevatorToVector();
+	void displayElevatorVector();
+	void clearElevatorVector();
 
 	void addEnquiryToVector();
 	void displayEnquiries();
 	void addOneEnquiry();
+
+	//SYMULACJA
+	void createDefaultRequirements();
+
 
 private:
 
