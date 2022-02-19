@@ -31,5 +31,4 @@ ElevatorCar::ElevatorCarDirection ElevatorCar::getDirection(){
 }
 
 void ElevatorCar::moveToFloor(int floor_a) {
-
 }
