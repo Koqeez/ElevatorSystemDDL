@@ -142,6 +142,7 @@ void Menu::RunMainMenu() {
 		Sleep(1000);
 		system("CLS");
 		DispatcherUnit1.createDefaultRequirements();
+		RunMainMenu();
 		break;
 	case 5:
 		DisplayInformation();

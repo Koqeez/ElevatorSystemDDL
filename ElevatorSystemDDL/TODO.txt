@@ -24,7 +24,12 @@ DISPATCHER UNIT
 	usuwanie gdy winda bedzie na pietrze, 
 	funkcja symulacji:
 		sledzenie polozenia rozwiazania
+
 	symulacja domyœlna
+		- POCZATEK JEST - TERAZ POTRZEBNY JEST ALGORYTM KTORY BEDZIE CIAGLY, LUB DA JAKIS WYNIK DO INTERPRETACJI
+
 	ruszanie na pietro
-	dostosowanie piêter do tworzenia zapytañ
+		- dostosowanie piêter do tworzenia zapytañ
+		
+	
 	
