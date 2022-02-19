@@ -69,7 +69,7 @@ public:
 	//SYMULACJA
 	void createDefaultRequirements();
 
-
+	//Algorytm
 private:
 
 	

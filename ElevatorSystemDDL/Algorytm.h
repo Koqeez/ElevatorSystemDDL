@@ -27,5 +27,5 @@ public:
 	bool IsDone(int index);
 };
 extern Osobnik BestOsobnik;
-void CrossoverView();
+void CrossoverView(std::vector<Zapytanie>);
 std::vector<int> TranslateDNA(Osobnik);

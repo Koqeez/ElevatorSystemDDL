@@ -175,15 +175,15 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 		BestOsobnik = arr[0];
 	}
 }
-void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
-	if (newEnquiryVector.size()) {
-		std::cout << "Brak zapytan, nie mozna uruchomic programu";
-	}
-	int NumberOfGenerations;
-	srand(time(NULL));
-	std::vector<Osobnik> o(PopulationStartSize);
-	for (int i = 0; i < PopulationStartSize; i++) {
-		o[i].GenerateRandomDNA();
+void CrossoverView() {
+	
+	else {
+		int NumberOfGenerations;
+		srand(time(NULL));
+		std::vector<Osobnik> o(PopulationStartSize);
+		for (int i = 0; i < PopulationStartSize; i++) {
+			o[i].GenerateRandomDNA();
+		}
 	}
 
 	/*std::cout << "Podaj liczbê generacji";

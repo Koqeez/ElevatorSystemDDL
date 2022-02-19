@@ -148,3 +148,4 @@ void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
 
 }
+//Algorytm

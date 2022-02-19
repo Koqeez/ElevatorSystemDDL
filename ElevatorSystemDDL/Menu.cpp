@@ -239,7 +239,6 @@ void Menu::DisplayAlgorithmOptions() {
 	switch (SelectedIndex) {
 	case 0:
 		system("cls");
-		CrossoverView();
 		MenuAlgorithmDisplacer();
 		break;
 	case 1:
