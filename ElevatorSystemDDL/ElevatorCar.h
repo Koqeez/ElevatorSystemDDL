@@ -9,12 +9,12 @@ class ElevatorCar {
 	//bool isMovingUp;
 
 
-	int capacity,currentFloor ,currentLoad ,number;
+	int capacity = 0,currentFloor = 0,currentLoad = 0,number = 0;
 	//int destination
 	enum ElevatorCarDirection {
 		UP,DOWN,IDLE
 	};
-	ElevatorCarDirection direction;
+	ElevatorCarDirection direction = IDLE;
 	//IDLE (->) minFloor
 	
 	// W przysz³oœci mo¿e byæ podzielone na segmenty
@@ -24,9 +24,9 @@ class ElevatorCar {
 
 public:
 	ElevatorCar();
-	ElevatorCar(int number_a ,int capacity_a, int currentFloor_a = 0, ElevatorCarDirection ElevatorCarDirection_a = IDLE);
+	ElevatorCar(int number_a ,int capacity_a, int currentFloor_a , ElevatorCarDirection ElevatorCarDirection_a);
 	~ElevatorCar();
-	ElevatorCar createElevator(int number_a);
+	ElevatorCar createElevator(int number_a, int capacity_a);
 	void moveToFloor(int floor_a);
 
 	int getCapacity();

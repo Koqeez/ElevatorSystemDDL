@@ -62,7 +62,7 @@ public:
 	void eraseGroupFloorMap();
 
 
-	void addElevatorToMap(int number_a);
+	void addElevatorToMap();
 
 	void addEnquiryToVector();
 	void displayEnquiries();

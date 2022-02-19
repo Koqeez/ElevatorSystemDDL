@@ -187,7 +187,6 @@ void Menu::DisplayMapOptions() {
 void Menu::DisplayElevatorOptions() {
 	Sleep(1000);
 	system("cls");
-	int number_a;
 	string Prompt = "******************** MENU DOTYCZACE WIND ********************";
 	vector<string>Options = { "********** Dodaj Winde **********","********** Wywsietl mape wind **********", "********** Usun mape **********","********** POWROT **********" };
 	Menu ElevatorMenu(Prompt, Options);
@@ -197,9 +196,7 @@ void Menu::DisplayElevatorOptions() {
 	switch (SelectedIndex) {
 	case 0:
 		system("cls");
-		std::cout << "Wpisz numer windy: " << std::endl;
-		std::cin >> number_a;
-		DispatcherUnit1.addElevatorToMap(number_a);
+		DispatcherUnit1.addElevatorToMap();
 		MenuElevatorDisplacer();
 		break;
 	case 1:

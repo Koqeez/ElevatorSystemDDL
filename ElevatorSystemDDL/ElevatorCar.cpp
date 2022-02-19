@@ -13,9 +13,9 @@ ElevatorCar::ElevatorCar(int number_a, int capacity_a, int currentFloor_a, Eleva
 ElevatorCar::~ElevatorCar() {};
 
 
-ElevatorCar ElevatorCar::createElevator(int number_a) {
-	ElevatorCar Elevator(number_a, 5, 0);
-	return Elevator;
+ElevatorCar ElevatorCar::createElevator(int number_a,int capacity_a) {
+	ElevatorCar ElevatorObj(number_a,capacity_a,0,IDLE);
+	return ElevatorObj;
 }
 int ElevatorCar::getCapacity(){
 	return capacity;

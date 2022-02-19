@@ -1,5 +1,5 @@
 DO ZROBIENIA
-
+- ! INPUT BUFFER 
 - OGARNIÊCIE ZAPYTAÑ - UTWORZENIE STRUKTURY W DISPATCHERUNIT 
 	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan
 - TWORZENIE OBIEKTU WINDY W PAMIÊCI

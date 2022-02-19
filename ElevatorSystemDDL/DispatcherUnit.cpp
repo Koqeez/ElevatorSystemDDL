@@ -1,6 +1,9 @@
 #include "DispatcherUnit.h"
 #include <iostream>
 #include <map>
+#include <fstream>
+#include <iomanip>
+#include <string>
 
 //definicja klasy DU
 
@@ -55,12 +58,10 @@ void DispatcherUnit::displayElevatorMap() {
 		std::cout << "Brak wind." << std::endl;
 		return;
 	}
-	std::cout << "Mapa posiada obecnie:" << size << " , wind." << std::endl;
-	for (unsigned int i = 0; i < size; i++) {
-		std::cout << "Winda nr: " << allElevators[i].getNumber();
-		std::cout << "\nKtora obecnie jest na: "<<allElevators[i].getCurrentFloor()<<" pietrze.";
-		std::cout << "\nMa pojemnosc: " << allElevators[i].getCapacity();
-		std::cout << "\nJest w stanie: " << allElevators[i].getDirection();
+	std::cout << "Mapa posiada obecnie: " << size << " , wind." << std::endl;
+	for (unsigned int i = 0; i <= size; i++) {
+		std::cout << "Winda nr: " << allElevators[i].getNumber() << " Ktora obecnie jest na: " << allElevators[i].getCurrentFloor() << " pietrze." << std::endl;
+		std::cout << "Ma pojemnosc: " << allElevators[i].getCapacity()<< " Jest w stanie: " << allElevators[i].getDirection()<<std::endl;
 	}
 };
 
@@ -144,8 +145,29 @@ void DispatcherUnit::eraseGroupFloorMap() {
 	}
 }
 
-void DispatcherUnit::addElevatorToMap(int number_a) {
-	ElevatorCar temporary = ElevatorCar1.createElevator(number_a);
+void DispatcherUnit::addElevatorToMap() {
+
+	
+	//std::cin.clear();
+	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	//std::string reminder;
+	//std::getline(std::cin, reminder);
+	//std::cout << "POZOSTALOSCI :" << reminder << std::endl;
+
+	int number_a, capacity_a;
+	unsigned int size = allElevators.size();
+	std::cout << "Wpisz numer windy: ";
+	std::cin >> number_a;
+	for (int i = 0; i < size; i++) {
+		while (number_a == allElevators[i].getNumber()) {
+			std::cout << "Winda z podanym numerem ju¿ jest aktywna. Podaj nowy numer: ";
+			std::cin >> number_a;
+		}
+	}
+	std::cout << "Wpisz ilosc miejsca: ";
+	std::cin >> capacity_a;
+	ElevatorCar temporary = ElevatorCar1.createElevator(number_a,capacity_a);
 	allElevators.insert({ number_a,temporary});
 }
 
