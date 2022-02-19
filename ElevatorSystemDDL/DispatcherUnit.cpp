@@ -161,17 +161,30 @@ void DispatcherUnit::createDefaultRequirements() {
 
 }
 void DispatcherUnit::moveElevatorCarTo() {
-	/*int number, floor;
-	std::cout << "Wybierz winde ktora ma wykonac ruch: " << std::endl;
+	int number, floor;
+	displayElevatorVector();
+	if (allElevators.size() == 0) {
+		std::cout << "Wektor wind jest pusty";
+		return;
+	}
+	std::cout << "Wybierz winde ktora ma wykonac ruch(index) - jak narazie: " << std::endl;
 	std::cin >> number;
-	for (int i = 0; i < allElevators.size(); i++) {
-		if (std::find(allElevators.begin(), allElevators.end(), allElevators[i].getNumber() == number) != allElevators.end()) {
+	number--;
+	unsigned int x = allElevators[number].getNumber();
+	if(x != 0){
+			
 			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
 			std::cin >> floor;
-			allElevators[i].moveToFloor(floor);
+			allElevators[number].moveToFloor(floor);
 			return;
 		}
-	}
 	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
-	*/
+}
+
+//ALGORYTMY
+void DispatcherUnit::callCrossover() {
+	CrossoverView();
+}
+void DispatcherUnit::callTest() {
+	Testowa();
 }

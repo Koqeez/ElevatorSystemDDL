@@ -4,10 +4,11 @@
 #include <list>
 #include <vector>
 #include <map>
+#include <algorithm>
 #include "ElevatorCar.h"
 #include "Zapytania.h"
 #include "Floor.h"
-
+#include "Algorytm.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
@@ -45,24 +46,21 @@ public:
 	DispatcherUnit();
 
 
-
-
-	//tworzenie i wyswietlanie mapy
+	//PIETRA
 	void createFloorVector();
 	void displayFloorVector();
 	void sortFloorVector();
-	//usuwanie mapy
 	void eraseFloorVector();
-	//zmiana mapy
 	void addFloorVectorElement();
 	void eraseFloorVectorElement();
 	void eraseGroupFloorVector();
 
-
+	//WINDY
 	void addElevatorToVector();
 	void displayElevatorVector();
 	void clearElevatorVector();
 
+	//ZAPYTANIA
 	void addEnquiryToVector();
 	void displayEnquiries();
 	void addOneEnquiry();
@@ -72,6 +70,9 @@ public:
 	void createDefaultRequirements();
 	void moveElevatorCarTo();
 
+	//ALGORYTMY
+	void callCrossover();
+	void callTest();
 
 private:
 

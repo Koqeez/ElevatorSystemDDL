@@ -1,3 +1,7 @@
+#pragma once
+#ifndef ALGORYTM_H
+#define ALGORYTM_H
+
 #include <iostream>
 #include <vector>
 #include <stdio.h>      /* printf, scanf, puts, NULL */
@@ -26,6 +30,9 @@ public:
 	void Mutate();
 	void IsDone(int index);
 };
+
+#endif
+
 extern Osobnik BestOsobnik;
 void CrossoverView();
 void Testowa();

@@ -113,7 +113,9 @@ void Menu::RunMainMenu() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
-	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********","********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA **********","********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
+	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
+		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA **********",
+		"********** MOVE ELEVATOR - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 
@@ -145,9 +147,15 @@ void Menu::RunMainMenu() {
 		RunMainMenu();
 		break;
 	case 5:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.moveElevatorCarTo();
+		RunMainMenu();
 		break;
 	case 6:
+		DisplayInformation();
+		break;
+	case 7:
 		ExitMenu();
 		break;
 	}
@@ -231,7 +239,7 @@ void Menu::DisplayAlgorithmOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ALGORYTMU ********************";
-	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** POWROT **********" };
+	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** TESTOWA **********","********** POWROT **********" };
 	Menu AlgorithmMenu(Prompt, Options);
 
 	int SelectedIndex = AlgorithmMenu.Run();
@@ -239,9 +247,16 @@ void Menu::DisplayAlgorithmOptions() {
 	switch (SelectedIndex) {
 	case 0:
 		system("cls");
+		DispatcherUnit1.callCrossover();
 		MenuAlgorithmDisplacer();
 		break;
 	case 1:
+		system("cls");
+		DispatcherUnit1.callTest();
+		MenuAlgorithmDisplacer();
+		break;
+
+	case 2:
 		system("cls");
 		RunMainMenu();
 		break;

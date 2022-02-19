@@ -197,7 +197,10 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 	}
 }
 void CrossoverView() {
-		// Przywróæ tê funkcjê do menu
+		
+		//test napis
+		std::cout << "TEST" << std::endl;
+
 		int NumberOfGenerations;
 		srand(time(NULL));
 		std::vector<Osobnik> o(PopulationStartSize);
@@ -206,6 +209,7 @@ void CrossoverView() {
 		}
 }
 void Testowa() {
+	std::cout << "TEST" << std::endl;
 	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
