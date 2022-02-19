@@ -1,8 +1,10 @@
 #include "Algorytm.h"
 #include "Zapytania.h"
+#include "DispatcherUnit.h"
 
 extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
 extern int MaxPietro;
+extern std::vector<Zapytanie>Enquiries;
 
 const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
@@ -63,6 +65,9 @@ std::vector<int> TranslateDNA(Osobnik x) {
 		}
 	}
 	return xx;
+}
+void FitnessSymulation(std::vector<Osobnik> arr, std::vector<Zapytanie> newEnquiryVector) {
+
 }
 // Trzeba przekazaæ wektor z osobnikami przez referencjê, dokonuje on selekcji i zmniejsza iloœæ osobników o 50% (200 -> 100). Zwraca ten sam wektor z now¹ populacj¹.
 void Selection(std::vector<Osobnik>& arr) {
@@ -170,7 +175,10 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 		BestOsobnik = arr[0];
 	}
 }
-void CrossoverView() {
+void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
+	if (newEnquiryVector.size()) {
+		std::cout << "Brak zapytan, nie mozna uruchomic programu";
+	}
 	int NumberOfGenerations;
 	srand(time(NULL));
 	std::vector<Osobnik> o(PopulationStartSize);

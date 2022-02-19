@@ -75,7 +75,9 @@ void eraseEnquiryByIndex(std::vector<Zapytanie>& newEnquiryVector, int enquiryIn
 		newEnquiryVector.erase(newEnquiryVector.begin() + enquiryIndex_a);
 		std::cout << "Zapytanie zostalo usuniete" << std::endl;
 	}
-	std::cout << "Zly index. Zapytanie nie zostalo usuniete" << std::endl;
+	else {
+		std::cout << "Zly index. Zapytanie nie zostalo usuniete" << std::endl;
+	}
 }
 /*
 vector<Zapytanie> gerenateEnquiry(int amount_a) {
