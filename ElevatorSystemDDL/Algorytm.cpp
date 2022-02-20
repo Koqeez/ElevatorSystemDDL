@@ -86,6 +86,10 @@ void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnqu
 					arr[i].IsDone(j);
 					break;
 				}
+				if(j==CurrentF.size()-1){
+					arr[i].IsDone(j);
+					break;
+				}
 			}
 		}
 	}
