@@ -1,12 +1,13 @@
 #include "Zapytania.h"
+#include "Floor.h"
 #include "Algorytm.h"
 
 using namespace std;
 //----------------------------------------------------------------------------------
-int MinPietro = 0;
-int MaxPietro = 9;
-int IloscPieter = 10;
-int GlobalID = 0;
+extern int minFloor;
+extern int maxFloor;
+extern int Floors;
+extern int GlobalID = 0;
 extern const int DNALength;
 //----------------------------------------------------------------------------------
 Zapytanie::Zapytanie() {
@@ -24,9 +25,10 @@ Zapytanie::Zapytanie() {
 	ID = GlobalID;
 	GlobalID++;
 }
+
 Zapytanie::Zapytanie(int x, int y) {
 	if (x == y) {
-		if (x == MaxPietro) {
+		if (x == maxFloor) {
 			y--;
 		}
 		else y++;
@@ -46,12 +48,15 @@ int Zapytanie::getMiejsceP() const {
 	return MiejsceP;
 }
 
-void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {
+void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {	
+	if (floorZeroCheck(Floors)) {
+		return;
+	}
 	int temp;
 	cout << "Podaj ilosc zapytan: ";
 	cin >> temp;	
 	for (int i = 0; i < temp; i++) {
-		Zapytanie Enquiry(rand() % IloscPieter, rand() % IloscPieter);
+		Zapytanie Enquiry(rand() % Floors, rand() % Floors);
 		newEnquiryVector.push_back(Enquiry);
 	}
 }
@@ -67,6 +72,9 @@ void printVector(const std::vector<Zapytanie>& newEnquiryVector) {
 	}
 }
 void addEnquiry(std::vector<Zapytanie>& newEnquiryVector) {
+	if (floorZeroCheck(Floors)) {
+		return;
+	}
 	Zapytanie Enquiry;
 	newEnquiryVector.push_back(Enquiry);
 }

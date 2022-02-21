@@ -1,5 +1,9 @@
 #include "Floor.h"
 
+int maxFloor;
+int minFloor;
+int Floors;
+
 Floor::Floor() {
 	/*int floor, status;
 	std::cout << "Wpisz pietro: " << std::endl;
@@ -52,7 +56,6 @@ void sortVector(std::vector<Floor>& newFloorVector) {
 }
 
 void fillFloorVector(std::vector<Floor>& newFloorVector) {
-	int minFloor, maxFloor, Floors;
 	//bez piêter poni¿ej zera
 	std::cout << "Podaj pierwsze pietro:";
 	std::cin >> minFloor;
@@ -157,4 +160,12 @@ void eraseGroupFloor(std::vector<Floor>& newFloorVector) {
 	newFloorVector.erase(newFloorVector.begin() + pietro1 - 1, newFloorVector.begin() + pietro2 - 1);
 	std::cout<<" Elementy zostaly usunienete. ";	
 	return;
+}
+bool floorZeroCheck(int& floor_a) {
+	if (floor_a == 0) {
+		std::cout << "Ilosc pieter jest zerowa." << std::endl;
+		return true;
+	}
+	return false;
+
 }

@@ -1,9 +1,6 @@
 DO ZROBIENIA
 - !INPUT BUFFER 
-- OGARNIÊCIE ZAPYTAÑ - UTWORZENIE STRUKTURY W DISPATCHERUNIT 
-	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan
-- TWORZENIE OBIEKTU WINDY W PAMIÊCI
-- WYSWIETLANIE OBIEKTU WINDY - SPRAWDZANIE DZIA£ANIA(wiem jak zrobic)
+
 
 
 
@@ -29,9 +26,20 @@ DISPATCHER UNIT
 		- POCZATEK JEST - TERAZ POTRZEBNY JEST ALGORYTM KTORY BEDZIE CIAGLY, LUB DA JAKIS WYNIK DO INTERPRETACJI
 
 	ruszanie na pietro
-		- sprawdzanie po numerze, nie indexie 
-		- dostosowanie piêter do tworzenia zapytañ
+		- sprawdzanie po numerze, nie indexie
+		- zatrzymaj winde
+		
 		
 	
-	// Dodaj do menu te dwie ostatnie funkcje w algorytm cpp, W komentarzu masz napisane które, tylko ¿eby mo¿na by³o ich u¿ywaæ do testowania - ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE
 	// Jak przekazaæ vektor z zapytaniami tez z DispacherUnit do funkcji w Algorytm.cpp i wywo³aæ j¹ w main - mo¿esz stowrzyæ funkcje z referencj¹ do wektoru, zaplanowaæ co siê stanie i wywo³aæ tê funkcje w DispatcherUnit(systemie) tak jak reszte funkcji, je¿eli o to tobie chodzi
+
+
+
+	ZROBIONE
+	- OGARNIÊCIE ZAPYTAÑ - UTWORZENIE STRUKTURY W DISPATCHERUNIT - ZROBIONE ZROBIONE ZROBIONE ZROBIONE
+	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan - ZROBIONE ZROBIONE ZROBIONE ZROBIONE
+	- TWORZENIE OBIEKTU WINDY W PAMIÊCI - ZROBIONE ZROBIONE ZROBIONE ZROBIONE 
+	- WYSWIETLANIE OBIEKTU WINDY - SPRAWDZANIE DZIA£ANIA(wiem jak zrobic) - ZROBIONE ZROBIONE ZROBIONE ZROBIONE 
+
+	- dostosowanie piêter do tworzenia zapytañ - ZROBIONE ZROBIONE ZROBIONE ZROBIONE
+	// Dodaj do menu te dwie ostatnie funkcje w algorytm cpp, W komentarzu masz napisane które, tylko ¿eby mo¿na by³o ich u¿ywaæ do testowania - ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE

@@ -28,6 +28,7 @@ public:
 bool compareFloor(Floor obj1, Floor obj2);
 
 void sortVector(std::vector<Floor>&);
+bool floorZeroCheck(int&);
 
 void fillFloorVector(std::vector<Floor>&);
 void printFloorVector(const std::vector<Floor>&);

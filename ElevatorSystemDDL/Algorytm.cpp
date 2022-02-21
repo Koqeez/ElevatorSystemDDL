@@ -2,7 +2,8 @@
 #include "Zapytania.h"
 
 extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
-extern int MaxPietro;
+extern int maxFloor;
+extern int minFloor; //Na przyszlosc do poprawienia liniki 49
 extern std::vector<Zapytanie>Enquiries;
 
 const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
@@ -36,7 +37,7 @@ std::vector<int> TranslateDNA(Osobnik x) {
 	int y=0;  // Poprawiæ na CurrentFloor w przysz³oœci
 	for (int i = 0; i < DNALength; i++) {
 		if (x.DNA[i]) {
-			if (y == MaxPietro) {
+			if (y == maxFloor) { // Przed uruchomieniem algorytmu musisz sie upewnic, ze maxFloor ma jakas wartosc
 				xx.push_back(y);
 			}
 			else {

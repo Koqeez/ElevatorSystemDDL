@@ -164,8 +164,8 @@ void Menu::RunMainMenu() {
 void Menu::DisplayMapOptions() {
 	Sleep(1000);
 	system("cls");
-	string Prompt = "******************** MENU DOTYCZACE MAPY PIETER ********************";
-	vector<string>Options = {"********** DODAJ MAPE **********","********** ZMIEN MAPE **********", "********** USUN MAPE **********", "********** WYSWIETL MAPE**********","********** POSORTUJ MAPE **********","********** POWROT **********"};
+	string Prompt = "******************** MENU DOTYCZACE WEKTORA PIETER ********************";
+	vector<string>Options = {"********** DODAJ WEKTOR **********","********** ZMIEN WEKTOR **********", "********** USUN WEKTOR **********", "********** WYSWIETL WEKTOR **********","********** POSORTUJ WEKTOR **********","********** POWROT **********"};
 	Menu MapMenu(Prompt, Options);
 	
 	int SelectedIndex = MapMenu.Run();
@@ -206,7 +206,7 @@ void Menu::DisplayElevatorOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE WIND ********************";
-	vector<string>Options = { "********** Dodaj Winde **********","********** Wywsietl mape wind **********", "********** Usun mape **********","********** POWROT **********" };
+	vector<string>Options = { "********** DODAJ WINDE DO WEKTORA **********","********** WYSWIETL WEKTOR WIND **********", "********** USUN WEKTOR WIND **********","********** POWROT **********" };
 	Menu ElevatorMenu(Prompt, Options);
 
 	int SelectedIndex = ElevatorMenu.Run();
