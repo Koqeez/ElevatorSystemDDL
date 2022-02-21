@@ -58,16 +58,21 @@ void sortVector(std::vector<Floor>& newFloorVector) {
 void fillFloorVector(std::vector<Floor>& newFloorVector) {
 	//bez piêter poni¿ej zera
 	std::cout << "Podaj pierwsze pietro:";
-	std::cin >> minFloor;
+	std::cin >> ::minFloor;
 	std::cout << "Podaj ostatnie pietro:";
-	std::cin >> maxFloor;
-	Floors = maxFloor - minFloor;
-	std::cout << "Budynek bedzie mial " << Floors << " pieter.\n";
+	std::cin >> ::maxFloor;
+	::Floors = ::maxFloor - ::minFloor;
+	maxFloor--;
+	std::cout << "Budynek bedzie mial " << ::Floors << " pieter.\n";
 
-	for (int i = 0; i < Floors; i++) {
+	for (int i = 0; i < ::Floors; i++) {
 		Floor Floor(i,0);
 		newFloorVector.push_back(Floor);
 	}
+}
+
+void printFloorVariables() {
+	std::cout << "Pietro minimalne: " <<minFloor<<", pietro maksymalne: "<<maxFloor<<", ilosc pieter: "<<Floors<< std::endl;
 }
 
 void printFloorVector(const std::vector<Floor>& newFloorVector) {

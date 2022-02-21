@@ -27,6 +27,7 @@ void DispatcherUnit::createFloorVector() {
 }
 void DispatcherUnit::displayFloorVector() {
 	printFloorVector(floorStatus);
+	printFloorVariables();
 }
 void DispatcherUnit::sortFloorVector() {
 	sortVector(floorStatus);

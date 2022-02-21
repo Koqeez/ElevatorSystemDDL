@@ -10,11 +10,12 @@ class ElevatorCar {
 
 
 	int capacity = 0, currentFloor = 0, currentLoad = 0, number = 0;
+
 	//int destination
 	enum ElevatorCarDirection {
 		UP, DOWN, IDLE
 	};
-	ElevatorCarDirection direction = IDLE;
+	ElevatorCar::ElevatorCarDirection direction = IDLE;
 	//IDLE (->) minFloor
 
 	// W przysz³oœci mo¿e byæ podzielone na segmenty
