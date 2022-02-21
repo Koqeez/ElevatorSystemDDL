@@ -65,7 +65,7 @@ void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { /
 	std::cout << "Najlepszy Fitness w tej generacji " << generationC <<" : " <<  arr[0].Fitness << std::endl;
 	std::cout << "Najlepszy Fitness zawsze: " << x.Fitness << std::endl;
 }
-void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnquiryVector) {
+void FitnessSimulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnquiryVector) {
 	if (newEnquiryVector.size() == 0) {
 		std::cout << "Brak zapytan, nie mozna uruchomic algorytmu";
 	}
@@ -234,7 +234,7 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
 		while (NumberOfGenerations < 100) {
 			NumberOfGenerations++;
 			Crossover(o);
-			FitnessSymulation(o, newEnquiryVector);
+			FitnessSimulation(o, newEnquiryVector);
 			Selection(o);
 			SortFitness(o);
 			IsBest(o);
