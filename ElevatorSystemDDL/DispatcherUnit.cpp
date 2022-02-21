@@ -80,6 +80,7 @@ void DispatcherUnit::addElevatorToVector() {
 }
 void DispatcherUnit::displayElevatorVector() {
 	unsigned int size = allElevators.size();
+	printFloorVariables();
 	if (size == 0) {
 		std::cout << "Brak wind." << std::endl;
 		return;
@@ -102,11 +103,11 @@ void DispatcherUnit::displayElevatorVector() {
 	allElevators.erase(it);
 	*/
 
-
 	std::cout << "Mapa posiada obecnie: " << size << " , wind." << std::endl;
 	for (unsigned int i = 0; i < size; i++) {
 		std::cout << "Winda nr: " << allElevators[i].getNumber() << " Ktora obecnie jest na: " << allElevators[i].getCurrentFloor() << " pietrze." << std::endl;
 		std::cout << "Ma pojemnosc: " << allElevators[i].getCapacity() << " Jest w stanie: " << allElevators[i].getDirection() << std::endl;
+		std::cout << "Ktora pracuje od: " << allElevators[i].getMinFloorElev() << ", do: " << allElevators[i].getMaxFloorElev() <<", pietra." << std::endl;
 	}
 };
 void DispatcherUnit::clearElevatorVector() {
