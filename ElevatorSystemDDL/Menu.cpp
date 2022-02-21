@@ -4,6 +4,9 @@
 #include <Windows.h>
 #include <WinUser.h>
 #include <stdio.h>
+#include <climits>
+
+
 
 //----------------------------------------------------------------------------------
 #include "Algorytm.h"
@@ -118,7 +121,7 @@ void Menu::RunMainMenu() {
 		"********** MOVE ELEVATOR - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
-
+	//while ((getchar()) != '\n');
 	switch (selectedIndex) {
 	case 0:
 		Sleep(1000);
@@ -144,14 +147,13 @@ void Menu::RunMainMenu() {
 		Sleep(1000);
 		system("CLS");
 		DispatcherUnit1.createDefaultRequirements();
-		RunMainMenu();
+		MenuDisplacer();
 		break;
 	case 5:
 		Sleep(1000);
 		system("CLS");
 		DispatcherUnit1.moveElevatorCarTo();
-		RunMainMenu();
-		Sleep(1000);
+		MenuDisplacer();
 		break;
 	case 6:
 		DisplayInformation();
@@ -352,8 +354,16 @@ void Menu::DisplayMapChangeOptions() {
 
 void Menu::DisplayInformation() {
 	system("cls");
-	cout << "Informacje.";
-	cout << "\nNadus enter by wrocic do menu glownego.";
+	//cout << "Informacje.";
+	//cout << "\nNadus enter by wrocic do menu glownego.";
+	int test;
+	
+	//while ((getchar()) != '\n');
+	//std::cout<<std::endl;
+	//cin.sync();
+	//system("cls");
+	cin >> test;
+	cout << test;
 	MenuDisplacer();
 	
 }

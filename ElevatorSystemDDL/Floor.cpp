@@ -57,8 +57,15 @@ void sortVector(std::vector<Floor>& newFloorVector) {
 
 void fillFloorVector(std::vector<Floor>& newFloorVector) {
 	//bez piêter poni¿ej zera
-	std::cout << "Podaj pierwsze pietro:";
-	std::cin >> ::minFloor;
+	do {
+		if (std::cin.fail()) {
+			std::cin.ignore(INT_MAX, '\n');
+			std::cin.clear();
+		}
+		if (std::cin.peek() == '\n') std::cin.ignore();
+		std::cout << "Podaj pierwsze pietro:";
+		std::cin >> ::minFloor;
+	} while (std::cin.fail());
 	std::cout << "Podaj ostatnie pietro:";
 	std::cin >> ::maxFloor;
 	if (::minFloor > ::maxFloor) {
