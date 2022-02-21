@@ -11,7 +11,6 @@ const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
 int PopulationSize = 0; // Obecna wielkoœæ populacji
 int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
-int EnquiryCounter;  // Zmienna przedstawiaj¹ca ile zosta³o jeszcze zapytañ
 Osobnik BestOsobnik;
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < Fitness; i++) {
@@ -202,7 +201,7 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 		BestOsobnik = arr[0];
 	}
 }
-void CrossoverView() {
+void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
 		
 		//test napis
 		std::cout << "TEST" << std::endl;

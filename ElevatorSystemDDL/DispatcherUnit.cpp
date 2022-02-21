@@ -184,7 +184,7 @@ void DispatcherUnit::moveElevatorCarTo() {
 
 //ALGORYTMY
 void DispatcherUnit::callCrossover() {
-	CrossoverView();
+	CrossoverView(Enquiries);
 }
 void DispatcherUnit::callTest() {
 	Testowa();

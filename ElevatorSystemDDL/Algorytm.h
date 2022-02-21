@@ -34,6 +34,6 @@ public:
 #endif
 
 extern Osobnik BestOsobnik;
-void CrossoverView();
+void CrossoverView(std::vector<Zapytanie>);
 void Testowa();
 std::vector<int> TranslateDNA(Osobnik);
