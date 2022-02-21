@@ -34,6 +34,7 @@ void Osobnik::GenerateRandomDNA() {
 std::vector<int> TranslateDNA(Osobnik x) {
 	std::vector<int> xx;
 	int y=0;  // Poprawiæ na CurrentFloor w przysz³oœci
+	xx.push_back(y);
 	for (int i = 0; i < DNALength; i++) {
 		if (x.DNA[i]) {
 			if (y == MaxPietro) {
