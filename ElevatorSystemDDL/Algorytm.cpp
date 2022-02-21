@@ -35,6 +35,7 @@ void Osobnik::GenerateRandomDNA() {
 std::vector<int> TranslateDNA(Osobnik x) {
 	std::vector<int> xx;
 	int y=0;  // Poprawiæ na CurrentFloor w przysz³oœci
+	xx.push_back(y);
 	for (int i = 0; i < DNALength; i++) {
 		if (x.DNA[i]) {
 			if (y == maxFloor) { // Przed uruchomieniem algorytmu musisz sie upewnic, ze maxFloor ma jakas wartosc
@@ -84,6 +85,10 @@ void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnqu
 					}
 				}
 				if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
+					arr[i].IsDone(j);
+					break;
+				}
+				if(j==CurrentF.size()-1){
 					arr[i].IsDone(j);
 					break;
 				}
