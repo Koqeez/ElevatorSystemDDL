@@ -151,6 +151,7 @@ void Menu::RunMainMenu() {
 		system("CLS");
 		DispatcherUnit1.moveElevatorCarTo();
 		RunMainMenu();
+		Sleep(1000);
 		break;
 	case 6:
 		DisplayInformation();

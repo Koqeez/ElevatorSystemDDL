@@ -61,8 +61,12 @@ void fillFloorVector(std::vector<Floor>& newFloorVector) {
 	std::cin >> ::minFloor;
 	std::cout << "Podaj ostatnie pietro:";
 	std::cin >> ::maxFloor;
+	if (::minFloor > ::maxFloor) {
+		std::cout << "Podane dane sa zle." << std::endl;
+		return;
+	}
 	::Floors = ::maxFloor - ::minFloor;
-	maxFloor--;
+	::maxFloor--;
 	std::cout << "Budynek bedzie mial " << ::Floors << " pieter.\n";
 
 	for (int i = 0; i < ::Floors; i++) {

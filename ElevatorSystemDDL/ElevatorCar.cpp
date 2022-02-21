@@ -44,5 +44,5 @@ int ElevatorCar::getMinFloorElev() {
 }
 
 void ElevatorCar::moveToFloor(int floor_a) {
-
+	currentFloor = floor_a;
 }

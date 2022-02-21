@@ -85,7 +85,6 @@ void DispatcherUnit::displayElevatorVector() {
 		std::cout << "Brak wind." << std::endl;
 		return;
 	}
-
 	/*for (std::map<int, ElevatorCar>::iterator it = allElevators.begin(); it != allElevators.end(); ++it) {
 		if (it->first == 0) {
 			std::cout << "jest pentla";
