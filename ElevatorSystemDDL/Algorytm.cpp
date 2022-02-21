@@ -31,6 +31,10 @@ void Osobnik::GenerateRandomDNA() {
 		DNA[i] = rand() % 2;
 	}
 }
+bool CanStart() { // Funckja do sprawdzania integralnoœci
+	bool ret = true;
+	return ret;
+}
 std::vector<int> TranslateDNA(Osobnik x) {
 	std::vector<int> xx;
 	int y=0;  // Poprawiæ na CurrentFloor w przysz³oœci
@@ -57,6 +61,10 @@ std::vector<int> TranslateDNA(Osobnik x) {
 	}
 	return xx;
 }
+void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { // Wywo³ywaæ po sortFitness
+	std::cout << "Najlepszy Fitness w tej generacji " << generationC <<" : " <<  arr[0].Fitness << std::endl;
+	std::cout << "Najlepszy Fitness zawsze: " << x.Fitness << std::endl;
+}
 void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnquiryVector) {
 	if (newEnquiryVector.size() == 0) {
 		std::cout << "Brak zapytan, nie mozna uruchomic algorytmu";
@@ -73,6 +81,7 @@ void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnqu
 						newEnquiryVector.erase(newEnquiryVector.begin() + k);
 						k--;
 						EnquirySize--;
+						std::cout << Queue.size() << " ";
 					}
 				}
 				int QueueSize = Queue.size();
@@ -81,14 +90,17 @@ void FitnessSymulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnqu
 						Queue.erase(Queue.begin() + k);
 						k--;
 						QueueSize--;
+						std::cout << "S";
 					}
 				}
 				if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
-					arr[i].IsDone(j);
+					arr[i].Fitness = j;
+					std::cout << "P";
 					break;
 				}
 				if(j==CurrentF.size()-1){
-					arr[i].IsDone(j);
+					arr[i].Fitness = j;
+					std::cout << "D";
 					break;
 				}
 			}
@@ -202,19 +214,36 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 	}
 }
 void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
-		
-		//test napis
-		std::cout << "TEST" << std::endl;
-
-		int NumberOfGenerations;
+		int NumberOfGenerations = 0;
 		srand(time(NULL));
 		std::vector<Osobnik> o(PopulationStartSize);
 		for (int i = 0; i < PopulationStartSize; i++) {
 			o[i].GenerateRandomDNA();
 		}
+		std::vector<int> test = TranslateDNA(o[0]);
+		for (int i = 0; i < test.size(); i++) {
+			std::cout << test[i] << ",";
+		}
+		std::cout << std::endl;
+		for (int i = 0; i < 200; i++) {
+			std::cout << o[0].DNA[i] << " ";
+		}
+		/*SortFitness(o);
+		IsBest(o);
+		PrintInformations(o, BestOsobnik, NumberOfGenerations);
+		while (NumberOfGenerations < 100) {
+			NumberOfGenerations++;
+			Crossover(o);
+			FitnessSymulation(o, newEnquiryVector);
+			Selection(o);
+			SortFitness(o);
+			IsBest(o);
+			PrintInformations(o, BestOsobnik, NumberOfGenerations);
+		}*/
+
 }
 void Testowa() {
-	std::cout << "TEST" << std::endl;
+	
 	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
