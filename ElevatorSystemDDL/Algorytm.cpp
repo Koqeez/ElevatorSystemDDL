@@ -13,8 +13,9 @@ int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtre
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
 Osobnik BestOsobnik;
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
-	for (int i = 0; i < Fitness; i++) {
-		if (rand() % MutationRate == 0) {
+	for (int i = 0; i < DNALength; i++) {
+		int r = rand() % MutationRate;
+		if (r == 0) {
 			if (DNA[i] == 0)DNA[i] = 1;
 			else if (DNA[i] == 1)DNA[i] = 0;
 			else DNA[i] = rand() % 2;
@@ -65,45 +66,34 @@ void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { /
 	std::cout << "Najlepszy Fitness w tej generacji " << generationC <<" : " <<  arr[0].Fitness << std::endl;
 	std::cout << "Najlepszy Fitness zawsze: " << x.Fitness << std::endl;
 }
-void FitnessSimulation(std::vector<Osobnik> &arr, std::vector<Zapytanie> newEnquiryVector) {
-	if (newEnquiryVector.size() == 0) {
-		std::cout << "Brak zapytan, nie mozna uruchomic algorytmu";
-	}
-	else {
-		for (int i = 0; i < arr.size(); i++) {
-			std::vector<int> CurrentF = TranslateDNA(arr[i]);
-			for (int j = 0; j < CurrentF.size(); j++) {
-				std::vector<Zapytanie> Queue;
-				int EnquirySize = newEnquiryVector.size();
-				for (int k = 0; k < EnquirySize; k++) {
-					if (newEnquiryVector[k].MiejsceP == CurrentF[j]) {
-						Queue.push_back(newEnquiryVector[k]);
-						newEnquiryVector.erase(newEnquiryVector.begin() + k);
-						k--;
-						EnquirySize--;
-						std::cout << Queue.size() << " ";
-					}
-				}
-				int QueueSize = Queue.size();
-				for (int k = 0; k < QueueSize; k++) {
-					if (Queue[k].MiejsceD == CurrentF[j]) {
-						Queue.erase(Queue.begin() + k);
-						k--;
-						QueueSize--;
-						std::cout << "S";
-					}
-				}
-				if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
-					arr[i].Fitness = j;
-					std::cout << "P";
-					break;
-				}
-				if(j==CurrentF.size()-1){
-					arr[i].Fitness = j;
-					std::cout << "D";
-					break;
-				}
+void FitnessSimulation(Osobnik& x, std::vector<Zapytanie> newEnquiryVector) {
+	std::vector<int> CurrentF = TranslateDNA(x);
+	std::vector<Zapytanie> Queue;
+	int EnquirySize = newEnquiryVector.size();
+	for (int i = 0; i < CurrentF.size(); i++) {
+		for (int j = 0; j < EnquirySize; j++) {
+			if (newEnquiryVector[j].MiejsceP == CurrentF[i]) {
+				Queue.push_back(newEnquiryVector[j]);
+				newEnquiryVector.erase(newEnquiryVector.begin() + j);
+				j--;
+				EnquirySize--;
 			}
+		}
+		int QueueSize = Queue.size();
+		for (int j = 0; j < QueueSize; j++) {
+			if (Queue[j].MiejsceD == CurrentF[i]) {
+				Queue.erase(Queue.begin() + j);
+				j--;
+				QueueSize--;
+			}
+		}
+		if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
+			x.Fitness = i;
+			break;
+		}
+		if(i==CurrentF.size()-1){
+			x.Fitness = i;
+			break;
 		}
 	}
 }
@@ -220,26 +210,30 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
 		for (int i = 0; i < PopulationStartSize; i++) {
 			o[i].GenerateRandomDNA();
 		}
-		std::vector<int> test = TranslateDNA(o[0]);
-		for (int i = 0; i < test.size(); i++) {
-			std::cout << test[i] << ",";
+		for (int i = 0; i < o.size(); i++) {
+			FitnessSimulation(o[i], newEnquiryVector);
 		}
-		std::cout << std::endl;
-		for (int i = 0; i < 200; i++) {
-			std::cout << o[0].DNA[i] << " ";
-		}
-		/*SortFitness(o);
+		SortFitness(o);
 		IsBest(o);
 		PrintInformations(o, BestOsobnik, NumberOfGenerations);
 		while (NumberOfGenerations < 100) {
 			NumberOfGenerations++;
 			Crossover(o);
-			FitnessSimulation(o, newEnquiryVector);
+			for (int i = 0; i < o.size(); i++) {
+				o[i].Mutate();
+			}
+			for (int i = 0; i < o.size(); i++) {
+				FitnessSimulation(o[i], newEnquiryVector);
+			}
 			Selection(o);
 			SortFitness(o);
 			IsBest(o);
 			PrintInformations(o, BestOsobnik, NumberOfGenerations);
-		}*/
+		}
+		std::cout << std::endl;
+		for (int i = 0; i < DNALength; i++) {
+			std::cout << BestOsobnik.DNA[i] << " ";
+		}
 
 }
 void Testowa() {
