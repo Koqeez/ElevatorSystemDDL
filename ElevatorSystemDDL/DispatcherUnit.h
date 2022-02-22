@@ -10,6 +10,9 @@
 #include "Algorytm.h"
 #include "Windows.h"
 #include "DataManagement.h"
+#include "SimulationTime.h"
+
+
 #include "GlobalVariables.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
@@ -36,7 +39,7 @@ class DispatcherUnit {
 	ElevatorCar ElevatorCar1;
 	Data Data1;
 
-
+	SimulationTime* simulationTimePtr;
 	
 public:
 	std::vector<Zapytanie>Enquiries;
@@ -69,6 +72,11 @@ public:
 	void eraseOneEnquiryDisplay();
 
 	//SYMULACJA
+	void incrementSimulationTime();
+	int getTime() const;
+
+	void resetSimulation();
+
 	void createDefaultRequirements();
 	void usePreconfiguratedSymulation();
 	void moveElevatorCarToManual();

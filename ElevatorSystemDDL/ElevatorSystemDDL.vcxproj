@@ -146,6 +146,7 @@
     <ClCompile Include="ElevatorCar.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="SimulationTime.cpp" />
     <ClCompile Include="Zapytania.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="DataManagement.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="SimulationTime.h" />
     <ClInclude Include="Zapytania.h" />
   </ItemGroup>
   <ItemGroup>

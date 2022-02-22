@@ -4,6 +4,16 @@ DO ZROBIENIA
 - USUWANIE KONKRETNYCH ZMIENNYCH DO STANU POCZOTKOWEGO
 - POPRAWIENIE SYMULACJI - W POLOWIE, TRZEBA POPRAWIC
 - TIMER CZASU 
+- WIZUALIZACJA WINDY
+- MAX PIETRA, MIN PIETRA WYSWIETLANIE WINDY
+		KRYTERIA
+	//Transported ilosc
+	//ElapsedTime sekundy
+	//Transported/s ilosc.00
+	//AvgWaitingTime sekundy.00
+	//MaxMovingTime sekundy.00
+	//Moves[vectors] ilosc
+	
 
 
 W PRZYSZLOSCI

@@ -140,6 +140,16 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 }
 
 //SYMULACJA
+void DispatcherUnit::incrementSimulationTime() {
+	this->simulationTimePtr->incrementTime();
+
+}
+
+void DispatcherUnit::resetSimulation() {
+	this->simulationTimePtr->setTime(0);
+}
+
+
 void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "---- TWORZENIE MAPY PIETER ----" << std::endl;
 	createFloorVector();
@@ -172,8 +182,10 @@ void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "------------------------------------------------------------------------" << std::endl;
 
 }
-
 void DispatcherUnit::usePreconfiguratedSymulation() {
+	static const int SEC_NEXT_FLOOR = 10;
+
+	
 	//do dokonczenia
 	fillFloorVectorXY(floorStatus,0, 10);
 	allElevators.push_back(ElevatorCar1.createElevator(1, 5));
@@ -181,8 +193,9 @@ void DispatcherUnit::usePreconfiguratedSymulation() {
 	CrossoverView(Enquiries, moveQueue);
 	std::cout << std::endl;
 	goWithMoveQueueX(0);
-}
 
+	this->resetSimulation();
+}
 void DispatcherUnit::moveElevatorCarToManual() {
 	int number, floor;
 	bool flag = true;
