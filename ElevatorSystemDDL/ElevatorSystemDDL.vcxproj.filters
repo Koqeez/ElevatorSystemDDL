@@ -36,6 +36,9 @@
     <ClCompile Include="Floor.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataManagement.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispatcherUnit.h">
@@ -56,10 +59,21 @@
     <ClInclude Include="Floor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataManagement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Enquiries.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

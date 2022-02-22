@@ -1,10 +1,10 @@
 #include "Algorytm.h"
 #include "Zapytania.h"
+#include "GlobalVariables.h"
 
 extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
 extern int maxFloor;
 extern int minFloor; //Na przyszlosc do poprawienia liniki 49
-extern std::vector<Zapytanie>Enquiries;
 int GenerationAmount = 40;
 const int MutationRate = 50; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 const int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji

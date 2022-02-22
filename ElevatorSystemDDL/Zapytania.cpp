@@ -26,6 +26,11 @@ Zapytanie::Zapytanie() {
 	GlobalID++;
 }
 
+Zapytanie::Zapytanie(int x) {
+
+}
+
+
 Zapytanie::Zapytanie(int x, int y) {
 	if (x == y) {
 		if (x == maxFloor) {
@@ -46,6 +51,16 @@ int Zapytanie::getMiejsceD() const {
 }
 int Zapytanie::getMiejsceP() const {
 	return MiejsceP;
+}
+
+void Zapytanie::setMiejsceP(const int number) {
+	this->MiejsceP = number;	
+}
+void Zapytanie::setMiejsceD(const int number) {
+	this->MiejsceD = number;
+}
+void Zapytanie::setID(const int number) {
+	this->ID = number;
 }
 
 void fillEnquiryVector(std::vector<Zapytanie>& newEnquiryVector) {	

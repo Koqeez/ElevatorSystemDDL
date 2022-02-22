@@ -28,11 +28,16 @@ public:
 
 
 	Zapytanie();  // Konstruktor to rêcznego tworzenia zapytañ w menu. Przeka¿ jakiœ obojêtny argument.
-	Zapytanie(int x , int y);
+	Zapytanie(int);
+	Zapytanie(int,int);
 
 	int getMiejsceP() const;
 	int getMiejsceD() const;
 	int getID() const;
+
+	void setMiejsceP(const int number);
+	void setMiejsceD(const int number);
+	void setID(const int number);
 };
 
 void fillEnquiryVector(std::vector<Zapytanie>&);

@@ -6,10 +6,11 @@
 #include <map>
 #include <algorithm>
 #include "ElevatorCar.h"
-#include "Zapytania.h"
 #include "Floor.h"
 #include "Algorytm.h"
 #include "Windows.h"
+#include "DataManagement.h"
+#include "GlobalVariables.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
@@ -23,26 +24,25 @@ class DispatcherUnit {
 	//AvgWaitingTime sekundy.00
 	//MaxMovingTime sekundy.00
 	//Moves[vectors] ilosc
-
+	
 
 
 	//Pierwsza ma wy³¹cznie mo¿liwoœæ tworzenia zapytania w górê, d³ugoœæ-1 ma mo¿liwoœæ wykonania zapytania jedynie w dó³ 
 
 	//std::vector<int> requests;
 
-	std::vector<Zapytanie>Enquiries;
-	std::vector<Floor>floorStatus; 
-	std::vector<ElevatorCar> allElevators; 
-	std::vector<int> moveQueue;
-
 
 
 	ElevatorCar ElevatorCar1;
+	Data Data1;
 
 
-
-
+	
 public:
+	std::vector<Zapytanie>Enquiries;
+	std::vector<Floor>floorStatus;
+	std::vector<ElevatorCar> allElevators;
+	std::vector<int> moveQueue;
 	//startElevatorSystem() -- jedyna publiczna metoda pozwalaj¹ca na wystartowanie programu
 
 	DispatcherUnit();
@@ -70,13 +70,19 @@ public:
 
 	//SYMULACJA
 	void createDefaultRequirements();
+	void usePreconfiguratedSymulation();
 	void moveElevatorCarToManual();
+
 	void goWithMoveQueue();
+	void goWithMoveQueueX(int);
 
 	//ALGORYTMY
 	void callCrossover();
 	void callTest();
 	void printMoveQueue();
+
+	//DANE
+	void callDane();
 
 private:
 

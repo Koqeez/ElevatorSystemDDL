@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorytm.cpp" />
+    <ClCompile Include="DataManagement.cpp" />
     <ClCompile Include="DispatcherUnit.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="ElevatorCar.cpp" />
@@ -152,11 +153,16 @@
     <ClInclude Include="DispatcherUnit.h" />
     <ClInclude Include="ElevatorCar.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="DataManagement.h" />
+    <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Zapytania.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Enquiries.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

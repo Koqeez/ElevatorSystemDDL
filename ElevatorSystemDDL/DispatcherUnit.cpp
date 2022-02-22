@@ -172,6 +172,17 @@ void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "------------------------------------------------------------------------" << std::endl;
 
 }
+
+void DispatcherUnit::usePreconfiguratedSymulation() {
+	//do dokonczenia
+	fillFloorVectorXY(floorStatus,0, 10);
+	allElevators.push_back(ElevatorCar1.createElevator(1, 5));
+	Data1.runDefault(Enquiries);
+	CrossoverView(Enquiries, moveQueue);
+	std::cout << std::endl;
+	goWithMoveQueueX(0);
+}
+
 void DispatcherUnit::moveElevatorCarToManual() {
 	int number, floor;
 	bool flag = true;
@@ -231,7 +242,7 @@ void DispatcherUnit::goWithMoveQueue(){
 					std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 				}
 				counter++;
-				if (counter == 19) {
+				if (counter == BestOsobnik.Fitness+1) {
 					Sleep(30000);
 					return;
 				}
@@ -240,6 +251,38 @@ void DispatcherUnit::goWithMoveQueue(){
 		}
 		std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
 	}while(flag);
+}
+void DispatcherUnit::goWithMoveQueueX(int x) {
+	int number, floor = 0, counter = 0;
+	bool flag = true;
+	if (allElevators.empty()) {
+		std::cout << "Wektor wind jest pusty";
+		return;
+	}
+	if (moveQueue.empty()) {
+		std::cout << "Wektor ruchu windy jest pusty";
+		return;
+	}
+	ElevatorCar Elevator = allElevators[x];
+	for (int move : moveQueue) {
+		std::cout << counter << "\t";
+			if (counter <= BestOsobnik.Fitness) {
+				if (move) {
+					floor++;
+				}
+				else {
+					floor--;
+				}
+				std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
+				Elevator.moveToFloor(floor);
+				std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
+			}
+		counter++;
+		if (counter == BestOsobnik.Fitness + 1) {
+			Sleep(30000);
+			return;
+		}
+	}
 }
 
 //ALGORYTMY
@@ -259,4 +302,9 @@ void DispatcherUnit::printMoveQueue() {
 			std::cout << i << " ";
 		}
 	}
+}
+
+//DANE
+void DispatcherUnit::callDane() {
+	Data1.runDefault(Enquiries);
 }

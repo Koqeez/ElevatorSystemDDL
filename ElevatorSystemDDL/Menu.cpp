@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------------------
 #include "Algorytm.h"
 
+
 //----------------------------------------------------------------------------------
 
 
@@ -117,8 +118,8 @@ void Menu::RunMainMenu() {
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
 	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
-		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA - UTWORZENIE SETU DANYCH - CROSSOVERVIEW - WYBRANIE WINDY **********",
-		"********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********","********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
+		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA - UTWORZENIE SETU DANYCH - CROSSOVERVIEW - WYBRANIE WINDY **********","********** SYMULACJA - STALY SET DANYCH **********",
+		"********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********","********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********" ,"********** DANE - TEST **********","********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 	//while ((getchar()) != '\n');
@@ -152,19 +153,31 @@ void Menu::RunMainMenu() {
 	case 5:
 		Sleep(1000);
 		system("CLS");
-		DispatcherUnit1.moveElevatorCarToManual();
+		DispatcherUnit1.usePreconfiguratedSymulation();
 		MenuDisplacer();
 		break;
 	case 6:
 		Sleep(1000);
 		system("CLS");
-		DispatcherUnit1.goWithMoveQueue();
+		DispatcherUnit1.moveElevatorCarToManual();
 		MenuDisplacer();
 		break;
 	case 7:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.goWithMoveQueue();
+		MenuDisplacer();
 		break;
 	case 8:
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.callDane();
+		MenuDisplacer();
+		break;
+	case 9:
+		DisplayInformation();
+		break;
+	case 10:
 		ExitMenu();
 		break;
 	}

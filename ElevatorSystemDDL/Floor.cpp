@@ -87,6 +87,18 @@ void fillFloorVector(std::vector<Floor>& newFloorVector) {
 	}
 }
 
+void fillFloorVectorXY(std::vector<Floor>& newFloorVector, int X, int Y){
+	//X - minFloor Y - maxFloor
+	::Floors = Y - X;
+	Y--;
+	for (int i = 0; i < ::Floors; i++) {
+		Floor Floor(i, 0);
+		newFloorVector.push_back(Floor);
+	}
+	::maxFloor = Y;
+	::minFloor = X;
+}
+
 void printFloorVariables() {
 	std::cout << "Pietro minimalne: " <<minFloor<<", pietro maksymalne: "<<maxFloor<<", ilosc pieter: "<<Floors<< std::endl;
 }

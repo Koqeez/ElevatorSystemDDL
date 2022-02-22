@@ -32,6 +32,8 @@ bool floorZeroCheck(int&);
 void printFloorVariables();
 
 void fillFloorVector(std::vector<Floor>&);
+void fillFloorVectorXY(std::vector<Floor>&, int, int);
+
 void printFloorVector(const std::vector<Floor>&);
 void addFloor(std::vector<Floor>&);
 void eraseFloor(std::vector<Floor>&);
