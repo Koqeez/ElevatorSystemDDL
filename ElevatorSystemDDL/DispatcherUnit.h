@@ -30,8 +30,9 @@ class DispatcherUnit {
 	//std::vector<int> requests;
 
 	std::vector<Zapytanie>Enquiries;
-	std::vector<Floor>floorStatus; //mapa pieter
-	std::vector<ElevatorCar> allElevators; //mapa wind
+	std::vector<Floor>floorStatus; 
+	std::vector<ElevatorCar> allElevators; 
+	std::vector<int> moveQueue;
 
 
 
@@ -68,11 +69,13 @@ public:
 
 	//SYMULACJA
 	void createDefaultRequirements();
-	void moveElevatorCarTo();
+	void moveElevatorCarToManual();
+	void goWithMoveQueue();
 
 	//ALGORYTMY
 	void callCrossover();
 	void callTest();
+	void printMoveQueue();
 
 private:
 

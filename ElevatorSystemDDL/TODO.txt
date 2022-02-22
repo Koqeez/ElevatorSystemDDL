@@ -1,5 +1,5 @@
 DO ZROBIENIA
-- !INPUT BUFFER 
+
 
 
 
@@ -31,7 +31,6 @@ DISPATCHER UNIT
 		
 		
 	
-	// Jak przekazaæ vektor z zapytaniami tez z DispacherUnit do funkcji w Algorytm.cpp i wywo³aæ j¹ w main - mo¿esz stowrzyæ funkcje z referencj¹ do wektoru, zaplanowaæ co siê stanie i wywo³aæ tê funkcje w DispatcherUnit(systemie) tak jak reszte funkcji, je¿eli o to tobie chodzi
 
 
 
@@ -40,6 +39,7 @@ DISPATCHER UNIT
 	ad.1 czesc zrobiona, potrzebne poloczenia miedzy mapa pieter a mozliwoscia tworzenia zapytan - ZROBIONE ZROBIONE ZROBIONE ZROBIONE
 	- TWORZENIE OBIEKTU WINDY W PAMIÊCI - ZROBIONE ZROBIONE ZROBIONE ZROBIONE 
 	- WYSWIETLANIE OBIEKTU WINDY - SPRAWDZANIE DZIA£ANIA(wiem jak zrobic) - ZROBIONE ZROBIONE ZROBIONE ZROBIONE 
+	- !INPUT BUFFER - WY£¥CZNIE PORUSZANIE STRZA£K¥ W DÓ£
 
 	- dostosowanie piêter do tworzenia zapytañ - ZROBIONE ZROBIONE ZROBIONE ZROBIONE
 	// Dodaj do menu te dwie ostatnie funkcje w algorytm cpp, W komentarzu masz napisane które, tylko ¿eby mo¿na by³o ich u¿ywaæ do testowania - ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE ZROBIONE

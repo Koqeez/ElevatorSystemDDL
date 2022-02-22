@@ -64,8 +64,10 @@ void DispatcherUnit::addElevatorToVector() {
 
 	int number_a, capacity_a;
 	unsigned int size = allElevators.size();
-	std::cout << "Wpisz numer windy: ";
-	std::cin >> number_a;
+	do {
+		std::cout << "Wpisz numer windy(od 1 w gore): ";
+		std::cin >> number_a;
+	} while (number_a == 0);
 	for (int i = 0; i < size; i++) {
 		while (number_a == allElevators[i].getNumber()) {
 			std::cout << "Winda z podanym numerem juz jest aktywna. " << std::endl;
@@ -81,7 +83,7 @@ void DispatcherUnit::addElevatorToVector() {
 void DispatcherUnit::displayElevatorVector() {
 	unsigned int size = allElevators.size();
 	printFloorVariables();
-	if (size == 0) {
+	if (allElevators.empty()) {
 		std::cout << "Brak wind." << std::endl;
 		return;
 	}
@@ -161,10 +163,10 @@ void DispatcherUnit::createDefaultRequirements() {
 	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
 
 }
-void DispatcherUnit::moveElevatorCarTo() {
+void DispatcherUnit::moveElevatorCarToManual() {
 	int number, floor;
 	displayElevatorVector();
-	if (allElevators.size() == 0) {
+	if (allElevators.empty()) {
 		std::cout << "Wektor wind jest pusty";
 		return;
 	}
@@ -181,11 +183,46 @@ void DispatcherUnit::moveElevatorCarTo() {
 		}
 	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
 }
+void DispatcherUnit::goWithMoveQueue(){
+	int number, floor;
+	if (allElevators.empty()) {
+		std::cout << "Wektor wind jest pusty";
+		return;
+	}
+	if (moveQueue.empty()) {
+		std::cout << "Wektor ruchu windy jest pusty";
+		return;
+	}
+	std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
+	std::cin >> number;
+	auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
+		if (it != allElevators.end())
+		{
+			//zmiana na iterator
+			auto index = std::distance(allElevators.begin(), it);
+			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
+			std::cin >> floor;
+			allElevators[index].moveToFloor(floor);
+			return;
+		}
+	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+	return;
+}
 
 //ALGORYTMY
 void DispatcherUnit::callCrossover() {
-	CrossoverView(Enquiries);
+	CrossoverView(Enquiries, moveQueue);
 }
 void DispatcherUnit::callTest() {
 	Testowa();
+}void DispatcherUnit::printMoveQueue() {
+	if (moveQueue.empty()) {
+		std::cout << "Wektor ruchu windy jest pusty.";
+		return;
+	}
+	else {
+		for (int i : moveQueue) {
+			std::cout << i << " ";
+		}
+	}
 }

@@ -203,7 +203,7 @@ void IsBest(std::vector<Osobnik> arr) { // Wywo³ywaæ po SortFitness
 		BestOsobnik = arr[0];
 	}
 }
-void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
+void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& moveQueueVector) {
 		int NumberOfGenerations = 0;
 		srand(time(NULL));
 		std::vector<Osobnik> o(PopulationStartSize);
@@ -231,6 +231,9 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
 			PrintInformations(o, BestOsobnik, NumberOfGenerations);
 		}
 		std::cout << std::endl;
+		for (int i = 0; i < DNALength; i++) {
+			moveQueueVector.push_back(BestOsobnik.DNA[i]);
+		}
 		for (int i = 0; i < DNALength; i++) {
 			std::cout << BestOsobnik.DNA[i] << " ";
 		}

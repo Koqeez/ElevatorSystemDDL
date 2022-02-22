@@ -57,28 +57,33 @@ void sortVector(std::vector<Floor>& newFloorVector) {
 
 void fillFloorVector(std::vector<Floor>& newFloorVector) {
 	//bez piêter poni¿ej zera
-	do {
-		if (std::cin.fail()) {
-			std::cin.ignore(INT_MAX, '\n');
-			std::cin.clear();
+	if (newFloorVector.empty()) {
+		do {
+			if (std::cin.fail()) {
+				std::cin.ignore(INT_MAX, '\n');
+				std::cin.clear();
+			}
+			if (std::cin.peek() == '\n') std::cin.ignore();
+			std::cout << "Podaj pierwsze pietro:";
+			std::cin >> ::minFloor;
+		} while (std::cin.fail());
+		std::cout << "Podaj ostatnie pietro:";
+		std::cin >> ::maxFloor;
+		if (::minFloor > ::maxFloor) {
+			std::cout << "Podane dane sa zle." << std::endl;
+			return;
 		}
-		if (std::cin.peek() == '\n') std::cin.ignore();
-		std::cout << "Podaj pierwsze pietro:";
-		std::cin >> ::minFloor;
-	} while (std::cin.fail());
-	std::cout << "Podaj ostatnie pietro:";
-	std::cin >> ::maxFloor;
-	if (::minFloor > ::maxFloor) {
-		std::cout << "Podane dane sa zle." << std::endl;
-		return;
-	}
-	::Floors = ::maxFloor - ::minFloor;
-	::maxFloor--;
-	std::cout << "Budynek bedzie mial " << ::Floors << " pieter.\n";
+		::Floors = ::maxFloor - ::minFloor;
+		::maxFloor--;
+		std::cout << "Budynek bedzie mial " << ::Floors << " pieter.\n";
 
-	for (int i = 0; i < ::Floors; i++) {
-		Floor Floor(i,0);
-		newFloorVector.push_back(Floor);
+		for (int i = 0; i < ::Floors; i++) {
+			Floor Floor(i, 0);
+			newFloorVector.push_back(Floor);
+		}
+	}
+	else {
+		std::cout << "Budynek ma juz stworzone pietra. Przed stworzeniem nowego, usun stary." << std::endl;
 	}
 }
 

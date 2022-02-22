@@ -118,7 +118,7 @@ void Menu::RunMainMenu() {
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
 	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
 		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA **********",
-		"********** MOVE ELEVATOR - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
+		"********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********","********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 	//while ((getchar()) != '\n');
@@ -152,13 +152,19 @@ void Menu::RunMainMenu() {
 	case 5:
 		Sleep(1000);
 		system("CLS");
-		DispatcherUnit1.moveElevatorCarTo();
+		DispatcherUnit1.moveElevatorCarToManual();
 		MenuDisplacer();
 		break;
 	case 6:
-		DisplayInformation();
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.goWithMoveQueue();
+		MenuDisplacer();
 		break;
 	case 7:
+		DisplayInformation();
+		break;
+	case 8:
 		ExitMenu();
 		break;
 	}
@@ -242,7 +248,7 @@ void Menu::DisplayAlgorithmOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ALGORYTMU ********************";
-	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** TESTOWA **********","********** POWROT **********" };
+	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** TESTOWA **********","********** WYSWIETL VECTOR RUCHOW **********","********** POWROT **********" };
 	Menu AlgorithmMenu(Prompt, Options);
 
 	int SelectedIndex = AlgorithmMenu.Run();
@@ -258,10 +264,15 @@ void Menu::DisplayAlgorithmOptions() {
 		DispatcherUnit1.callTest();
 		MenuAlgorithmDisplacer();
 		break;
-
 	case 2:
 		system("cls");
-		RunMainMenu();
+		DispatcherUnit1.printMoveQueue();
+		MenuAlgorithmDisplacer();
+		break;
+
+	case 3:
+		system("cls");
+		MenuDisplacer();
 		break;
 	}
 }
