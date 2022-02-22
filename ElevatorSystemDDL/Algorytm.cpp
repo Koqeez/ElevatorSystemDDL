@@ -73,6 +73,9 @@ void FitnessSimulation(Osobnik& x, std::vector<Zapytanie> newEnquiryVector) {
 	for (int i = 0; i < CurrentF.size(); i++) {
 		for (int j = 0; j < EnquirySize; j++) {
 			if (newEnquiryVector[j].MiejsceP == CurrentF[i]) {
+				if (Queue.size() >= 8) { // Tutaj zamiast 8
+					break;
+				}
 				Queue.push_back(newEnquiryVector[j]);
 				newEnquiryVector.erase(newEnquiryVector.begin() + j);
 				j--;
@@ -238,7 +241,7 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& mo
 		}
 }
 void Testowa() {
-	
+	std::cout << "Wpisz d³ugoœæ DNA: ";
 	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
