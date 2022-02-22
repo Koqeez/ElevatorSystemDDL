@@ -161,6 +161,15 @@ void DispatcherUnit::createDefaultRequirements() {
 		std::cout << "--- BLAD W TWORZENIU ZAPYTAN ---" << std::endl;
 	}
 	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
+	std::cout << "------------------------------------------------------------------------" << std::endl;
+	std::cout << "---- CROSSOVER VIEW ----" << std::endl;
+	CrossoverView(Enquiries, moveQueue);
+	std::cout << "---- CROSSOVER VIEW SKONCZONE ----" << std::endl;
+	std::cout << "------------------------------------------------------------------------" << std::endl;
+	std::cout << "---- URUCHAMIANIE WINDY ----" << std::endl;
+	goWithMoveQueue();
+	std::cout << "---- PRACA SKONCZONA ----" << std::endl;
+	std::cout << "------------------------------------------------------------------------" << std::endl;
 
 }
 void DispatcherUnit::moveElevatorCarToManual() {

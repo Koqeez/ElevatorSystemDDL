@@ -22,6 +22,9 @@ public:
 	//int CzasP; // Czas Podró¿y na przysz³oœæ
 	bool IsInCar = false;
 
+	//jeden licznik
+	//inna funkcja, czas, ka¿de zapytanie dostaje timestamp podczas odbioru
+
 
 
 	Zapytanie();  // Konstruktor to rêcznego tworzenia zapytañ w menu. Przeka¿ jakiœ obojêtny argument.

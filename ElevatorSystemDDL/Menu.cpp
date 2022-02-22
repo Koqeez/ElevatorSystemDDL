@@ -117,7 +117,7 @@ void Menu::RunMainMenu() {
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
 	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
-		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA **********",
+		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA - UTWORZENIE SETU DANYCH - CROSSOVERVIEW - WYBRANIE WINDY **********",
 		"********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********","********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********" ,"********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
