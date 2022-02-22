@@ -165,26 +165,33 @@ void DispatcherUnit::createDefaultRequirements() {
 }
 void DispatcherUnit::moveElevatorCarToManual() {
 	int number, floor;
+	bool flag = true;
 	displayElevatorVector();
 	if (allElevators.empty()) {
 		std::cout << "Wektor wind jest pusty";
 		return;
 	}
-	std::cout << "Wybierz winde ktora ma wykonac ruch(index) - jak narazie: " << std::endl;
-	std::cin >> number;
-	number--;
-	unsigned int x = allElevators[number].getNumber();
-	if(x != 0){
-			
+	do {
+		std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
+		std::cin >> number;
+		auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
+		if (it != allElevators.end())
+		{
+			flag = false;
+			ElevatorCar Elevator = *it;
 			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
 			std::cin >> floor;
-			allElevators[number].moveToFloor(floor);
+			Elevator.moveToFloor(floor);
+			//auto index = std::distance(allElevators.begin(), it);
+			//allElevators[index].moveToFloor(floor);
 			return;
 		}
-	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+		std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+	} while (flag);
 }
 void DispatcherUnit::goWithMoveQueue(){
-	int number, floor;
+	int number, floor = 0,counter = 0;
+	bool flag = true;
 	if (allElevators.empty()) {
 		std::cout << "Wektor wind jest pusty";
 		return;
@@ -193,20 +200,37 @@ void DispatcherUnit::goWithMoveQueue(){
 		std::cout << "Wektor ruchu windy jest pusty";
 		return;
 	}
-	std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
-	std::cin >> number;
-	auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
+	do{
+		std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
+		std::cin >> number;
+		auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
 		if (it != allElevators.end())
 		{
-			//zmiana na iterator
-			auto index = std::distance(allElevators.begin(), it);
-			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
-			std::cin >> floor;
-			allElevators[index].moveToFloor(floor);
+			flag = false;
+			ElevatorCar Elevator = *it;
+			for (int move : moveQueue) {
+				std::cout << counter << "\t";
+				if(counter <= BestOsobnik.Fitness) {
+					if (move) {
+						floor++;
+					}
+					else {
+						floor--;
+					}
+					std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
+					Elevator.moveToFloor(floor);
+					std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
+				}
+				counter++;
+				if (counter == 19) {
+					Sleep(30000);
+					return;
+				}
+			}
 			return;
 		}
-	std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
-	return;
+		std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+	}while(flag);
 }
 
 //ALGORYTMY
@@ -215,7 +239,8 @@ void DispatcherUnit::callCrossover() {
 }
 void DispatcherUnit::callTest() {
 	Testowa();
-}void DispatcherUnit::printMoveQueue() {
+}
+void DispatcherUnit::printMoveQueue() {
 	if (moveQueue.empty()) {
 		std::cout << "Wektor ruchu windy jest pusty.";
 		return;

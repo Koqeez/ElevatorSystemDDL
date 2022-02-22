@@ -7,10 +7,10 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 //----------------------------------------------------------------------------------
-extern int MinPietro;
-extern int MaxPietro;
-extern int IloscPieter;
-extern int GlobalID;
+//extern int minFloor;
+//extern int maxFloor;
+//extern int Floors;
+//extern int GlobalID;
 //----------------------------------------------------------------------------------
 
 class Zapytanie {

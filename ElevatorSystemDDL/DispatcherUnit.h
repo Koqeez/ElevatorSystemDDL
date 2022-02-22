@@ -9,6 +9,7 @@
 #include "Zapytania.h"
 #include "Floor.h"
 #include "Algorytm.h"
+#include "Windows.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
