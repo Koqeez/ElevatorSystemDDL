@@ -49,7 +49,7 @@ std::vector<int> TranslateDNA(Osobnik x) {
 			}
 		}
 		else {
-			if (y == 0) {  // Poprawiæ na MinPietro
+			if (y == minFloor) { 
 				xx.push_back(y);
 			}
 			else {
@@ -229,13 +229,11 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& mo
 			PrintInformations(o, BestOsobnik, NumberOfGenerations);
 		}
 		std::cout << std::endl;
-		for (int i = 0; i < DNALength; i++) {
-			moveQueueVector.push_back(BestOsobnik.DNA[i]);
-		}
-		for (int i = 0; i < DNALength; i++) {
-			std::cout << BestOsobnik.DNA[i] << " ";
-		}
 
+		for (int move : BestOsobnik.DNA) {
+			moveQueueVector.push_back(move);
+			std::cout << move << " ";
+		}
 }
 void Testowa() {
 	
