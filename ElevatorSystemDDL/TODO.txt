@@ -20,7 +20,7 @@ DISPATCHER UNIT
 
 	usuwanie gdy winda bedzie na pietrze, 
 	funkcja symulacji:
-		sledzenie polozenia rozwiazania
+		sledzenie polozenia rozwiazania - ZROBIONE ZROBIONE ZROBIONE ZROBIONE 
 
 	symulacja domyœlna
 		- POCZATEK JEST - TERAZ POTRZEBNY JEST ALGORYTM KTORY BEDZIE CIAGLY, LUB DA JAKIS WYNIK DO INTERPRETACJI

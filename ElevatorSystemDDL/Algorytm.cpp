@@ -9,8 +9,6 @@ int GenerationAmount = 40;
 const int MutationRate = 50; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 const int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji
 int PopulationSize = 0; // Obecna wielkoœæ populacji
-int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
-int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
 Osobnik BestOsobnik;
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < DNALength; i++) {
