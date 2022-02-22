@@ -5,9 +5,9 @@ extern const int DNALength;  // Sta³a d³ugoœæ ³añcucha DNA
 extern int maxFloor;
 extern int minFloor; //Na przyszlosc do poprawienia liniki 49
 extern std::vector<Zapytanie>Enquiries;
-
-const int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
-const int PopulationStartSize = 100; // Wielkoœæ pocz¹tkowa populacji
+int GenerationAmount = 200;
+const int MutationRate = 50; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
+const int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji
 int PopulationSize = 0; // Obecna wielkoœæ populacji
 int FloorMoveTime = 5; // Wyra¿ony w sekundach czas podró¿y miêdzy jednym piêtrem
 int FloorWaitTime = 2; // Wyra¿ony w sekundach czas otwarcia i oczekiwania windy na piêtrze
@@ -216,7 +216,7 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector) {
 		SortFitness(o);
 		IsBest(o);
 		PrintInformations(o, BestOsobnik, NumberOfGenerations);
-		while (NumberOfGenerations < 100) {
+		while (NumberOfGenerations < GenerationAmount) {
 			NumberOfGenerations++;
 			Crossover(o);
 			for (int i = 0; i < o.size(); i++) {
