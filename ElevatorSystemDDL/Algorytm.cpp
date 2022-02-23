@@ -73,7 +73,7 @@ void ClearData() {  // Czyœcie dane na razie tylko tyle trzeba aby ponownie uruc
 }
 void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { // Wywo³ywaæ po sortFitness
 	std::cout << "Najlepszy Fitness w " << generationC <<" Generacji: " <<  arr[0].Fitness << " Ilosc ruchow: " << arr[0].MovesAmount << std::endl;
-	std::cout << "Najlepszy Fitness w " << generationC << " Generacji: " << x.Fitness << " Ilosc ruchow: " << x.MovesAmount << std::endl;
+	std::cout << "Najlepszy Fitness zawsze to: " << x.Fitness << " Ilosc ruchow: " << x.MovesAmount << std::endl;
 }
 double NormalizingFitness(double f, int max, int min) {
 	double x = ((f - min) / (max - min)) * (FitnessScaleMax - FitnessScaleMin) + FitnessScaleMin;
