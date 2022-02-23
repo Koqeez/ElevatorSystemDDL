@@ -140,163 +140,191 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 }
 
 //SYMULACJA
-void DispatcherUnit::incrementSimulationTime() {
-	this->simulationTimePtr->incrementTime();
+	//CZAS
+		void DispatcherUnit::incrementSimulationTime() {
+			this->simulationTimePtr->incrementTime();
 
-}
+		}
+		void DispatcherUnit::resetSimulationTime() {
+			this->simulationTimePtr->setTime(0);
+		}
+		int DispatcherUnit::getTime() {
+			return this->simulationTimePtr->getTime();
+		}
+	//TWORZENIE PODSTAW
+		void DispatcherUnit::createDefaultRequirements() {
+			std::cout << "---- TWORZENIE MAPY PIETER ----" << std::endl;
+			createFloorVector();
+			if (floorStatus.size() == 0) {
+				std::cout << "--- BLAD W TWORZENIU MAPY PIETER ---" << std::endl;
+			}
+			std::cout << "---- MAPA PIETER STWORZONA ----" << std::endl;
 
-void DispatcherUnit::resetSimulation() {
-	this->simulationTimePtr->setTime(0);
-}
+			std::cout << "---- TWORZENIE WINDY ----" << std::endl;
+			addElevatorToVector();
+			if (allElevators.size() == 0) {
+				std::cout << "--- BLAD W TWORZENIU WINDY ---" << std::endl;
+			}
+			std::cout << "---- WINDA STWORZONA ----" << std::endl;
 
+			std::cout << "---- TWORZENIE ZAPYTAN ----" << std::endl;
+			addEnquiryToVector();
+			if (Enquiries.size() == 0) {
+				std::cout << "--- BLAD W TWORZENIU ZAPYTAN ---" << std::endl;
+			}
+			std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
+			std::cout << "------------------------------------------------------------------------" << std::endl;
+			std::cout << "---- CROSSOVER VIEW ----" << std::endl;
+			CrossoverView(Enquiries, moveQueue);
+			std::cout << "---- CROSSOVER VIEW SKONCZONE ----" << std::endl;
+			std::cout << "------------------------------------------------------------------------" << std::endl;
+			std::cout << "---- URUCHAMIANIE WINDY ----" << std::endl;
+			goWithMoveQueue();
+			std::cout << "---- PRACA SKONCZONA ----" << std::endl;
+			std::cout << "------------------------------------------------------------------------" << std::endl;
 
-void DispatcherUnit::createDefaultRequirements() {
-	std::cout << "---- TWORZENIE MAPY PIETER ----" << std::endl;
-	createFloorVector();
-	if (floorStatus.size() == 0) {
-		std::cout << "--- BLAD W TWORZENIU MAPY PIETER ---" << std::endl;
-	}
-	std::cout << "---- MAPA PIETER STWORZONA ----" << std::endl;
-
-	std::cout << "---- TWORZENIE WINDY ----" << std::endl;
-	addElevatorToVector();
-	if (allElevators.size() == 0) {
-		std::cout << "--- BLAD W TWORZENIU WINDY ---" << std::endl;
-	}
-	std::cout << "---- WINDA STWORZONA ----" << std::endl;
-
-	std::cout << "---- TWORZENIE ZAPYTAN ----" << std::endl;
-	addEnquiryToVector();
-	if (Enquiries.size() == 0) {
-		std::cout << "--- BLAD W TWORZENIU ZAPYTAN ---" << std::endl;
-	}
-	std::cout << "---- ZAPYTANIA STWORZONE ----" << std::endl;
-	std::cout << "------------------------------------------------------------------------" << std::endl;
-	std::cout << "---- CROSSOVER VIEW ----" << std::endl;
-	CrossoverView(Enquiries, moveQueue);
-	std::cout << "---- CROSSOVER VIEW SKONCZONE ----" << std::endl;
-	std::cout << "------------------------------------------------------------------------" << std::endl;
-	std::cout << "---- URUCHAMIANIE WINDY ----" << std::endl;
-	goWithMoveQueue();
-	std::cout << "---- PRACA SKONCZONA ----" << std::endl;
-	std::cout << "------------------------------------------------------------------------" << std::endl;
-
-}
-void DispatcherUnit::usePreconfiguratedSymulation() {
-	static const int SEC_NEXT_FLOOR = 10;
+		}
+		void DispatcherUnit::usePreconfiguratedSymulation() {
+		static const int SEC_NEXT_FLOOR = 10;
 
 	
-	//do dokonczenia
-	fillFloorVectorXY(floorStatus,0, 10);
-	allElevators.push_back(ElevatorCar1.createElevator(1, 5));
-	Data1.runDefault(Enquiries);
-	CrossoverView(Enquiries, moveQueue);
-	std::cout << std::endl;
-	goWithMoveQueueX(0);
+		//do dokonczenia
+		fillFloorVectorXY(floorStatus,0, 10);
+		allElevators.push_back(ElevatorCar1.createElevator(1, 5));
+		Data1.runDefault(Enquiries);
+		CrossoverView(Enquiries, moveQueue);
+		std::cout << std::endl;
+		goWithMoveQueueX(0);
 
-	this->resetSimulation();
-}
-void DispatcherUnit::moveElevatorCarToManual() {
-	int number, floor;
-	bool flag = true;
-	displayElevatorVector();
-	if (allElevators.empty()) {
-		std::cout << "Wektor wind jest pusty";
-		return;
+		this->resetSimulation();
 	}
-	do {
-		std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
-		std::cin >> number;
-		auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
-		if (it != allElevators.end())
-		{
-			flag = false;
-			ElevatorCar Elevator = *it;
-			std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
-			std::cin >> floor;
-			Elevator.moveToFloor(floor);
-			//auto index = std::distance(allElevators.begin(), it);
-			//allElevators[index].moveToFloor(floor);
-			return;
+	//RUCH WINDY
+		void DispatcherUnit::moveElevatorCarToManual() {
+			int number, floor;
+			bool flag = true;
+			displayElevatorVector();
+			if (allElevators.empty()) {
+				std::cout << "Wektor wind jest pusty";
+				return;
+			}
+			do {
+				std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
+				std::cin >> number;
+				auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
+				if (it != allElevators.end())
+				{
+					flag = false;
+					ElevatorCar Elevator = *it;
+					std::cout << "Podaj pietro na ktore ma sie przeniesc: " << std::endl;
+					std::cin >> floor;
+					Elevator.moveToFloor(floor);
+					//auto index = std::distance(allElevators.begin(), it);
+					//allElevators[index].moveToFloor(floor);
+					return;
+				}
+				std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+			} while (flag);
 		}
-		std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
-	} while (flag);
-}
-void DispatcherUnit::goWithMoveQueue(){
-	int number, floor = 0,counter = 0;
-	bool flag = true;
-	if (allElevators.empty()) {
-		std::cout << "Wektor wind jest pusty";
-		return;
-	}
-	if (moveQueue.empty()) {
-		std::cout << "Wektor ruchu windy jest pusty";
-		return;
-	}
-	do{
-		std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
-		std::cin >> number;
-		auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
-		if (it != allElevators.end())
-		{
-			flag = false;
-			ElevatorCar Elevator = *it;
+		void DispatcherUnit::goWithMoveQueue(){
+			int number, floor = 0,counter = 0;
+			bool flag = true;
+			if (allElevators.empty()) {
+				std::cout << "Wektor wind jest pusty";
+				return;
+			}
+			if (moveQueue.empty()) {
+				std::cout << "Wektor ruchu windy jest pusty";
+				return;
+			}
+			do{
+				std::cout << "Wybierz numer windy ktora ma wykonac ruch: " << std::endl;
+				std::cin >> number;
+				auto it = std::find_if(allElevators.begin(), allElevators.end(), [&number](ElevatorCar& obj) {return obj.getNumber() == number; });
+				if (it != allElevators.end())
+				{
+					flag = false;
+					ElevatorCar Elevator = *it;
+					for (int move : moveQueue) {
+						std::cout << counter << "\t";
+						if(counter <= BestOsobnik.MovesAmount) {
+							if (move && floor < maxFloor) {
+								Elevator.setDirection(1);
+								floor++;
+							}
+							else if (move && floor == maxFloor) {
+								Elevator.setDirection(2);
+								continue;
+							}
+							else if(move == 0 && floor > minFloor) {
+								Elevator.setDirection(0);
+								floor--;
+							}
+							else if(move == 0 && floor == minFloor){
+								Elevator.setDirection(2);
+								continue;
+							}
+							std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze w kierunku: "<<Elevator.getDirectionString()<<"."<< std::endl;
+							Elevator.moveToFloor(floor);
+							std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
+						}
+						counter++;
+						if (counter == BestOsobnik.MovesAmount +1) {
+							Sleep(30000);
+							return;
+						}
+					}
+					return;
+				}
+				std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
+			}while(flag);
+		}
+		void DispatcherUnit::goWithMoveQueueX(int x) {
+			int number, floor = 0, counter = 0;
+			bool flag = true;
+			if (allElevators.empty()) {
+				std::cout << "Wektor wind jest pusty";
+				return;
+			}
+			if (moveQueue.empty()) {
+				std::cout << "Wektor ruchu windy jest pusty";
+				return;
+			}
+			ElevatorCar Elevator = allElevators[x];
 			for (int move : moveQueue) {
 				std::cout << counter << "\t";
-				if(counter <= BestOsobnik.MovesAmount) {
-					if (move) {
-						floor++;
+					if (counter <= BestOsobnik.MovesAmount) {
+						if (move) {
+							floor++;
+						}
+						else {
+							floor--;
+						}
+						std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
+						Elevator.moveToFloor(floor);
+						std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 					}
-					else {
-						floor--;
-					}
-					std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
-					Elevator.moveToFloor(floor);
-					std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
-				}
 				counter++;
-				if (counter == BestOsobnik.MovesAmount +1) {
+				if (counter == BestOsobnik.MovesAmount + 1) {
 					Sleep(30000);
 					return;
 				}
 			}
-			return;
 		}
-		std::cout << "Winda o podanym numerze nie istnieje." << std::endl;
-	}while(flag);
-}
-void DispatcherUnit::goWithMoveQueueX(int x) {
-	int number, floor = 0, counter = 0;
-	bool flag = true;
-	if (allElevators.empty()) {
-		std::cout << "Wektor wind jest pusty";
-		return;
-	}
-	if (moveQueue.empty()) {
-		std::cout << "Wektor ruchu windy jest pusty";
-		return;
-	}
-	ElevatorCar Elevator = allElevators[x];
-	for (int move : moveQueue) {
-		std::cout << counter << "\t";
-			if (counter <= BestOsobnik.MovesAmount) {
-				if (move) {
-					floor++;
+	//SYMULACJA
+		void DispatcherUnit::runSimulation() {
+			this->simulationTimePtr->setTime(0);
+			while (true) {
+				this->incrementSimulationTime();
+				std::cout << this->simulationTimePtr->getTime() << std::endl;
+				if (this->simulationTimePtr->getTime() == 1000) {
+					std::cout << "Koniec czasu";
+					break;
 				}
-				else {
-					floor--;
-				}
-				std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
-				Elevator.moveToFloor(floor);
-				std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 			}
-		counter++;
-		if (counter == BestOsobnik.MovesAmount + 1) {
-			Sleep(30000);
-			return;
 		}
-	}
-}
+		void DispatcherUnit::resetSimulation() {
+
+		}
 
 //ALGORYTMY
 void DispatcherUnit::callCrossover() {
@@ -318,6 +346,10 @@ void DispatcherUnit::printMoveQueue() {
 			std::cout << i << " ";
 		}
 	}
+}
+void DispatcherUnit::printDNA() {
+	PrintRandomDNAForPopulation(AlgorithmPopulationSize());
+	Sleep(30000); //GDY JU¯ NIE BÊDZIESZ MUSIAL NICZEGO SPRAWDZAC TO USUN SLEEP
 }
 
 //DANE

@@ -166,6 +166,7 @@
     <Text Include="Resource Files\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Program Debug\DNA.csv" />
     <None Include="Program Debug\Enquiries.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

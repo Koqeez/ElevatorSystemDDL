@@ -13,10 +13,11 @@ class ElevatorCar {
 	int capacity = 0, currentFloor = 0, currentLoad = 0, number = 0;
 	int minFloorElev, maxFloorElev;
 	//int destination
-	enum ElevatorCarDirection {
-		UP, DOWN, IDLE
-	};
-	ElevatorCar::ElevatorCarDirection direction = IDLE;
+	enum ElevatorCarDirection {DOWN ,UP, IDLE};
+	const char* enum_str[3] = { "DOWN", "UP", "IDLE"};
+
+
+	ElevatorCarDirection direction = IDLE;
 	//IDLE (->) minFloor
 
 	// W przysz³oœci mo¿e byæ podzielone na segmenty
@@ -36,7 +37,10 @@ public:
 	int getNumber();
 	int getMinFloorElev();
 	int getMaxFloorElev();
+
+	void setDirection(int);
 	ElevatorCarDirection getDirection();
+	const char* getDirectionString();
 
 
 };

@@ -1,8 +1,10 @@
 #include "Floor.h"
+#include "GlobalVariables.h"
 
 int maxFloor;
 int minFloor;
 int Floors;
+int GlobalID = 0;
 
 Floor::Floor() {
 	/*int floor, status;

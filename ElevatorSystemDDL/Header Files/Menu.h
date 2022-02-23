@@ -30,15 +30,15 @@ public:
 	void DisplayElevatorOptions();
 	void DisplayAlgorithmOptions();
 	void DisplayEnquiryOptions();
+	void DisplaySimulationOptions();
 
 	void DisplayMapChangeOptions();
-
-	void DisplayInformation();
 
 	void MenuDisplacer();
 	void MenuMapDisplacer();
 	void MenuElevatorDisplacer();
 	void MenuAlgorithmDisplacer();
 	void MenuEnquiryDisplacer();
+	void MenuSimulationDisplacer();
 	void MenuMapChangeDisplacer();
 };

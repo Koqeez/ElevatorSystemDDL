@@ -12,9 +12,6 @@
 #include "DataManagement.h"
 #include "SimulationTime.h"
 
-
-#include "GlobalVariables.h"
-
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
 	//How to move the elevator car
@@ -38,8 +35,7 @@ class DispatcherUnit {
 
 	ElevatorCar ElevatorCar1;
 	Data Data1;
-
-	SimulationTime* simulationTimePtr;
+	SimulationTime* simulationTimePtr = new SimulationTime;
 	
 public:
 	std::vector<Zapytanie>Enquiries;
@@ -71,24 +67,30 @@ public:
 	void addOneEnquiry();
 	void eraseOneEnquiryDisplay();
 
+
+
 	//SYMULACJA
-	void incrementSimulationTime();
-	int getTime() const;
-
-	void resetSimulation();
-
-	void createDefaultRequirements();
-	void usePreconfiguratedSymulation();
-	void moveElevatorCarToManual();
-
-	void goWithMoveQueue();
-	void goWithMoveQueueX(int);
+		//CZAS
+			void incrementSimulationTime();
+			void resetSimulationTime();
+			int getTime();
+		//TWORZENIE PODSTAW
+			void createDefaultRequirements();
+			void usePreconfiguratedSymulation();
+		//RUCH WINDY
+			void moveElevatorCarToManual();
+			void goWithMoveQueue();
+			void goWithMoveQueueX(int);
+		//SYMULACJA
+			void runSimulation();
+			void resetSimulation();
 
 	//ALGORYTMY
 	void callCrossover();
 	void callAlgorithmConfiguration();
 	void simulationTest();
 	void printMoveQueue();
+	void printDNA();
 
 	//DANE
 	void callDane();

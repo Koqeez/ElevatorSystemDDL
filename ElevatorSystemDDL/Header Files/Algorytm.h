@@ -22,13 +22,17 @@ public:
 	void GenerateRandomDNA();
 	void Mutate();
 	void IsDone(int index);
+
+	std::vector<int> getDNA();
 };
 
 #endif
 
 extern Osobnik BestOsobnik;
 extern Osobnik BestOsobnik2;
+void PrintRandomDNAForPopulation(int);
 void CrossoverView(std::vector<Zapytanie>,std::vector<int>&);
 void AlgorithmConfiguration();
+int  AlgorithmPopulationSize();
 void Symulacja2();
 std::vector<int> TranslateDNA(Osobnik);

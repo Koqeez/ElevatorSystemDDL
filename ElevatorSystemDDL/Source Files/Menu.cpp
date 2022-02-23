@@ -6,16 +6,10 @@
 #include <stdio.h>
 #include <climits>
 
-
-
 //----------------------------------------------------------------------------------
 #include "Algorytm.h"
-
-
 //----------------------------------------------------------------------------------
 
-
-// cos
 void ClearScreen()
 {
 	COORD cursorPosition;	
@@ -30,8 +24,6 @@ void CursorAppear(bool visible) {
 	info.bVisible = visible;
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
 }
-
-
 
 using namespace std;
 
@@ -54,8 +46,8 @@ Menu::Menu(string prompt_a, vector<string>& options_a) {
 	Options = options_a;
 	SelectedIndex = 0;
 };
-Menu::Menu(){}; //domysly konstruktor jako obiekt inicjunijacy metode tworzaca menu
 
+Menu::Menu(){}; //domysly konstruktor jako obiekt inicjunijacy metode tworzaca menu
 Menu::~Menu() {};
 
 
@@ -118,8 +110,9 @@ void Menu::RunMainMenu() {
 	system("cls");
 	string Prompt = "******************** MENU SYSTEM WINDY ********************";
 	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
-		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,"********** SYMULACJA - UTWORZENIE SETU DANYCH - CROSSOVERVIEW - WYBRANIE WINDY **********","********** SYMULACJA - STALY SET DANYCH **********",
-		"********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********","********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********" ,"********** DANE - TEST **********","********** WYSWIETL INFORMACJE **********" ,"********** WYJSCIE **********" };
+		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,
+		"********** OPCJE DOTYCZACE - SYMULACJI **********",
+		"********** DANE - TEST **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 	//while ((getchar()) != '\n');
@@ -147,37 +140,15 @@ void Menu::RunMainMenu() {
 	case 4:
 		Sleep(1000);
 		system("CLS");
-		DispatcherUnit1.createDefaultRequirements();
-		MenuDisplacer();
+		DisplaySimulationOptions();
 		break;
 	case 5:
-		Sleep(1000);
-		system("CLS");
-		DispatcherUnit1.usePreconfiguratedSymulation();
-		MenuDisplacer();
-		break;
-	case 6:
-		Sleep(1000);
-		system("CLS");
-		DispatcherUnit1.moveElevatorCarToManual();
-		MenuDisplacer();
-		break;
-	case 7:
-		Sleep(1000);
-		system("CLS");
-		DispatcherUnit1.goWithMoveQueue();
-		MenuDisplacer();
-		break;
-	case 8:
 		Sleep(1000);
 		system("CLS");
 		DispatcherUnit1.callDane();
 		MenuDisplacer();
 		break;
-	case 9:
-		DisplayInformation();
-		break;
-	case 10:
+	case 6:
 		ExitMenu();
 		break;
 	}
@@ -261,7 +232,7 @@ void Menu::DisplayAlgorithmOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ALGORYTMU ********************";
-	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** KONFIGURACJA **********","********** TESTOWA SYMULACJA **********", "********** WYSWIETL VECTOR RUCHOW **********","********** POWROT **********" };
+	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** KONFIGURACJA **********","********** TESTOWA SYMULACJA **********","********** WYSWIETL KOLEJKE RUCHOW **********" ,"********** WYSWIETL DNA WYGENEROWANEJ POPULACJI **********","********** POWROT **********" };
 	Menu AlgorithmMenu(Prompt, Options);
 
 	int SelectedIndex = AlgorithmMenu.Run();
@@ -288,6 +259,11 @@ void Menu::DisplayAlgorithmOptions() {
 		MenuAlgorithmDisplacer();
 		break;
 	case 4:
+		system("cls");
+		DispatcherUnit1.printDNA();
+		MenuAlgorithmDisplacer();
+		break;
+	case 5:
 		system("cls");
 		MenuDisplacer();
 		break;
@@ -335,6 +311,55 @@ void Menu::DisplayEnquiryOptions() {
 	}
 }
 
+void Menu::DisplaySimulationOptions() {
+	Sleep(1000);
+	system("cls");
+	string Prompt = "******************** MENU DOTYCZACE SYMULACJI ********************";
+	vector<string>Options = { "********** SYMULACJA - UTWORZENIE SETU DANYCH - CROSSOVERVIEW - WYBRANIE WINDY **********",
+		"********** SYMULACJA - STALY SET DANYCH **********", "********** MOVE ELEVATOR MANUAL - TEST - POCZATEK **********",
+		"********** MOVE ELEVATOR AUTOMATIC - TEST - POCZATEK **********","********** WLACZ SYMULACJE **********","********** POWROT **********" };
+	Menu SimulationMenu(Prompt, Options);
+
+	int SelectedIndex = SimulationMenu.Run();
+
+	switch (SelectedIndex) {
+	case 0:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.createDefaultRequirements();
+		MenuSimulationDisplacer();
+		break;
+	case 1:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.usePreconfiguratedSymulation();
+		MenuSimulationDisplacer();
+		break;
+	case 2:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.moveElevatorCarToManual();
+		MenuSimulationDisplacer();
+		break;
+	case 3:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.goWithMoveQueue();
+		MenuSimulationDisplacer();
+		break;
+	case 4:
+		Sleep(1000);
+		system("cls");
+		DispatcherUnit1.runSimulation();
+		MenuSimulationDisplacer();
+		break;
+	case 5:
+		system("cls");
+		MenuDisplacer();
+		break;
+	}
+}
+
 void Menu::DisplayMapChangeOptions() {
 	Sleep(1000);
 	system("cls");
@@ -368,32 +393,10 @@ void Menu::DisplayMapChangeOptions() {
 		DisplayMapOptions();
 		break;
 	case 4:
-		//system("cls");
-		//DisplayMapOptions();
-		//MenuDisplacer();
+		system("cls");
+		MenuMapDisplacer();
 		break;
 	}
-}
-
-
-
-
-
-
-void Menu::DisplayInformation() {
-	system("cls");
-	//cout << "Informacje.";
-	//cout << "\nNadus enter by wrocic do menu glownego.";
-	int test;
-	
-	//while ((getchar()) != '\n');
-	//std::cout<<std::endl;
-	//cin.sync();
-	//system("cls");
-	cin >> test;
-	cout << test;
-	MenuDisplacer();
-	
 }
 
 
@@ -464,6 +467,18 @@ void Menu::MenuEnquiryDisplacer() {
 	}
 }
 
+void Menu::MenuSimulationDisplacer() {
+	Sleep(1000);
+	bool flaga = true;
+	while (flaga) {
+		if (GetAsyncKeyState(VK_RETURN)) {
+			flaga = false;
+			system("cls");
+			DisplaySimulationOptions();
+		}
+	}
+}
+
 void Menu::MenuMapChangeDisplacer() {
 	Sleep(1000);
 	bool flaga = true;
@@ -475,19 +490,3 @@ void Menu::MenuMapChangeDisplacer() {
 		}
 	}
 }
-
-
-
-/*
-do {
-		cout << i;
-		i++;
-	} while(GetAsyncKeyState(VK_RETURN)!= 1);
-	int i = 0;
-	while (1) {
-		if(GetAsyncKeyState(VK_DOWN) & 1){
-				cout << i << "\n";
-				i++;
-		}
-	}
-	*/

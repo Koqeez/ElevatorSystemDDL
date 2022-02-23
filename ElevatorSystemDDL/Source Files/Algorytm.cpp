@@ -2,9 +2,7 @@
 #include "Zapytania.h"
 #include "GlobalVariables.h"
 
-int DNALength = 200;  // Sta³a d³ugoœæ ³añcucha DNA
-extern int maxFloor;
-extern int minFloor; //Na przyszlosc do poprawienia liniki 49
+int DNALength = 500;  // Sta³a d³ugoœæ ³añcucha DNA	
 int GenerationAmount = 100;
 int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji
@@ -35,6 +33,24 @@ void Osobnik::GenerateRandomDNA() {
 		DNA.push_back(rand() % 2);
 	}
 }
+std::vector<int> Osobnik::getDNA() {
+	return DNA;
+}
+void PrintRandomDNAForPopulation(int PopulationStartSize_a) {
+	int counter{ 0 };
+	Osobnik* obj = new Osobnik; //Wyswietlenie przykladowego DNA
+	for (int i = 0; i < PopulationStartSize_a; i++) {
+		std::cout << "Probka nr: " << counter++ << std::endl;
+		obj->GenerateRandomDNA();
+		for (int DNACell : obj->getDNA()) {
+			std::cout << DNACell << " ";
+		}
+		std::cout << std::endl;
+		obj->DNA.clear();
+	}
+	delete obj;
+}
+
 bool CanStart() { // Funckja do sprawdzania integralnoœci
 	bool ret = true;
 	return ret;
@@ -71,9 +87,14 @@ void ClearData() {  // Czyœcie dane na razie tylko tyle trzeba aby ponownie uruc
 	BestOsobnik.MovesAmount = 10000;
 	BestOsobnik2.MovesAmount = 10000;
 }
-void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { // Wywo³ywaæ po sortFitness
-	std::cout << "Najlepszy Fitness w " << generationC <<" Generacji: " <<  arr[0].Fitness << " Ilosc ruchow: " << arr[0].MovesAmount << std::endl;
-	std::cout << "Najlepszy Fitness zawsze to: " << x.Fitness << " Ilosc ruchow: " << x.MovesAmount << std::endl;
+void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC, double previousFitness) { // Wywo³ywaæ po sortFitness
+	if(previousFitness != x.Fitness){
+		std::cout << "Najlepszy Fitness w " << generationC << " Generacji: " << arr[0].Fitness << " Ilosc ruchow: " << arr[0].MovesAmount << " ";
+		std::cout << "Najlepszy Fitness zawsze to: " << x.Fitness << " Ilosc ruchow: " << x.MovesAmount << std::endl;
+	}
+	else {
+		std::cout << "Najlepszy Fitness w " << generationC << " Generacji: " << arr[0].Fitness << " Ilosc ruchow: " << arr[0].MovesAmount << std::endl;
+	}
 }
 double NormalizingFitness(double f, int max, int min) {
 	double x = ((f - min) / (max - min)) * (FitnessScaleMax - FitnessScaleMin) + FitnessScaleMin;
@@ -266,6 +287,7 @@ void IsBest(Osobnik x, Osobnik& y) { // Wywo³ywaæ po SortFitness
 }
 void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& moveQueueVector) {
 		int NumberOfGenerations = 0;
+		double previousBest = 0;
 		srand(time(NULL));
 		std::vector<Osobnik> o(PopulationStartSize);
 		for (int i = 0; i < PopulationStartSize; i++) {
@@ -276,9 +298,10 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& mo
 		}
 		SortFitness(o);
 		IsBest(o[0],BestOsobnik);
-		PrintInformations(o, BestOsobnik, NumberOfGenerations);
+		PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
 		while (NumberOfGenerations < GenerationAmount) {
 			NumberOfGenerations++;
+			previousBest = BestOsobnik.Fitness;
 			Crossover(o);
 			for (int i = o.size()/10; i < o.size(); i++) {
 				o[i].Mutate();
@@ -292,7 +315,7 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& mo
 			Selection(o);
 			SortFitness(o);
 			IsBest(o[0], BestOsobnik);
-			PrintInformations(o, BestOsobnik, NumberOfGenerations);
+			PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
 		}
 		std::cout << std::endl;
 
@@ -308,7 +331,7 @@ void AlgorithmConfiguration() {
 	std::cin >> DNALength;
 	std::cout << "Wpisz poczatkowa wielkosc populacji(200): ";
 	std::cin >> PopulationStartSize;
-	std::cout << "Wpisz szanse na mutacje[im wiêkszy tym mniejsza szansa](100): ";
+	std::cout << "Wpisz szanse na mutacje[im wiekszy tym mniejsza szansa](100): ";
 	std::cin >> MutationRate;
 	std::cout << "Wpisz maksymalna ilosc zapytan w windzie na raz(10): ";
 	std::cin >> MaxZapytan;
@@ -318,6 +341,10 @@ void AlgorithmConfiguration() {
 	std::cin >> FitnessScaleMin;
 	std::cout << "Wpisz maksymalny Fitness(1): ";
 	std::cin >> FitnessScaleMax;
-	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
-// Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
+int AlgorithmPopulationSize() {
+	std::cout << "Wpisz poczatkowa wielkosc populacji: ";
+	std::cin >> PopulationStartSize;
+	return PopulationStartSize;
+}
+

@@ -1,9 +1,5 @@
 #include "ElevatorCar.h"
-
-
-extern int maxFloor;
-extern int minFloor;
-extern int Floors;
+#include "GlobalVariables.h"
 
 //definicja klasy EC
 ElevatorCar::ElevatorCar() {};
@@ -41,6 +37,24 @@ int ElevatorCar::getMaxFloorElev() {
 }
 int ElevatorCar::getMinFloorElev() {
 	return minFloorElev;
+}
+
+void ElevatorCar::setDirection(int direction_a) {
+	if (direction_a == 0) {
+		this->direction = DOWN;
+	}
+	else if (direction_a) {
+		this->direction = UP;
+	}
+	else {
+		this->direction = IDLE;
+	}
+}
+
+const char* ElevatorCar::getDirectionString() {
+	int directionENUM;
+	directionENUM = this->getDirection();
+	return enum_str[direction];
 }
 
 void ElevatorCar::moveToFloor(int floor_a) {

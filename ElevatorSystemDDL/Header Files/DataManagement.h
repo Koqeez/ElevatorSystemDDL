@@ -22,6 +22,7 @@ public:
 	void setEnquiryDataFile(const std::string&);
 	void runDefault(std::vector<Zapytanie>&);
 	void saveOutput();
+
 };
 
 #endif

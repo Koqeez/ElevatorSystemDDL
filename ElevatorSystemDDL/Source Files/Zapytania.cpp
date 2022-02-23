@@ -1,14 +1,10 @@
 #include "Zapytania.h"
 #include "Floor.h"
 #include "Algorytm.h"
+#include "GlobalVariables.h"
 
 using namespace std;
 //----------------------------------------------------------------------------------
-extern int minFloor;
-extern int maxFloor;
-extern int Floors;
-extern int GlobalID = 0;
-//extern int DNALength;
 //----------------------------------------------------------------------------------
 Zapytanie::Zapytanie() {
 	int x, y;
