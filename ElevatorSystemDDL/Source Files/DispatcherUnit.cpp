@@ -332,18 +332,24 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 		}
 	//SYMULACJA
 		void DispatcherUnit::runSimulation() {
+			int preconfigurationTime,configurationTime,algorithmTime,moveTime;
 			std::thread timeCounting;
 			timeCounting = std::thread([this] {this->runTimer(); });
+			preconfigurationTime = this->simulationTimePtr->getTime();
 
-			fillFloorVectorXY(floorStatus, 0, 10);
-			allElevators.push_back(ElevatorCar1.createElevator(1, 1));
+			fillFloorVectorXY(floorStatus, 0, 20);
+			allElevators.push_back(ElevatorCar1.createElevator(1, 4));
 			Data1.runDefault(Enquiries);
+			configurationTime = this->simulationTimePtr->getTime() - preconfigurationTime;
 			AlgorithmObliczania(Enquiries, moveQueue, allElevators[0].getCapacity());
+			algorithmTime = this->simulationTimePtr->getTime() - configurationTime - preconfigurationTime;
 			std::cout << std::endl;
 			goWithMoveQueueX(0);
 			work_Finished = true;
-				
-			std::cout << this->simulationTimePtr->getTime()<<" sekund." << std::endl;
+			moveTime = this->simulationTimePtr->getTime() - algorithmTime - configurationTime - preconfigurationTime;
+			std::cout <<"Ca³osc trawla: " << this->simulationTimePtr->getTime() << " sekund." << std::endl;
+			std::cout << "Czas wykonywania przed konfiguracja: " << preconfigurationTime << ", czas wykonywania konfiguracji: " << configurationTime
+				<< ", czas wykonywania algorytmu: " << algorithmTime << ", czas wykonywania ruchu: " << moveTime << std::endl;
 			timeCounting.join();
 		}
 		void DispatcherUnit::resetSimulation() { 
