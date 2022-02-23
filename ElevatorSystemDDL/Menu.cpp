@@ -261,7 +261,7 @@ void Menu::DisplayAlgorithmOptions() {
 	Sleep(1000);
 	system("cls");
 	string Prompt = "******************** MENU DOTYCZACE ALGORYTMU ********************";
-	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** TESTOWA **********","********** WYSWIETL VECTOR RUCHOW **********","********** POWROT **********" };
+	vector<string>Options = { "********** ZOBACZ CROSSOVER **********","********** KONFIGURACJA **********","********** TESTOWA SYMULACJA **********", "********** WYSWIETL VECTOR RUCHOW **********","********** POWROT **********" };
 	Menu AlgorithmMenu(Prompt, Options);
 
 	int SelectedIndex = AlgorithmMenu.Run();
@@ -274,16 +274,20 @@ void Menu::DisplayAlgorithmOptions() {
 		break;
 	case 1:
 		system("cls");
-		DispatcherUnit1.callTest();
+		DispatcherUnit1.callAlgorithmConfiguration();
 		MenuAlgorithmDisplacer();
 		break;
 	case 2:
 		system("cls");
+		DispatcherUnit1.simulationTest();
+		MenuAlgorithmDisplacer();
+		break;
+	case 3:
+		system("cls");
 		DispatcherUnit1.printMoveQueue();
 		MenuAlgorithmDisplacer();
 		break;
-
-	case 3:
+	case 4:
 		system("cls");
 		MenuDisplacer();
 		break;

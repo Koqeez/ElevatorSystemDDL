@@ -86,7 +86,8 @@ public:
 
 	//ALGORYTMY
 	void callCrossover();
-	void callTest();
+	void callAlgorithmConfiguration();
+	void simulationTest();
 	void printMoveQueue();
 
 	//DANE

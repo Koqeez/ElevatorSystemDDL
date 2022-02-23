@@ -243,7 +243,7 @@ void DispatcherUnit::goWithMoveQueue(){
 			ElevatorCar Elevator = *it;
 			for (int move : moveQueue) {
 				std::cout << counter << "\t";
-				if(counter <= BestOsobnik.Fitness) {
+				if(counter <= BestOsobnik.MovesAmount) {
 					if (move) {
 						floor++;
 					}
@@ -255,7 +255,7 @@ void DispatcherUnit::goWithMoveQueue(){
 					std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 				}
 				counter++;
-				if (counter == BestOsobnik.Fitness+1) {
+				if (counter == BestOsobnik.MovesAmount +1) {
 					Sleep(30000);
 					return;
 				}
@@ -279,7 +279,7 @@ void DispatcherUnit::goWithMoveQueueX(int x) {
 	ElevatorCar Elevator = allElevators[x];
 	for (int move : moveQueue) {
 		std::cout << counter << "\t";
-			if (counter <= BestOsobnik.Fitness) {
+			if (counter <= BestOsobnik.MovesAmount) {
 				if (move) {
 					floor++;
 				}
@@ -291,7 +291,7 @@ void DispatcherUnit::goWithMoveQueueX(int x) {
 				std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 			}
 		counter++;
-		if (counter == BestOsobnik.Fitness + 1) {
+		if (counter == BestOsobnik.MovesAmount + 1) {
 			Sleep(30000);
 			return;
 		}
@@ -302,8 +302,11 @@ void DispatcherUnit::goWithMoveQueueX(int x) {
 void DispatcherUnit::callCrossover() {
 	CrossoverView(Enquiries, moveQueue);
 }
-void DispatcherUnit::callTest() {
-	Testowa();
+void DispatcherUnit::callAlgorithmConfiguration() {
+	AlgorithmConfiguration();
+}
+void DispatcherUnit::simulationTest() {
+	Symulacja2();
 }
 void DispatcherUnit::printMoveQueue() {
 	if (moveQueue.empty()) {
