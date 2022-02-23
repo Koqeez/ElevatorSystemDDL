@@ -348,3 +348,82 @@ int AlgorithmPopulationSize() {
 	return PopulationStartSize;
 }
 
+
+// POWTORZENIE ALGORYTMOW Z PARAMETRAMI WINDY - JEZELI MOZNA TO ZCALIC W JEDNA FUNKCJE - MAX FLOOR ZASTEPOWANY CAPACITY WINDY KTORA BEDZIE UZYWANA
+void AlgorithmObliczania(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& moveQueueVector, int ElevatorCapacity) {
+	int NumberOfGenerations = 0;
+	double previousBest = 0;
+	srand(time(NULL));
+	std::vector<Osobnik> o(PopulationStartSize);
+	for (int i = 0; i < PopulationStartSize; i++) {
+		o[i].GenerateRandomDNA();
+	}
+	for (int i = 0; i < o.size(); i++) {
+		FitnessSimulationWithElevator(o[i], newEnquiryVector, ElevatorCapacity);
+	}
+	SortFitness(o);
+	IsBest(o[0], BestOsobnik);
+	PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
+	while (NumberOfGenerations < GenerationAmount) {
+		NumberOfGenerations++;
+		previousBest = BestOsobnik.Fitness;
+		Crossover(o);
+		for (int i = o.size() / 10; i < o.size(); i++) {
+			o[i].Mutate();
+		}
+		for (int i = 0; i < o.size(); i++) {
+			InvertingWrongDNA(o[i]);
+		}
+		for (int i = 0; i < o.size(); i++) {
+			FitnessSimulationWithElevator(o[i], newEnquiryVector,ElevatorCapacity);
+		}
+		Selection(o);
+		SortFitness(o);
+		IsBest(o[0], BestOsobnik);
+		PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
+	}
+	std::cout << std::endl;
+
+	for (int move : BestOsobnik.DNA) {
+		moveQueueVector.push_back(move);
+		std::cout << move << " ";
+	}
+}
+void FitnessSimulationWithElevator(Osobnik& x, std::vector<Zapytanie> newEnquiryVector, int ElevatorCapacity_a) {
+	std::vector<int> CurrentF = TranslateDNA(x);
+	std::vector<Zapytanie> Queue;
+	int EnquirySize = newEnquiryVector.size();
+	for (int i = 0; i < CurrentF.size(); i++) {
+		for (int j = 0; j < EnquirySize; j++) {
+			if (newEnquiryVector[j].MiejsceP == CurrentF[i]) {
+				if (Queue.size() >= ElevatorCapacity_a) {
+					break;
+				}
+				Queue.push_back(newEnquiryVector[j]);
+				newEnquiryVector.erase(newEnquiryVector.begin() + j);
+				j--;
+				EnquirySize--;
+			}
+		}
+		int QueueSize = Queue.size();
+		for (int j = 0; j < QueueSize; j++) {
+			if (Queue[j].MiejsceD == CurrentF[i]) {
+				Queue.erase(Queue.begin() + j);
+				j--;
+				QueueSize--;
+			}
+		}
+		if (newEnquiryVector.size() == 0 && Queue.size() == 0) {
+			x.MovesAmount = i;
+			// a = InvertFitness(a);
+			x.Fitness = InvertFitness(NormalizingFitness(i, DNALength, 0));
+			break;
+		}
+		if (i == CurrentF.size() - 1) {
+			x.MovesAmount = i;
+			// a = InvertFitness(a);
+			x.Fitness = InvertFitness(NormalizingFitness(i, DNALength, 0));
+			break;
+		}
+	}
+}

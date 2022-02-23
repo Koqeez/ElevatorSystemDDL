@@ -1,10 +1,9 @@
 #pragma once
 #ifndef DISPATCHERUNIT_H
 #define DISPATCHERUNIT_H
-#include <list>
 #include <vector>
-#include <map>
 #include <algorithm>
+#include <thread>
 #include "ElevatorCar.h"
 #include "Floor.h"
 #include "Algorytm.h"
@@ -74,6 +73,7 @@ public:
 			void incrementSimulationTime();
 			void resetSimulationTime();
 			int getTime();
+			void runTimer();
 		//TWORZENIE PODSTAW
 			void createDefaultRequirements();
 			void usePreconfiguratedSymulation();

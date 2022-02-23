@@ -82,10 +82,11 @@ void Data::setEnquiryDataFile(const std::string& dataFile) {
 void Data::runDefault(std::vector<Zapytanie>& newEnquiryVector) {
 	this->setEnquiryDataFile("Enquiries.csv");
 	this->loadEnquiryDataFromFile(newEnquiryVector);
-	for (Zapytanie enquiryData : newEnquiryVector) {
+	/*for (Zapytanie enquiryData : newEnquiryVector) {
 		std::cout << enquiryData.ID << " " << enquiryData.MiejsceP << " " << enquiryData.MiejsceD << std::endl;
 	}
-	//this->saveOutput();
+			this->saveOutput();
+	*/
 }
 
 void Data::saveOutput() {

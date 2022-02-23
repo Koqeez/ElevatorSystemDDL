@@ -8,6 +8,10 @@
 
 DispatcherUnit::DispatcherUnit() {};
 
+//----------------------------------------------------------------------------------
+static bool work_Finished = false;
+//----------------------------------------------------------------------------------
+
 
 //POMOCNICZE
 template <typename T>
@@ -151,6 +155,14 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 		int DispatcherUnit::getTime() {
 			return this->simulationTimePtr->getTime();
 		}
+		void DispatcherUnit::runTimer() {
+			using namespace std::literals::chrono_literals;
+			this->simulationTimePtr->setTime(0);
+			while(!work_Finished) {
+				this->incrementSimulationTime();
+				std::this_thread::sleep_for(1s);
+			}
+		}
 	//TWORZENIE PODSTAW
 		void DispatcherUnit::createDefaultRequirements() {
 			std::cout << "---- TWORZENIE MAPY PIETER ----" << std::endl;
@@ -185,9 +197,7 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 
 		}
 		void DispatcherUnit::usePreconfiguratedSymulation() {
-		static const int SEC_NEXT_FLOOR = 10;
-
-	
+		//static const int SEC_NEXT_FLOOR = 10;
 		//do dokonczenia
 		fillFloorVectorXY(floorStatus,0, 10);
 		allElevators.push_back(ElevatorCar1.createElevator(1, 5));
@@ -196,7 +206,7 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 		std::cout << std::endl;
 		goWithMoveQueueX(0);
 
-		this->resetSimulation();
+		//this->resetSimulation();
 	}
 	//RUCH WINDY
 		void DispatcherUnit::moveElevatorCarToManual() {
@@ -292,39 +302,56 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 			ElevatorCar Elevator = allElevators[x];
 			for (int move : moveQueue) {
 				std::cout << counter << "\t";
-					if (counter <= BestOsobnik.MovesAmount) {
-						if (move) {
-							floor++;
-						}
-						else {
-							floor--;
-						}
-						std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze." << std::endl;
-						Elevator.moveToFloor(floor);
-						std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
+				if (counter <= BestOsobnik.MovesAmount) {
+					if (move && floor < maxFloor) {
+						Elevator.setDirection(1);
+						floor++;
+					}
+					else if (move && floor == maxFloor) {
+						Elevator.setDirection(2);
+						continue;
+					}
+					else if (move == 0 && floor > minFloor) {
+						Elevator.setDirection(0);
+						floor--;
+					}
+					else if (move == 0 && floor == minFloor) {
+						Elevator.setDirection(2);
+						continue;
+					}
+					std::cout << "Aktualnie winda znajduje sie na: " << Elevator.getCurrentFloor() << " pietrze w kierunku: " << Elevator.getDirectionString() << "." << std::endl;
+					Elevator.moveToFloor(floor);
+					std::cout << "---------------------------------------------------------------------------------------------" << std::endl;
 					}
 				counter++;
 				if (counter == BestOsobnik.MovesAmount + 1) {
-					Sleep(30000);
+					//Sleep(30000);
 					return;
 				}
 			}
 		}
 	//SYMULACJA
 		void DispatcherUnit::runSimulation() {
-			this->simulationTimePtr->setTime(0);
-			while (true) {
-				this->incrementSimulationTime();
-				std::cout << this->simulationTimePtr->getTime() << std::endl;
-				if (this->simulationTimePtr->getTime() == 1000) {
-					std::cout << "Koniec czasu";
-					break;
-				}
-			}
-		}
-		void DispatcherUnit::resetSimulation() {
+			std::thread timeCounting;
+			timeCounting = std::thread([this] {this->runTimer(); });
 
+			fillFloorVectorXY(floorStatus, 0, 10);
+			allElevators.push_back(ElevatorCar1.createElevator(1, 1));
+			Data1.runDefault(Enquiries);
+			AlgorithmObliczania(Enquiries, moveQueue, allElevators[0].getCapacity());
+			std::cout << std::endl;
+			goWithMoveQueueX(0);
+			work_Finished = true;
+				
+			std::cout << this->simulationTimePtr->getTime()<<" sekund." << std::endl;
+			timeCounting.join();
 		}
+		void DispatcherUnit::resetSimulation() { 
+			floorStatus.clear();
+			allElevators.clear();
+			Enquiries.clear();
+			//potrzebne jeszcze czyszczenie algorytmu i chyba troche innych 
+		}//FUNKCJA POZWALAJ¥CA PRZYWROCIÆ ZMIENNE DO STANU POCZ¥TKOWEGO 
 
 //ALGORYTMY
 void DispatcherUnit::callCrossover() {
