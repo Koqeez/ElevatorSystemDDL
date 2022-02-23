@@ -79,6 +79,7 @@
     <Text Include="Resource Files\TODO.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Resource Files\Nazwa.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Program Debug\Enquiries.csv">
