@@ -72,8 +72,8 @@ void ClearData() {  // Czyœcie dane na razie tylko tyle trzeba aby ponownie uruc
 	BestOsobnik2.MovesAmount = 10000;
 }
 void PrintInformations(std::vector<Osobnik> arr, Osobnik x, int generationC) { // Wywo³ywaæ po sortFitness
-	std::cout << "Najlepszy Fitness w tej generacji " << generationC <<" : " <<  arr[0].Fitness << std::endl;
-	std::cout << "Najlepszy Fitness zawsze: " << x.Fitness << std::endl;
+	std::cout << "Najlepszy Fitness w " << generationC <<" Generacji: " <<  arr[0].Fitness << " Ilosc ruchow: " << arr[0].MovesAmount << std::endl;
+	std::cout << "Najlepszy Fitness w " << generationC << " Generacji: " << x.Fitness << " Ilosc ruchow: " << x.MovesAmount << std::endl;
 }
 double NormalizingFitness(double f, int max, int min) {
 	double x = ((f - min) / (max - min)) * (FitnessScaleMax - FitnessScaleMin) + FitnessScaleMin;
@@ -304,16 +304,20 @@ void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& mo
 void Symulacja2() {
 }
 void AlgorithmConfiguration() {
-	std::cout << "Wpisz dlugosc DNA: ";
+	std::cout << "Wpisz dlugosc DNA(200): ";
 	std::cin >> DNALength;
-	std::cout << "Wpisz poczatkowa wielkosc populacji: ";
+	std::cout << "Wpisz poczatkowa wielkosc populacji(200): ";
 	std::cin >> PopulationStartSize;
-	std::cout << "Wpisz szanse na mutacje(int) 50 to 1/50 szansy na mutacje: ";
+	std::cout << "Wpisz szanse na mutacje[im wiêkszy tym mniejsza szansa](100): ";
 	std::cin >> MutationRate;
-	std::cout << "Wpisz maksymalna ilosc zapytan w windzie na raz: ";
+	std::cout << "Wpisz maksymalna ilosc zapytan w windzie na raz(10): ";
 	std::cin >> MaxZapytan;
-	std::cout << "Wpisz ilosc generacji: ";
+	std::cout << "Wpisz ilosc generacji(100): ";
 	std::cin >> GenerationAmount;
+	std::cout << "Wpisz minimalny Fitness(0): ";
+	std::cin >> FitnessScaleMin;
+	std::cout << "Wpisz maksymalny Fitness(1): ";
+	std::cin >> FitnessScaleMax;
 	// Dodaj opcje wyœwietlania tej funkcji w menu
 }
 // Trzeba zrobiæ funkcjê losuj¹c¹ w taki sposób ¿e po wylosowaniu danej liczby usuwa ona siê ze zbioru liczb które mo¿na wylosowaæ
