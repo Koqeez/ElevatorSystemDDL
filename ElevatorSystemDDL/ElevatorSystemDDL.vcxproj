@@ -88,10 +88,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Resource Files;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Header Files;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Source Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Resource Files;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Header Files;C:\Users\Konrad\source\repos\ElevatorSystemDDL\ElevatorSystemDDL\Source Files;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,32 +141,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algorytm.cpp" />
-    <ClCompile Include="DataManagement.cpp" />
-    <ClCompile Include="DispatcherUnit.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="ElevatorCar.cpp" />
-    <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="SimulationTime.cpp" />
-    <ClCompile Include="Zapytania.cpp" />
+    <ClCompile Include="Source Files\Algorytm.cpp" />
+    <ClCompile Include="Source Files\DataManagement.cpp" />
+    <ClCompile Include="Source Files\DispatcherUnit.cpp" />
+    <ClCompile Include="Source Files\Display.cpp" />
+    <ClCompile Include="Source Files\ElevatorCar.cpp" />
+    <ClCompile Include="Source Files\Floor.cpp" />
+    <ClCompile Include="Source Files\Menu.cpp" />
+    <ClCompile Include="Source Files\SimulationTime.cpp" />
+    <ClCompile Include="Source Files\Zapytania.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Algorytm.h" />
-    <ClInclude Include="DispatcherUnit.h" />
-    <ClInclude Include="ElevatorCar.h" />
-    <ClInclude Include="Floor.h" />
-    <ClInclude Include="DataManagement.h" />
-    <ClInclude Include="GlobalVariables.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="SimulationTime.h" />
-    <ClInclude Include="Zapytania.h" />
+    <ClInclude Include="Header Files\Algorytm.h" />
+    <ClInclude Include="Header Files\DispatcherUnit.h" />
+    <ClInclude Include="Header Files\ElevatorCar.h" />
+    <ClInclude Include="Header Files\Floor.h" />
+    <ClInclude Include="Header Files\DataManagement.h" />
+    <ClInclude Include="Header Files\GlobalVariables.h" />
+    <ClInclude Include="Header Files\Menu.h" />
+    <ClInclude Include="Header Files\SimulationTime.h" />
+    <ClInclude Include="Header Files\Zapytania.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TODO.txt" />
+    <Text Include="Resource Files\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Enquiries.csv" />
+    <None Include="Program Debug\Enquiries.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

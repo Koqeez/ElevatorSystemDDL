@@ -57,7 +57,6 @@ void Data::parseLine(const std::string& currentLine, int& ID,int& startFloor,int
 };
 void Data::loadEnquiryDataFromFile(std::vector<Zapytanie>& newEnquiryVector) {
 	std::string currentLine = "";
-
 	std::fstream currentFile(this->EnquiryDataFile.c_str(), std::ios::in);
 	if (currentFile) {
 		getline(currentFile, currentLine);
@@ -86,4 +85,13 @@ void Data::runDefault(std::vector<Zapytanie>& newEnquiryVector) {
 	/*for (Zapytanie enquiryData : newEnquiryVector) {
 		std::cout << enquiryData.ID << " " << enquiryData.MiejsceP << " " << enquiryData.MiejsceD << std::endl;
 	}*/
+	//this->saveOutput();
+}
+
+void Data::saveOutput() {
+	std::ofstream fileOut;
+	fileOut.open("Output.txt");
+	std::cout << "Hello" << std::endl;
+	fileOut << "This is txt" << std::endl;
+	fileOut.close();
 }

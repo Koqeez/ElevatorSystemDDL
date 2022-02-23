@@ -13,72 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Output">
+      <UniqueIdentifier>{8cd902ff-f632-4302-90ab-725a24f8b05c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Zapytania.cpp">
+    <ClCompile Include="Source Files\Zapytania.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="Source Files\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Floor.cpp">
+    <ClCompile Include="Source Files\Floor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElevatorCar.cpp">
+    <ClCompile Include="Source Files\ElevatorCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Display.cpp">
+    <ClCompile Include="Source Files\Display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DispatcherUnit.cpp">
+    <ClCompile Include="Source Files\DispatcherUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Algorytm.cpp">
+    <ClCompile Include="Source Files\Algorytm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DataManagement.cpp">
+    <ClCompile Include="Source Files\DataManagement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SimulationTime.cpp">
+    <ClCompile Include="Source Files\SimulationTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DispatcherUnit.h">
+    <ClInclude Include="Header Files\DispatcherUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ElevatorCar.h">
+    <ClInclude Include="Header Files\ElevatorCar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="Header Files\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Zapytania.h">
+    <ClInclude Include="Header Files\Zapytania.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Algorytm.h">
+    <ClInclude Include="Header Files\Algorytm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Floor.h">
+    <ClInclude Include="Header Files\Floor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataManagement.h">
+    <ClInclude Include="Header Files\DataManagement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalVariables.h">
+    <ClInclude Include="Header Files\GlobalVariables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SimulationTime.h">
+    <ClInclude Include="Header Files\SimulationTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TODO.txt">
+    <Text Include="Resource Files\TODO.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Enquiries.csv">
+    <None Include="Program Debug\Enquiries.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

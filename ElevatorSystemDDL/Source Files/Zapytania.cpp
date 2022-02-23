@@ -8,7 +8,7 @@ extern int minFloor;
 extern int maxFloor;
 extern int Floors;
 extern int GlobalID = 0;
-extern int DNALength;
+//extern int DNALength;
 //----------------------------------------------------------------------------------
 Zapytanie::Zapytanie() {
 	int x, y;
