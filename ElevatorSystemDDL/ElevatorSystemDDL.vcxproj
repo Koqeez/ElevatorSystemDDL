@@ -118,10 +118,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Source Files;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Resource Files;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Header Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Resource Files;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Source Files;C:\Users\ddf\source\repos\Koqeez\ElevatorSystemDDL\ElevatorSystemDDL\Header Files;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -163,6 +165,7 @@
     <ClInclude Include="Header Files\Zapytania.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Resource Files\Nazwa.txt" />
     <Text Include="Resource Files\TODO.txt" />
   </ItemGroup>
   <ItemGroup>
