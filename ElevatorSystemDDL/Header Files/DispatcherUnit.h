@@ -10,6 +10,7 @@
 #include "Windows.h"
 #include "DataManagement.h"
 #include "SimulationTime.h"
+#include "AlgorytmData.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {
@@ -91,6 +92,7 @@ public:
 	void simulationTest();
 	void printMoveQueue();
 	void printDNA();
+	void fileTest();
 
 	//DANE
 	void callDane();

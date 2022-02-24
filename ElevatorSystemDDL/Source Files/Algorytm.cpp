@@ -1,8 +1,7 @@
 #include "Algorytm.h"
-#include "Zapytania.h"
 #include "GlobalVariables.h"
 
-int DNALength = 500;  // Sta³a d³ugoœæ ³añcucha DNA	
+int DNALength = 50;  // Sta³a d³ugoœæ ³añcucha DNA	
 int GenerationAmount = 100;
 int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji
@@ -333,8 +332,6 @@ void AlgorithmConfiguration() {
 	std::cin >> PopulationStartSize;
 	std::cout << "Wpisz szanse na mutacje[im wiekszy tym mniejsza szansa](100): ";
 	std::cin >> MutationRate;
-	std::cout << "Wpisz maksymalna ilosc zapytan w windzie na raz(10): ";
-	std::cin >> MaxZapytan;
 	std::cout << "Wpisz ilosc generacji(100): ";
 	std::cin >> GenerationAmount;
 	std::cout << "Wpisz minimalny Fitness(0): ";

@@ -356,7 +356,8 @@ void DispatcherUnit::eraseOneEnquiryDisplay() {
 			floorStatus.clear();
 			allElevators.clear();
 			Enquiries.clear();
-			//potrzebne jeszcze czyszczenie algorytmu i chyba troche innych 
+			ClearData(); // Algorytm
+			//potrzebne jeszcze czyszczenie algorytmu i chyba troche innych // Dopisa³em
 		}//FUNKCJA POZWALAJ¥CA PRZYWROCIÆ ZMIENNE DO STANU POCZ¥TKOWEGO 
 
 //ALGORYTMY
@@ -383,6 +384,9 @@ void DispatcherUnit::printMoveQueue() {
 void DispatcherUnit::printDNA() {
 	PrintRandomDNAForPopulation(AlgorithmPopulationSize());
 	Sleep(30000); //GDY JU¯ NIE BÊDZIESZ MUSIAL NICZEGO SPRAWDZAC TO USUN SLEEP
+}
+void DispatcherUnit::fileTest() {
+	algorythmDataTest();
 }
 
 //DANE
