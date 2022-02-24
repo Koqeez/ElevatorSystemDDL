@@ -371,6 +371,7 @@ void DispatcherUnit::simulationTest() {  // Trzeba przetestowaæ tê funkcjê; Masz
 	// Dodaæ tworzenie budynku, windy timer itp.
 	int timeCounter=0;
 	std::vector<Zapytanie> fileEnquiries;
+	Data1.setEnquiryDataFile("Enquiries.csv");
 	Data1.loadEnquiryDataFromFile(fileEnquiries);
 	SymulationFromFile(fileEnquiries, moveQueue, allElevators[0].getCapacity(), timeCounter);
 }

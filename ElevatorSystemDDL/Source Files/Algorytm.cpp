@@ -458,6 +458,7 @@ void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int
 		SortFitness(o);
 		IsBest(o[0], BestOsobnik);
 		PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
+		saveAlgorithmDataToFile("er", "er", NumberOfGenerations, o[0], BestOsobnik, DNALength, PopulationStartSize, MutationRate, GenerationAmount, FitnessScaleMin, FitnessScaleMax, ElevatorCapacity, newEnquiryVector.size(), maxFloor, minFloor, timer, "");
 	}
 	std::cout << std::endl;
 
