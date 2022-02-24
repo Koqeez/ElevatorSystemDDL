@@ -79,10 +79,54 @@ std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName) { // Nale
 	}
 	return x;
 }
-void saveFitnessDataToFile(std::string fileName,int currGeneration, double currBestFitness, int currBestMovesAmount, double allTimeBestFitness, int allTimeBestMovesAmount,
-	int DNAL, int popStartSize, int mutationChance,int genAmount,int minFitness, int maxFitness, int maxEnquiresInElevator,int enquiresAmount,std::vector<Zapytanie> enquiresVec,
-	int maxF, int minF, int fAmount, std::vector<int> BestDNA,int time) {
-
+void saveFitnessDataToFile(std::string fileName, std::string enquiriesFileName,int currGeneration, Osobnik x, Osobnik Best, int DNAL, int popStartSize, int mutationChance, int genAmount,
+	int minFitness, int maxFitness, int maxEnquiriesInElevator,int enquiriesAmount, int maxF, int minF, int fAmount,int time, std::string addInfo) {
+	std::fstream MyFile;
+	if (fileName == "er") {
+		fileName == "AlgorithmData.csv";
+	}
+	if (addInfo == "er") {
+		addInfo = "No Additional Info";
+	}
+	if (enquiriesFileName == "er") {
+		enquiriesFileName = "Enquiries.csv";
+	}
+	MyFile.open(fileName, std::ios::app);
+	if (MyFile.is_open()) {
+		if (currGeneration == 0) {
+			MyFile << "Informacje o Konfiguracji" << std::endl;
+			MyFile << addInfo << std::endl;
+			MyFile << "ALGORYTM" << std::endl;
+			MyFile << "D³ugoœæ DNA: " << DNAL << " Populacja Pocz¹tkowa: " << popStartSize << " Czêstotliwoœæ Mutacji: " << mutationChance << " Iloœæ Generacji: " << genAmount <<
+				" Minimalny Fitness: " << minFitness << " Maksymalny Fitness: " << maxFitness << std::endl;
+			MyFile << "ZAPYTANIA" << std::endl;
+			MyFile << "Maksymalna Iloœæ Zapytañ w Windzie: " << maxEnquiriesInElevator << " Iloœæ Zapytañ: " << enquiriesAmount << " Minimalne Mo¿liwe Piêtro: " << minF << " Maksymalne Mo¿liwe Piêtro" <<
+				maxF << " Iloœæ Piêter: " << fAmount << std::endl;
+			MyFile << "LISTA ZAPYTAÑ" << std::endl;
+			std::fstream* enq = new std::fstream();
+			enq->open(enquiriesFileName);
+			if (enq->is_open()) {
+				std::string temp;
+				while (getline(*enq, temp)) {
+					MyFile << temp << std::endl;
+				}
+			}
+			else MyFile << "NIE UDA£O SIÊ WCZYTAÆ ZAPYTAÑ" << std::endl;
+			delete enq;
+			MyFile << std::endl;
+		}
+		MyFile << "Aktualna Generacja: " << currGeneration << " Najlepszy Fitness: " << x.Fitness << " Najlepsza Iloœæ Ruchów: " << x.MovesAmount << std::endl;
+		MyFile << "Najlepszy Fitness Zawsze: " << Best.Fitness << " Najlepsza Iloœæ Ruchów Zawsze: " << Best.MovesAmount << std::endl;
+		MyFile << "Najlepsze DNA: ";
+		for (int i : Best.DNA) {
+			MyFile << i;
+		}
+		if (currGeneration == genAmount) {
+			MyFile << std::endl << "Czas Obliczania: " << time;
+		}
+		MyFile.close();
+	}
+	else std::cout << "NIE UDALO SIE OTWORZYC PLIKU" << std::endl;
 }
 void algorythmDataTest() {
 	generateDNAToFile(1000, "er");
