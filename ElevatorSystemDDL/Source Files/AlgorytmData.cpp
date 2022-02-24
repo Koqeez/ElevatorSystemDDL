@@ -80,7 +80,7 @@ std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName) { // Nale
 	return x;
 }
 void saveFitnessDataToFile(std::string fileName,int currGeneration, double currBestFitness, int currBestMovesAmount, double allTimeBestFitness, int allTimeBestMovesAmount,
-	int DNAL, int popStartSize, int mutationChance,int genAmount, int maxFitness, int maxEnquiresInElevator,int enquiresAmount, int maxF, int minF, int fAmount) {
+	int DNAL, int popStartSize, int mutationChance,int genAmount,int minFitness, int maxFitness, int maxEnquiresInElevator,int enquiresAmount, int maxF, int minF, int fAmount, std::vector<int> BestDNA) {
 
 }
 void algorythmDataTest() {
