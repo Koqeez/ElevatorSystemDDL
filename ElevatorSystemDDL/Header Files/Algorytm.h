@@ -41,4 +41,4 @@ void AlgorithmObliczania(std::vector<Zapytanie>, std::vector<int>&, int);
 void FitnessSimulationWithElevator(Osobnik&, std::vector<Zapytanie>, int);
 std::vector<int> TranslateDNA(Osobnik);
 void ClearData();
-void SymulationFromFile(std::vector<Zapytanie> , std::vector<int>& , int, int);
+void SymulationFromFile(std::vector<Zapytanie> , std::vector<int>& , int);

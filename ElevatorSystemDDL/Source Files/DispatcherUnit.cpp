@@ -369,11 +369,27 @@ void DispatcherUnit::callAlgorithmConfiguration() {
 }
 void DispatcherUnit::simulationTest() {  // Trzeba przetestowaæ tê funkcjê; Masz gotowe argumenty i wszystko musisz tylko przerobiæ ¿eby wygl¹da³a jak ta wy¿ej od symulacji
 	// Dodaæ tworzenie budynku, windy timer itp.
+	int preconfigurationTime, configurationTime, algorithmTime;
+	std::thread timeCounting;
+	timeCounting = std::thread([this] {this->runTimer(); });
+	preconfigurationTime = this->simulationTimePtr->getTime();
 	int timeCounter=0;
 	std::vector<Zapytanie> fileEnquiries;
 	Data1.setEnquiryDataFile("Enquiries.csv");
 	Data1.loadEnquiryDataFromFile(fileEnquiries);
-	SymulationFromFile(fileEnquiries, moveQueue, allElevators[0].getCapacity(), timeCounter);
+	fillFloorVectorXY(floorStatus, 0, 20);
+	allElevators.push_back(ElevatorCar1.createElevator(1, 4));
+	Data1.runDefault(Enquiries);
+	configurationTime = this->simulationTimePtr->getTime() - preconfigurationTime;
+	SymulationFromFile(fileEnquiries, moveQueue, allElevators[0].getCapacity());
+	algorithmTime = this->simulationTimePtr->getTime() - configurationTime - preconfigurationTime;
+	std::cout << std::endl;
+	goWithMoveQueueX(0);
+	work_Finished = true;
+	std::cout << "Ca³osc trawla: " << this->simulationTimePtr->getTime() << " sekund." << std::endl;
+	std::cout << "Czas wykonywania przed konfiguracja: " << preconfigurationTime << ", czas wykonywania konfiguracji: " << configurationTime
+		<< ", czas wykonywania algorytmu: " << algorithmTime << std::endl;
+	timeCounting.join();
 }
 void DispatcherUnit::printMoveQueue() {
 	if (moveQueue.empty()) {

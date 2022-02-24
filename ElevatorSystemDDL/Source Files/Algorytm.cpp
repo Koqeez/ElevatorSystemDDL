@@ -17,7 +17,7 @@ void transferDNAToFile(std::vector<Osobnik> vec, std::string fileName);
 void deleteFile(std::string fileName);
 std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName);
 void saveAlgorithmDataToFile(std::string fileName, std::string enquiriesFileName, int currGeneration, Osobnik x, Osobnik Best, int DNAL, int popStartSize, int mutationChance, int genAmount,
-	int minFitness, int maxFitness, int maxEnquiriesInElevator, int enquiriesAmount, int maxF, int minF, int time, std::string addInfo);
+	int minFitness, int maxFitness, int maxEnquiriesInElevator, int enquiriesAmount, int maxF, int minF, std::string addInfo);
 
 void Osobnik::Mutate() { // Wykonuje mutacje o szansie okreœlonej przez zmienn¹ globaln¹
 	for (int i = 0; i < DNALength; i++) {
@@ -428,7 +428,7 @@ void FitnessSimulationWithElevator(Osobnik& x, std::vector<Zapytanie> newEnquiry
 		}
 	}
 }
-void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int>& moveQueueVector, int ElevatorCapacity, int timer) {
+void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int>& moveQueueVector, int ElevatorCapacity) {
 	int NumberOfGenerations = 0;
 	double previousBest = 0;
 	srand(time(NULL));
@@ -440,7 +440,7 @@ void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int
 	SortFitness(o);
 	IsBest(o[0], BestOsobnik);
 	PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
-	saveAlgorithmDataToFile("er", "er", NumberOfGenerations, o[0], BestOsobnik, DNALength, PopulationStartSize, MutationRate, GenerationAmount, FitnessScaleMin, FitnessScaleMax, ElevatorCapacity, newEnquiryVector.size(), maxFloor, minFloor, timer, "");
+	saveAlgorithmDataToFile("er", "er", NumberOfGenerations, o[0], BestOsobnik, DNALength, PopulationStartSize, MutationRate, GenerationAmount, FitnessScaleMin, FitnessScaleMax, ElevatorCapacity, newEnquiryVector.size(), maxFloor, minFloor, "");
 	while (NumberOfGenerations < GenerationAmount) {
 		NumberOfGenerations++;
 		previousBest = BestOsobnik.Fitness;
@@ -458,7 +458,7 @@ void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int
 		SortFitness(o);
 		IsBest(o[0], BestOsobnik);
 		PrintInformations(o, BestOsobnik, NumberOfGenerations, previousBest);
-		saveAlgorithmDataToFile("er", "er", NumberOfGenerations, o[0], BestOsobnik, DNALength, PopulationStartSize, MutationRate, GenerationAmount, FitnessScaleMin, FitnessScaleMax, ElevatorCapacity, newEnquiryVector.size(), maxFloor, minFloor, timer, "");
+		saveAlgorithmDataToFile("er", "er", NumberOfGenerations, o[0], BestOsobnik, DNALength, PopulationStartSize, MutationRate, GenerationAmount, FitnessScaleMin, FitnessScaleMax, ElevatorCapacity, newEnquiryVector.size(), maxFloor, minFloor, "");
 	}
 	std::cout << std::endl;
 
@@ -523,7 +523,7 @@ std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName) { // Nale
 		int maxDNALength = atoi(temp.c_str());
 		getline(MyFile, temp);
 		int maxAmount = atoi(temp.c_str());
-		std::cout << maxDNALength << " " << maxAmount << std::endl;
+
 		if (amount > maxAmount) {
 			std::cout << "W pliku jest zbyt malo danych aby pobrac taka ilosc DNA osobnikow";
 		}
@@ -536,7 +536,7 @@ std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName) { // Nale
 				getline(MyFile, temp);
 				for (int j = 0; j < DNALength; j++) {
 					p.DNA.push_back((temp[j] - 48));
-					std::cout << p.DNA[j] << " ";
+
 				}
 				x.push_back(p);
 			}
@@ -546,10 +546,10 @@ std::vector<Osobnik> readDNAFromFile(int amount, std::string fileName) { // Nale
 	return x;
 }
 void saveAlgorithmDataToFile(std::string fileName, std::string enquiriesFileName, int currGeneration, Osobnik x, Osobnik Best, int DNAL, int popStartSize, int mutationChance, int genAmount,
-	int minFitness, int maxFitness, int maxEnquiriesInElevator, int enquiriesAmount, int maxF, int minF, int time, std::string addInfo) {
+	int minFitness, int maxFitness, int maxEnquiriesInElevator, int enquiriesAmount, int maxF, int minF, std::string addInfo) {
 	std::fstream MyFile;
 	if (fileName == "er") {
-		fileName == "AlgorithmData.csv";
+		fileName = "AlgorithmData.csv";
 	}
 	if (addInfo == "er") {
 		addInfo = "No Additional Info";
@@ -586,9 +586,6 @@ void saveAlgorithmDataToFile(std::string fileName, std::string enquiriesFileName
 		MyFile << "Najlepsze DNA: ";
 		for (int i : Best.DNA) {
 			MyFile << i;
-		}
-		if (currGeneration == genAmount) {
-			MyFile << std::endl << "Czas Obliczania: " << time;
 		}
 		MyFile.close();
 	}
