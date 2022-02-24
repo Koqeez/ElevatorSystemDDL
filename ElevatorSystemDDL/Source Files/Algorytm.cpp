@@ -1,7 +1,7 @@
 #include "Algorytm.h"
 #include "GlobalVariables.h"
 
-int DNALength = 50;  // Sta³a d³ugoœæ ³añcucha DNA	
+int DNALength = 500;  // Sta³a d³ugoœæ ³añcucha DNA	
 int GenerationAmount = 100;
 int MutationRate = 100; // Czêstotliwoœæ mutacji im wiêksza tym mniejsza szansa na mutacje
 int PopulationStartSize = 200; // Wielkoœæ pocz¹tkowa populacji
