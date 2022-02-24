@@ -8,7 +8,10 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include "Zapytania.h"
+#include "DataManagement.h"
 #include <algorithm>
+#include <fstream>
+#include <string>
 
 // ZMIANA ZAMYS£U NA JEDN¥ D£UG¥ WEKTOR ZAMIAST 2 Wymiarowej mapy
 // ZMIENNE GLOBALNE
@@ -35,7 +38,7 @@ void CrossoverView(std::vector<Zapytanie>,std::vector<int>&);
 void AlgorithmConfiguration();
 int  AlgorithmPopulationSize();
 void AlgorithmObliczania(std::vector<Zapytanie>, std::vector<int>&, int);
-void FitnessSimulationWithElevator(Osobnik& x, std::vector<Zapytanie> newEnquiryVector, int);
-void Symulacja2();
+void FitnessSimulationWithElevator(Osobnik&, std::vector<Zapytanie>, int);
 std::vector<int> TranslateDNA(Osobnik);
 void ClearData();
+void SymulationFromFile(std::vector<Zapytanie> , std::vector<int>& , int, int);

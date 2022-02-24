@@ -144,7 +144,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\Algorytm.cpp" />
-    <ClCompile Include="Source Files\AlgorytmData.cpp" />
     <ClCompile Include="Source Files\DataManagement.cpp" />
     <ClCompile Include="Source Files\DispatcherUnit.cpp" />
     <ClCompile Include="Source Files\Display.cpp" />
@@ -156,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\Algorytm.h" />
-    <ClInclude Include="Header Files\AlgorytmData.h" />
     <ClInclude Include="Header Files\DispatcherUnit.h" />
     <ClInclude Include="Header Files\ElevatorCar.h" />
     <ClInclude Include="Header Files\Floor.h" />

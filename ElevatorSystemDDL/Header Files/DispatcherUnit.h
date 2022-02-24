@@ -10,7 +10,6 @@
 #include "Windows.h"
 #include "DataManagement.h"
 #include "SimulationTime.h"
-#include "AlgorytmData.h"
 
 //modu³ odpowiadaj¹cy za optymalne funkcjonowanie windy
 class DispatcherUnit {

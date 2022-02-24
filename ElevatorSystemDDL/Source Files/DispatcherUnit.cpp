@@ -367,8 +367,12 @@ void DispatcherUnit::callCrossover() {
 void DispatcherUnit::callAlgorithmConfiguration() {
 	AlgorithmConfiguration();
 }
-void DispatcherUnit::simulationTest() {
-	Symulacja2();
+void DispatcherUnit::simulationTest() {  // Trzeba przetestowaæ tê funkcjê; Masz gotowe argumenty i wszystko musisz tylko przerobiæ ¿eby wygl¹da³a jak ta wy¿ej od symulacji
+	// Dodaæ tworzenie budynku, windy timer itp.
+	int timeCounter=0;
+	std::vector<Zapytanie> fileEnquiries;
+	Data1.loadEnquiryDataFromFile(fileEnquiries);
+	SymulationFromFile(fileEnquiries, moveQueue, allElevators[0].getCapacity(), timeCounter);
 }
 void DispatcherUnit::printMoveQueue() {
 	if (moveQueue.empty()) {
@@ -386,7 +390,6 @@ void DispatcherUnit::printDNA() {
 	Sleep(30000); //GDY JU¯ NIE BÊDZIESZ MUSIAL NICZEGO SPRAWDZAC TO USUN SLEEP
 }
 void DispatcherUnit::fileTest() {
-	algorythmDataTest();
 }
 
 //DANE

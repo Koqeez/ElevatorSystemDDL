@@ -45,9 +45,6 @@
     <ClCompile Include="Source Files\SimulationTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\AlgorytmData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\DispatcherUnit.h">
@@ -75,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header Files\SimulationTime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\AlgorytmData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
