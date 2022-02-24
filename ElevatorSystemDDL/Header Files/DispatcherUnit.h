@@ -96,6 +96,7 @@ public:
 
 	//DANE
 	void callDane();
+	void callSaveEnquries();
 
 private:
 

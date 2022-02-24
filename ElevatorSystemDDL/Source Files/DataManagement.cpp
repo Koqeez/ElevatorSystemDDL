@@ -24,11 +24,11 @@ void Data::atoiCheckOutOfRange(const int quantity) const
 }
 void Data::parseLine(const std::string& currentLine, int& ID,int& startFloor,int& endFloor) const 
 {
-	static const int NEXT_CHAR = 1;         // 1 char after comma
-	std::string endFloorStr = "";           // End floor string rep
-	int firstCommaPos = std::string::npos;  // First comma pos    
-	int secondCommaPos = std::string::npos; // Second comma pos
-	std::string startFloorStr = "";         // Start floor string rep
+	static const int NEXT_CHAR = 1;         
+	std::string endFloorStr = "";          
+	int firstCommaPos = std::string::npos;  
+	int secondCommaPos = std::string::npos; 
+	std::string startFloorStr = "";         
 	std::string IDStr = "";
 
 	firstCommaPos = currentLine.find(",");
@@ -76,6 +76,27 @@ void Data::loadEnquiryDataFromFile(std::vector<Zapytanie>& newEnquiryVector) {
 		throw std::exception("ifstream operation failed!");
 	}
 }
+void Data::saveEnquiryDataToFile(std::vector<Zapytanie>& newEnquiryVector, std::string fileName) {
+	std::fstream MyFile;
+	if (fileName == "er") {
+		fileName = "Enquiries.csv";
+	}
+	MyFile.open(fileName, std::ios::out);
+	if (MyFile.is_open()) {
+		MyFile << "ID,Start Floor,End Floor" << std::endl;
+		for (Zapytanie Enquiry : newEnquiryVector) {
+			this->atoiCheckOutOfRange(Enquiry.getID());
+			this->atoiCheckOutOfRange(Enquiry.getMiejsceP());
+			this->atoiCheckOutOfRange(Enquiry.getMiejsceD());
+			MyFile << Enquiry.getID() << "," << Enquiry.getMiejsceP() << "," << Enquiry.getMiejsceD() << std::endl;
+		}
+		MyFile.close();
+	}
+	else
+	{
+		throw std::exception("ifstream operation failed!");
+	}
+}
 void Data::setEnquiryDataFile(const std::string& dataFile) {
 	this->EnquiryDataFile = dataFile;
 }
@@ -89,10 +110,9 @@ void Data::runDefault(std::vector<Zapytanie>& newEnquiryVector) {
 	*/
 }
 
-void Data::saveOutput() {
-	std::ofstream fileOut;
-	fileOut.open("Output.txt");
-	std::cout << "Hello" << std::endl;
-	fileOut << "This is txt" << std::endl;
-	fileOut.close();
+void Data::saveEnquiryOutput(std::vector<Zapytanie>& newEnquiryVector) {
+	saveEnquiryDataToFile(newEnquiryVector, "er");
+}
+std::string Data::getDataFile() {
+	return EnquiryDataFile;
 }

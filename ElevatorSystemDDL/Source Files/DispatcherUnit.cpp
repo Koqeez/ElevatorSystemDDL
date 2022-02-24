@@ -393,3 +393,6 @@ void DispatcherUnit::fileTest() {
 void DispatcherUnit::callDane() {
 	Data1.runDefault(Enquiries);
 }
+void DispatcherUnit::callSaveEnquries() {
+	Data1.saveEnquiryOutput(Enquiries);
+}

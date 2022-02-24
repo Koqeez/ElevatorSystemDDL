@@ -112,7 +112,7 @@ void Menu::RunMainMenu() {
 	vector<string>Options = { "********** OPCJE DOTYCZACE - WEKTORA PIETER **********","********** OPCJE DOTYCZACE - WIND **********",
 		"********** OPCJE DOTYCZACE - ALGORYTMU **********","********** OPCJE DOTYCZACE - ZAPYTAN **********" ,
 		"********** OPCJE DOTYCZACE - SYMULACJI **********",
-		"********** DANE - TEST **********" ,"********** WYJSCIE **********" };
+		"********** DANE WCZYTAJ - TEST **********","********** DANE ZAPISZ - TEST **********" ,"********** WYJSCIE **********" };
 	Menu mainMenu(Prompt, Options);
 	int selectedIndex = mainMenu.Run();
 	//while ((getchar()) != '\n');
@@ -149,6 +149,12 @@ void Menu::RunMainMenu() {
 		MenuDisplacer();
 		break;
 	case 6:
+		Sleep(1000);
+		system("CLS");
+		DispatcherUnit1.callSaveEnquries();
+		MenuDisplacer();
+		break;
+	case 7:
 		ExitMenu();
 		break;
 	}

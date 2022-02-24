@@ -16,12 +16,14 @@ public:
 	~Data();
 
 	void loadEnquiryDataFromFile(std::vector<Zapytanie>&);
+	void saveEnquiryDataToFile(std::vector<Zapytanie>&, std::string);
 	void parseLine(const std::string& currentLine, int& ID,int& startFloor,int& endFloor)const;
 	void atoiCheckOutOfRange(const int quantity) const;
 	void addEnquiry(const int&,const int&,const int&,std::vector<Zapytanie>&);
 	void setEnquiryDataFile(const std::string&);
+	std::string getDataFile();
 	void runDefault(std::vector<Zapytanie>&);
-	void saveOutput();
+	void saveEnquiryOutput(std::vector<Zapytanie>& );
 
 };
 
