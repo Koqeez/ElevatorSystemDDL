@@ -289,6 +289,9 @@ void IsBest(Osobnik x, Osobnik& y) { // Wywo³ywaæ po SortFitness
 	if (x.Fitness > y.Fitness) {
 		y = x;
 	}
+	else if (x.MovesAmount < y.MovesAmount) {
+		y = x;
+	}
 }
 void CrossoverView(std::vector<Zapytanie> newEnquiryVector, std::vector<int>& moveQueueVector) {
 		int NumberOfGenerations = 0;
@@ -433,6 +436,18 @@ void SymulationFromFile(std::vector<Zapytanie> newEnquiryVector ,std::vector<int
 	double previousBest = 0;
 	srand(time(NULL));
 	std::vector<Osobnik> o;
+	int ifgen;
+	std::cout << "Wygenerowac nowy plik z DNA? (0,1)" << std::endl;
+	std::cin >> ifgen;
+	if (ifgen) {
+		int am;
+		std::string fn;
+		std::cout << "Wpisz Ilosc Zestawow Do Wygenerowania: ";
+		std::cin >> am;
+		std::cout << "Wpisz Nazwe Pliku (er)";
+		std::cin >> fn;
+		generateDNAToFile(am,fn);
+	}
 	o = readDNAFromFile(PopulationStartSize, "er");
 	for (int i = 0; i < o.size(); i++) {
 		FitnessSimulationWithElevator(o[i], newEnquiryVector, ElevatorCapacity);
@@ -579,7 +594,6 @@ void saveAlgorithmDataToFile(std::string fileName, std::string enquiriesFileName
 			}
 			else MyFile << "NIE UDA£O SIÊ WCZYTAÆ ZAPYTAÑ" << std::endl;
 			delete enq;
-			MyFile << std::endl;
 		}
 		MyFile << "Aktualna Generacja: " << currGeneration << " Najlepszy Fitness: " << x.Fitness << " Najlepsza Iloœæ Ruchów: " << x.MovesAmount << std::endl;
 		MyFile << "Najlepszy Fitness Zawsze: " << Best.Fitness << " Najlepsza Iloœæ Ruchów Zawsze: " << Best.MovesAmount << std::endl;
@@ -587,6 +601,7 @@ void saveAlgorithmDataToFile(std::string fileName, std::string enquiriesFileName
 		for (int i : Best.DNA) {
 			MyFile << i;
 		}
+		MyFile << std::endl;
 		MyFile.close();
 	}
 	else std::cout << "NIE UDALO SIE OTWORZYC PLIKU" << std::endl;

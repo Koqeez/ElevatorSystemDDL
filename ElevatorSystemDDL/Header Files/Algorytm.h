@@ -19,8 +19,8 @@
 class Osobnik { // Zbiór wszystkich osobników zostanie zapisany jako vector
 public:
 	std::vector<int> DNA;
-	double Fitness=0;  // Im mniejszy fitness tym lepszy 
-	int MovesAmount = 1000;
+	double Fitness= 0;  // Im mniejszy fitness tym lepszy 
+	int MovesAmount = 10000000;
 	int CurrentFloor=0;
 	void GenerateRandomDNA();
 	void Mutate();
