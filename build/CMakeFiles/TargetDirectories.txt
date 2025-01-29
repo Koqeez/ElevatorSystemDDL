@@ -1,0 +1,3 @@
+/mnt/c/Users/konrad_guest/Documents/Studia/semestr_3/Algorytmy_kombinatoryczne_w_bioinformatyce/ElevatorSystemDDL/build/CMakeFiles/ElevatorSystemDDL.dir
+/mnt/c/Users/konrad_guest/Documents/Studia/semestr_3/Algorytmy_kombinatoryczne_w_bioinformatyce/ElevatorSystemDDL/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/konrad_guest/Documents/Studia/semestr_3/Algorytmy_kombinatoryczne_w_bioinformatyce/ElevatorSystemDDL/build/CMakeFiles/rebuild_cache.dir

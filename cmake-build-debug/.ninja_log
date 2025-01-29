@@ -1,0 +1,12 @@
+# ninja log v6
+1774	3078	7598878860692791	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/Floor.cpp.obj	40145d1fb5a7575c
+11	235	7598878843064777	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/SimulationTime.cpp.obj	1e420f9800e3892e
+236	2304	7598878845317999	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/DispatcherUnit.cpp.obj	3a33cb2f9af8416c
+16	1773	7598878843115279	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/Algorytm.cpp.obj	739362a4a0400b38
+24	1170	7598878843190537	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/DataManagement.cpp.obj	9f03bea507f9dc16
+29	3559	7598878843240525	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/Display.cpp.obj	97e378dfeef69ecd
+1170	2202	7598878854654224	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/ElevatorCar.cpp.obj	42fedfb7562568be
+2305	3376	7598878865997108	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/Zapytania.cpp.obj	fddaef5ef89f2878
+33	3542	7598871705876327	CMakeFiles/ElevatorSystemDDL.dir/Source_Files/Menu.cpp.obj	a571b04e8896a468
+3543	3816	7598871740966077	bin/ElevatorSystemDDL.exe	a6ef440c8a4cc517
+3	648	7598890404115445	build.ninja	2064a731df01cb3f
